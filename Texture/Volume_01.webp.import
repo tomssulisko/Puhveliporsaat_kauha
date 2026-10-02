@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cydkqhq7y1vun"
-path="res://.godot/imported/FirePunch.webp-6704350fb6561a657e549a37fedf2fd8.ctex"
+uid="uid://xo0q4w8y4ist"
+path="res://.godot/imported/Volume_01.webp-b56e575c8dcfdcb6abddb627424a06be.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Texture/FirePunch.webp"
-dest_files=["res://.godot/imported/FirePunch.webp-6704350fb6561a657e549a37fedf2fd8.ctex"]
+source_file="res://Texture/Volume_01.webp"
+dest_files=["res://.godot/imported/Volume_01.webp-b56e575c8dcfdcb6abddb627424a06be.ctex"]
 
 [params]
 
