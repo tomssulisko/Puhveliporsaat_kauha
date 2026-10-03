@@ -387,13 +387,21 @@
 	},
 	{
 		"event": {
-		  "name": "auttajaPelaajaTest",
+		  "name": "carBroken",
 		  "speeches": [
+			{
+				"speech": {
+				"actor": "pelaaja",
+				"text": [
+				  "Damn mate, what an old car I have, what am I supposed to do now?"
+				]
+				}
+			},
 			{
 				"speech": {
 				"actor": "auttaja",
 				"text": [
-				  "Hei. Olen auttaja — testataan, että naama ja ääni toimivat."
+				  "I see your metal beast broke, you seem to have pretty bad luck my friend."
 				]
 				}
 			},
@@ -401,7 +409,200 @@
 				"speech": {
 				"actor": "pelaaja",
 				"text": [
-				  "Ja minä olen pelaaja. Placeholder-äänet voi korvata myöhemmin."
+				  "What? Who's there?"
+				]
+				}
+			},
+			{
+				"speech": {
+				"actor": "auttaja",
+				"text": [
+				  "How unfortunate! I know this forest like my right hand that I no longer have, and I know there is no one who can help you out except me! Which I won't do. Just kidding! There is a metal beast graveyard nearby. Perhaps there is something useful."
+				]
+				}
+			},
+			{
+				"speech": {
+				"actor": "pelaaja",
+				"text": [
+				  "Ok sure, whatever you say I guess."
+				]
+				}
+			}
+		  ]
+		}
+	},
+	{
+		"event": {
+		  "name": "batteryFound",
+		  "speeches": [
+			{
+				"speech": {
+				"actor": "pelaaja",
+				"text": [
+				  "Alright, I found the battery. Now I just have to find my way back."
+				]
+				}
+			}
+		  ]
+		}
+	},
+	{
+		"event": {
+		  "name": "batteryReturn",
+		  "speeches": [
+			{
+				"speech": {
+				"actor": "auttaja",
+				"text": [
+				  "Bravo!! You found the life saver of the metal beast!"
+				]
+				}
+			},
+			{
+				"speech": {
+				"actor": "pelaaja",
+				"text": [
+				  "Yeah, I did. Now I just have to fix it."
+				]
+				}
+			},
+			{
+				"speech": {
+				"actor": "auttaja",
+				"text": [
+				  "With what?"
+				]
+				}
+			},
+			{
+				"speech": {
+				"actor": "pelaaja",
+				"text": [
+				  "Right.."
+				]
+				}
+			},
+			{
+				"speech": {
+				"actor": "auttaja",
+				"text": [
+				  "You need some tools my lovely friend! You may find some in the place where dead people rest.."
+				]
+				}
+			},
+			{
+				"speech": {
+				"actor": "pelaaja",
+				"text": [
+				  "A graveyard?"
+				]
+				}
+			},
+			{
+				"speech": {
+				"actor": "auttaja",
+				"text": [
+				  "Perhaps."
+				]
+				}
+			}
+		  ]
+		}
+	},
+	{
+		"event": {
+		  "name": "wrenchFound",
+		  "speeches": [
+			{
+				"speech": {
+				"actor": "pelaaja",
+				"text": [
+				  "A wrench. This should do."
+				]
+				}
+			}
+		  ]
+		}
+	},
+	{
+		"event": {
+		  "name": "wrenchReturn",
+		  "speeches": [
+			{
+				"speech": {
+				"actor": "pelaaja",
+				"text": [
+				  "I found a wrench."
+				]
+				}
+			},
+			{
+				"speech": {
+				"actor": "auttaja",
+				"text": [
+				  "Lovely! Now you can change the battery."
+				]
+				}
+			},
+			{
+				"speech": {
+				"actor": "auttaja",
+				"text": [
+				  "Wonderful! Though I have to tell you, your tire looks a bit flat. Get a new one, it hurts my eyes to see it like that! Follow that path and look for it."
+				]
+				}
+			}
+		  ]
+		}
+	},
+	{
+		"event": {
+		  "name": "tireAltar",
+		  "speeches": [
+			{
+				"speech": {
+				"actor": "pelaaja",
+				"text": [
+				  "This gives me chills."
+				]
+				}
+			}
+		  ]
+		}
+	},
+	{
+		"event": {
+		  "name": "tireFound",
+		  "speeches": [
+			{
+				"speech": {
+				"actor": "pelaaja",
+				"text": [
+				  "Finally. Now I quickly have to get back to my car before someone tries to stop me again."
+				]
+				}
+			}
+		  ]
+		}
+	},
+	{
+		"event": {
+		  "name": "tireReturn",
+		  "speeches": [
+			{
+				"speech": {
+				"actor": "auttaja",
+				"text": [
+				  "You made it! Now just change the tires, and make it quick! I hate seeing them so deflated!"
+				]
+				}
+			},
+			{
+				"speech": {
+				"actor": "pelaaja",
+				"text": [
+				  "Alright finally. I'm leaving this place for good! Appreciate the help.. I guess?"
 				]
 				}
 			}
