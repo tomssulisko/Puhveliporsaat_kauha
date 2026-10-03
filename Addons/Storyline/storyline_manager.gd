@@ -11,9 +11,9 @@ var events_played: Array[String] = []
 var _paused_tree_for_storyline := false
 
 func _storyline_json_path() -> String:
-	if FileAccess.file_exists("res://addons/Storyline/storyline.json"):
-		return "res://addons/Storyline/storyline.json"
-	return "res://addons/Storyline/storyline.json"
+	if FileAccess.file_exists("res://Addons/Storyline/storyline.json"):
+		return "res://Addons/Storyline/storyline.json"
+	return "res://Addons/Storyline/storyline.json"
 
 func _ready():
 	storyline_json = load_json_file(_storyline_json_path())

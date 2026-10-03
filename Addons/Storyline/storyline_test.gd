@@ -15,9 +15,9 @@ var events_data: Array = []  # Array of storyline events extracted from JSON
 var event_buttons: Dictionary = {}  # Dictionary to track button references by event name
 
 func _storyline_json_path() -> String:
-	if FileAccess.file_exists("res://addons/Storyline/storyline.json"):
-		return "res://addons/Storyline/storyline.json"
-	return "res://addons/Storyline/storyline.json"
+	if FileAccess.file_exists("res://Addons/Storyline/storyline.json"):
+		return "res://Addons/Storyline/storyline.json"
+	return "res://Addons/Storyline/storyline.json"
 
 func _ready():
 	# Initialize the storyline test scene

@@ -1,10 +1,10 @@
 [gd_resource type="Resource" format=3 uid="uid://dhserpr5r0va6"]
 
-[ext_resource type="Script" uid="uid://bf1phctnb4136" path="res://addons/Storyline/storyteller.gd" id="1_placeholder_script"]
-[ext_resource type="PackedScene" path="res://addons/Storyline/Storytellers/placeholder_narrator.tscn" id="2_placeholder_scene"]
-[ext_resource type="AudioStream" uid="uid://fhqh728q1sqd" path="res://addons/Storyline/puhe/placeholder1.wav" id="3_placeholder1"]
-[ext_resource type="AudioStream" uid="uid://l5c0ilqb2gnm" path="res://addons/Storyline/puhe/placeholder2.wav" id="4_placeholder2"]
-[ext_resource type="AudioStream" uid="uid://be6y47qkey7og" path="res://addons/Storyline/puhe/placeholder3.wav" id="5_placeholder3"]
+[ext_resource type="Script" uid="uid://bf1phctnb4136" path="res://Addons/Storyline/storyteller.gd" id="1_placeholder_script"]
+[ext_resource type="PackedScene" path="res://Addons/Storyline/Storytellers/placeholder_narrator.tscn" id="2_placeholder_scene"]
+[ext_resource type="AudioStream" uid="uid://fhqh728q1sqd" path="res://Addons/Storyline/puhe/placeholder1.wav" id="3_placeholder1"]
+[ext_resource type="AudioStream" uid="uid://l5c0ilqb2gnm" path="res://Addons/Storyline/puhe/placeholder2.wav" id="4_placeholder2"]
+[ext_resource type="AudioStream" uid="uid://be6y47qkey7og" path="res://Addons/Storyline/puhe/placeholder3.wav" id="5_placeholder3"]
 
 [resource]
 script = ExtResource("1_placeholder_script")

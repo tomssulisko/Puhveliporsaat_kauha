@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dcw75bco2jdxs"]
 
-[ext_resource type="Texture2D" uid="uid://eu5h1bofpmet" path="res://addons/Storyline/icons/vaari1.png" id="1_tx"]
-[ext_resource type="Texture2D" uid="uid://dnwi7x0e1dp5o" path="res://addons/Storyline/icons/vaari2.png" id="2_tx"]
+[ext_resource type="Texture2D" uid="uid://eu5h1bofpmet" path="res://Addons/Storyline/icons/vaari1.png" id="1_tx"]
+[ext_resource type="Texture2D" uid="uid://dnwi7x0e1dp5o" path="res://Addons/Storyline/icons/vaari2.png" id="2_tx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p8hhp"]
 animations = [{

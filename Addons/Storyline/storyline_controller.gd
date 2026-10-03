@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-const _PLACEHOLDER_STORYTELLER: Resource = preload("res://addons/Storyline/Storytellers/placeholder.tres")
+const _PLACEHOLDER_STORYTELLER: Resource = preload("res://Addons/Storyline/Storytellers/placeholder.tres")
 
 @onready var label = $PanelContainer/GridContainer/MarginContainer/RichTextLabel
 @onready var talking_head_container: GridContainer = $PanelContainer/GridContainer
@@ -240,7 +240,7 @@ func play_next_sound():
 	# If still null, use placeholder
 	if clip == null:
 		print("Warning: Could not load sound for storyteller '", current_storyteller.teller_name, "', using placeholder")
-		clip = load("res://addons/Storyline/puhe/placeholder1.wav")
+		clip = load("res://Addons/Storyline/puhe/placeholder1.wav")
 		if clip == null:
 			sounds_playing = false
 			return
@@ -274,66 +274,78 @@ func get_sound_paths_for_storyteller(teller_name: String) -> Array[String]:
 	match teller_name:
 		"gramps1", "gramps2", "gramps3", "gramps4":
 			return [
-				"res://addons/Storyline/puhe/majakkamies/SFX majakkamies 1.wav",
-				"res://addons/Storyline/puhe/majakkamies/SFX majakkamies 2.wav",
-				"res://addons/Storyline/puhe/majakkamies/SFX majakkamies 3.wav",
-				"res://addons/Storyline/puhe/majakkamies/SFX majakkamies 4.wav",
-				"res://addons/Storyline/puhe/majakkamies/SFX majakkamies 5.wav",
+				"res://Addons/Storyline/puhe/majakkamies/SFX majakkamies 1.wav",
+				"res://Addons/Storyline/puhe/majakkamies/SFX majakkamies 2.wav",
+				"res://Addons/Storyline/puhe/majakkamies/SFX majakkamies 3.wav",
+				"res://Addons/Storyline/puhe/majakkamies/SFX majakkamies 4.wav",
+				"res://Addons/Storyline/puhe/majakkamies/SFX majakkamies 5.wav",
 			]
 		"mummo":
 			return [
-				"res://addons/Storyline/puhe/mummo/SFX mummo1.wav",
-				"res://addons/Storyline/puhe/mummo/SFX mummo2.wav",
-				"res://addons/Storyline/puhe/mummo/SFX mummo3.wav",
-				"res://addons/Storyline/puhe/mummo/SFX mummo4.wav",
-				"res://addons/Storyline/puhe/mummo/SFX mummo5.wav",
-				"res://addons/Storyline/puhe/mummo/SFX mummo6.wav",
+				"res://Addons/Storyline/puhe/mummo/SFX mummo1.wav",
+				"res://Addons/Storyline/puhe/mummo/SFX mummo2.wav",
+				"res://Addons/Storyline/puhe/mummo/SFX mummo3.wav",
+				"res://Addons/Storyline/puhe/mummo/SFX mummo4.wav",
+				"res://Addons/Storyline/puhe/mummo/SFX mummo5.wav",
+				"res://Addons/Storyline/puhe/mummo/SFX mummo6.wav",
 			]
 		"peikko":
 			return [
-				"res://addons/Storyline/puhe/peikko1.wav",
-				"res://addons/Storyline/puhe/peikko2.wav",
-				"res://addons/Storyline/puhe/peikko3.wav", 
-				"res://addons/Storyline/puhe/peikko4.wav",
-				"res://addons/Storyline/puhe/peikko5.wav"
+				"res://Addons/Storyline/puhe/peikko1.wav",
+				"res://Addons/Storyline/puhe/peikko2.wav",
+				"res://Addons/Storyline/puhe/peikko3.wav", 
+				"res://Addons/Storyline/puhe/peikko4.wav",
+				"res://Addons/Storyline/puhe/peikko5.wav"
 			]
 		"syojatar":
 			return [
-				"res://addons/Storyline/puhe/syojatar1.wav",
-				"res://addons/Storyline/puhe/syojatar2.wav",
-				"res://addons/Storyline/puhe/syojatar3.wav",
-				"res://addons/Storyline/puhe/syojatar4.wav", 
-				"res://addons/Storyline/puhe/syojatar5.wav"
+				"res://Addons/Storyline/puhe/syojatar1.wav",
+				"res://Addons/Storyline/puhe/syojatar2.wav",
+				"res://Addons/Storyline/puhe/syojatar3.wav",
+				"res://Addons/Storyline/puhe/syojatar4.wav", 
+				"res://Addons/Storyline/puhe/syojatar5.wav"
 			]
 		"narrator":
 			return [
-				"res://addons/Storyline/puhe/placeholder1.wav",
-				"res://addons/Storyline/puhe/placeholder2.wav",
-				"res://addons/Storyline/puhe/placeholder3.wav",
+				"res://Addons/Storyline/puhe/placeholder1.wav",
+				"res://Addons/Storyline/puhe/placeholder2.wav",
+				"res://Addons/Storyline/puhe/placeholder3.wav",
 			]
 		"pirate":
 			return [
-				"res://addons/Storyline/puhe/merirosvo/SFX merirosvo 1.wav",
-				"res://addons/Storyline/puhe/merirosvo/SFX merirosvo 2.wav",
-				"res://addons/Storyline/puhe/merirosvo/SFX merirosvo 3.wav",
-				"res://addons/Storyline/puhe/merirosvo/SFX merirosvo 4.wav",
-				"res://addons/Storyline/puhe/merirosvo/SFX merirosvo 5.wav",
+				"res://Addons/Storyline/puhe/merirosvo/SFX merirosvo 1.wav",
+				"res://Addons/Storyline/puhe/merirosvo/SFX merirosvo 2.wav",
+				"res://Addons/Storyline/puhe/merirosvo/SFX merirosvo 3.wav",
+				"res://Addons/Storyline/puhe/merirosvo/SFX merirosvo 4.wav",
+				"res://Addons/Storyline/puhe/merirosvo/SFX merirosvo 5.wav",
 			]
 		"monster":
 			return [
-				"res://addons/Storyline/puhe/MatalaHirviö/MatalaHirviö-01.wav",
-				"res://addons/Storyline/puhe/MatalaHirviö/MatalaHirviö-02.wav",
-				"res://addons/Storyline/puhe/MatalaHirviö/MatalaHirviö-03.wav",
-				"res://addons/Storyline/puhe/MatalaHirviö/MatalaHirviö-04.wav",
-				"res://addons/Storyline/puhe/MatalaHirviö/MatalaHirviö-05.wav",
+				"res://Addons/Storyline/puhe/MatalaHirviö/MatalaHirviö-01.wav",
+				"res://Addons/Storyline/puhe/MatalaHirviö/MatalaHirviö-02.wav",
+				"res://Addons/Storyline/puhe/MatalaHirviö/MatalaHirviö-03.wav",
+				"res://Addons/Storyline/puhe/MatalaHirviö/MatalaHirviö-04.wav",
+				"res://Addons/Storyline/puhe/MatalaHirviö/MatalaHirviö-05.wav",
 			]
 		"hulluJonne":
 			return [
-				"res://addons/Storyline/puhe/Merihirviö/SFX merihirviö 1.wav",
-				"res://addons/Storyline/puhe/Merihirviö/SFX merihirviö 2.wav",
-				"res://addons/Storyline/puhe/Merihirviö/SFX merihirviö 3.wav",
-				"res://addons/Storyline/puhe/Merihirviö/SFX merihirviö 4.wav",
-				"res://addons/Storyline/puhe/Merihirviö/SFX merihirviö 5.wav",
+				"res://Addons/Storyline/puhe/Merihirviö/SFX merihirviö 1.wav",
+				"res://Addons/Storyline/puhe/Merihirviö/SFX merihirviö 2.wav",
+				"res://Addons/Storyline/puhe/Merihirviö/SFX merihirviö 3.wav",
+				"res://Addons/Storyline/puhe/Merihirviö/SFX merihirviö 4.wav",
+				"res://Addons/Storyline/puhe/Merihirviö/SFX merihirviö 5.wav",
+			]
+		"auttaja":
+			return [
+				"res://Addons/Storyline/puhe/auttaja/SFX auttaja 1.wav",
+				"res://Addons/Storyline/puhe/auttaja/SFX auttaja 2.wav",
+				"res://Addons/Storyline/puhe/auttaja/SFX auttaja 3.wav",
+			]
+		"pelaaja":
+			return [
+				"res://Addons/Storyline/puhe/pelaaja/SFX pelaaja 1.wav",
+				"res://Addons/Storyline/puhe/pelaaja/SFX pelaaja 2.wav",
+				"res://Addons/Storyline/puhe/pelaaja/SFX pelaaja 3.wav",
 			]
 		_:
 			return []

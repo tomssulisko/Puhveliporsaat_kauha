@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://caths8jsbpl2y"
+path="res://.godot/imported/SFX auttaja 3.wav-89ddf4cb70c6932dd5ffd5a1db7f490d.sample"
+
+[deps]
+
+source_file="res://Addons/Storyline/puhe/auttaja/SFX auttaja 3.wav"
+dest_files=["res://.godot/imported/SFX auttaja 3.wav-89ddf4cb70c6932dd5ffd5a1db7f490d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
