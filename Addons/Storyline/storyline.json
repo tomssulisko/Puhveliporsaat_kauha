@@ -384,6 +384,29 @@
 			}
 		  ]
 		}
+	},
+	{
+		"event": {
+		  "name": "auttajaPelaajaTest",
+		  "speeches": [
+			{
+				"speech": {
+				"actor": "auttaja",
+				"text": [
+				  "Hei. Olen auttaja — testataan, että naama ja ääni toimivat."
+				]
+				}
+			},
+			{
+				"speech": {
+				"actor": "pelaaja",
+				"text": [
+				  "Ja minä olen pelaaja. Placeholder-äänet voi korvata myöhemmin."
+				]
+				}
+			}
+		  ]
+		}
 	}
 	
   ]

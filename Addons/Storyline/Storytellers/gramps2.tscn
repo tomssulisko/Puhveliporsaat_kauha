@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ckvnvy0csgq33"]
 
-[ext_resource type="Texture2D" uid="uid://wry1su8g2kck" path="res://addons/Storyline/icons/pappa2.png" id="1_xktsb"]
-[ext_resource type="Texture2D" uid="uid://b45417cqlu6ys" path="res://addons/Storyline/icons/pappa1.png" id="2_gxhdh"]
+[ext_resource type="Texture2D" uid="uid://wry1su8g2kck" path="res://Addons/Storyline/icons/pappa2.png" id="1_xktsb"]
+[ext_resource type="Texture2D" uid="uid://b45417cqlu6ys" path="res://Addons/Storyline/icons/pappa1.png" id="2_gxhdh"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p8hhp"]
 animations = [{
