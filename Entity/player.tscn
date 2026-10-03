@@ -9,6 +9,10 @@ radius = 81.055534
 [node name="Player" type="CharacterBody2D" unique_id=1640559784]
 script = ExtResource("1_g647p")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 5.0
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1901683300]
 shape = SubResource("CircleShape2D_0fxvp")
 
