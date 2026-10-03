@@ -1,3 +1,9 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+Texture/Aaron/auto.png.import
+Texture/Aaron/jako avain.png.import
+Texture/Aaron/rengas.png.import
+Texture/Aaron/ruoste auto.png.import
+Texture/Aaron/silmä.png.import
+Texture/Aaron/vihu silmä.png.import

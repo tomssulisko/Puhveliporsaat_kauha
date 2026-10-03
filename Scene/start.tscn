@@ -1,6 +1,16 @@
 [gd_scene format=3 uid="uid://dj2yvcbo0v12"]
 
 [ext_resource type="Script" uid="uid://b2r3ckjxt40o" path="res://Scene/start.gd" id="1_mhiop"]
+[ext_resource type="Texture2D" uid="uid://xo0q4w8y4ist" path="res://Texture/Volume_01.webp" id="2_tvf0n"]
 
 [node name="Start" type="Node2D" unique_id=374401242]
 script = ExtResource("1_mhiop")
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=1369092316]
+offset_left = 169.0
+offset_top = 104.0
+offset_right = 349.0
+offset_bottom = 388.0
+texture_normal = ExtResource("2_tvf0n")
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

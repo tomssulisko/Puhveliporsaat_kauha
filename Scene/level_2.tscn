@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://ba1cgo4fbkih7"]
+
+[ext_resource type="PackedScene" uid="uid://bxghvffaxdp6l" path="res://Entity/player.tscn" id="1_jte5b"]
+[ext_resource type="Texture2D" uid="uid://dah01yu1b16nb" path="res://Texture/Aaron/auto.png" id="2_71r3i"]
+[ext_resource type="Texture2D" uid="uid://c7l5e4p6hid41" path="res://Texture/Aaron/hauta.png" id="3_nwjwq"]
+[ext_resource type="Texture2D" uid="uid://b6jegi6atyua2" path="res://Texture/Aaron/jako avain.png" id="4_67jix"]
+[ext_resource type="Texture2D" uid="uid://6fqweeuioghy" path="res://Texture/Aaron/patteri.png" id="5_f3pwq"]
+[ext_resource type="Texture2D" uid="uid://dk8mi0v3dbq4a" path="res://Texture/Aaron/rengas.png" id="6_ccfm3"]
+[ext_resource type="Texture2D" uid="uid://cw1443bomsn26" path="res://Texture/Aaron/ruoste auto.png" id="7_nquh6"]
+[ext_resource type="Texture2D" uid="uid://dl8c4mtfoktcl" path="res://Texture/Aaron/silmä.png" id="8_vg3ep"]
+[ext_resource type="Texture2D" uid="uid://s0tt3th4x5bj" path="res://Texture/Aaron/taskulamppu.png" id="9_g67xk"]
+
+[node name="Level2" type="Node2D" unique_id=2057355036]
+
+[node name="Player" parent="." unique_id=1640559784 instance=ExtResource("1_jte5b")]
+position = Vector2(336, 448)
+
+[node name="Auto" type="Sprite2D" parent="." unique_id=992766677]
+position = Vector2(242, 156)
+texture = ExtResource("2_71r3i")
+
+[node name="Hauta" type="Sprite2D" parent="." unique_id=213160107]
+position = Vector2(515, 156)
+texture = ExtResource("3_nwjwq")
+
+[node name="JakoAvain" type="Sprite2D" parent="." unique_id=1829191495]
+position = Vector2(747, 266)
+texture = ExtResource("4_67jix")
+
+[node name="Patteri" type="Sprite2D" parent="." unique_id=625368925]
+position = Vector2(775, 454)
+texture = ExtResource("5_f3pwq")
+
+[node name="Rengas" type="Sprite2D" parent="." unique_id=784263223]
+position = Vector2(596, 254)
+texture = ExtResource("6_ccfm3")
+
+[node name="RuosteAuto" type="Sprite2D" parent="." unique_id=181960803]
+position = Vector2(419, 250)
+texture = ExtResource("7_nquh6")
+
+[node name="Silmä" type="Sprite2D" parent="." unique_id=2131443128]
+position = Vector2(694, 218)
+texture = ExtResource("8_vg3ep")
+
+[node name="Taskulamppu" type="Sprite2D" parent="." unique_id=342316113]
+position = Vector2(519, 238)
+texture = ExtResource("9_g67xk")
