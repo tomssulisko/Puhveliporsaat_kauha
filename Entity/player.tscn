@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bxghvffaxdp6l"]
 
 [ext_resource type="Script" uid="uid://12n46uq060o2" path="res://Entity/player.gd" id="1_g647p"]
-[ext_resource type="Texture2D" uid="uid://d20ks7qvfoj5w" path="res://Texture/WhatsApp_Image_2025-03-25_at_20.26.13.jpeg" id="2_ta3ek"]
+[ext_resource type="Texture2D" uid="uid://dnermmhfk8hby" path="res://Texture/pelaaja/playeri.png" id="2_ta3ek"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0fxvp"]
 radius = 81.055534
