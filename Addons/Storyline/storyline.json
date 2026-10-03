@@ -1,0 +1,390 @@
+{
+  "events": [
+	{
+		"event": {
+		  "name": "tutorialLevel1",
+		  "speeches": [
+			{
+				"speech": {
+				"actor": "jonne",
+				"text": [
+				  "First day on the job"
+				]
+				}
+			},
+			{
+				"speech": {
+				"actor": "jonne",
+				"text": [
+				  "I need to use the light to guide the ships past all the objects."
+				]
+				}
+			},
+			{
+				"speech": {
+				"actor": "jonne",
+				"text": [
+				  "It cannot be that difficult."
+				]
+				}
+			}
+		  ]
+		}
+	},
+	{
+		"event": {
+		  "name": "tutorialLevel2xx",
+		  "speeches": [
+			{
+				"speech": {
+				"actor": "gramps1",
+				"text": [
+				  "The faith they've put in me is absurd. I was forever losing my way as a boy."
+				]
+				}
+			}
+		  ]
+		}
+	},
+	{
+		"event": {
+		  "name": "tutorialLevel3xxx",
+		  "speeches": [
+			{
+				"speech": {
+				"actor": "gramps2",
+				"text": [
+				  "God's wounds, the light won’t reach the ships. There has to be some way to redirect it."
+				]
+				}
+			}
+		  ]
+		}
+	},
+	{
+		"event": {
+		  "name": "tutorialLevel2",
+		  "speeches": [
+			{
+				"speech": {
+				"actor": "gramps3",
+				"text": [
+				  "Whole job’s just mirrors, redirecting the light inch by inch like I’m negotiating with the ocean. "
+				]
+				}
+			},
+			{
+				"speech": {
+				"actor": "gramps3",
+				"text": [
+				  "One wrong angle and I'm guiding ships into the arms of Davy Jones."
+				]
+				}
+			},
+			{
+				"speech": {
+				"actor": "gramps3",
+				"text": [
+				  "One day they’ll invent a lighthouse that just points where it’s supposed to."
+				]
+				}
+			}
+		  ]
+		}
+	},
+	{
+		"event": {
+		  "name": "findCannon",
+		  "speeches": [
+			{
+				"speech": {
+				"actor": "gramps3",
+				"text": [
+				  "Oh look, a cannon! Hopefully, we're not going to need it."
+				]
+				}
+			}
+		  ]
+		}
+	},
+	{
+		"event": {
+		  "name": "piratesAppear",
+		  "speeches": [
+			{
+				"speech": {
+				"actor": "gramps4",
+				"text": [
+				  "Bloody pirates. Hats and everything. I’m deeply unimpressed."
+				]
+				}
+			},
+			{
+				"speech": {
+				"actor": "pirate",
+				"text": [
+				  "Give us the rum and we'll go away."
+				]
+				}
+			},
+			{
+				"speech": {
+				"actor": "pirate",
+				"text": [
+				  "Just kidding, we'll take the rum and sink your ship!"
+				]
+				}
+			},
+			{
+				"speech": {
+				"actor": "gramps4",
+				"text": [
+				  "Hold on, of course I need the cannon. Come to the light you fools!"
+				]
+				}
+			}
+		  ]
+		}
+	},
+	{
+		"event": {
+		  "name": "monsterAppear",
+		  "speeches": [
+			{
+				"speech": {
+				"actor": "mummo",
+				"text": [
+				  "That is no ship. Whatever it is, keep it in the light."
+				]
+				}
+			},
+			{
+				"speech": {
+				"actor": "monster",
+				"text": [
+				  "..."
+				]
+				}
+			},
+			{
+				"speech": {
+				"actor": "mummo",
+				"text": [
+				  "Cannon, if you would."
+				]
+				}
+			}
+		  ]
+		}
+	},
+	{
+		"event": {
+		  "name": "piratesHit",
+		  "speeches": [
+			{
+				"speech": {
+				"actor": "pirate",
+				"text": [
+				  "Dim it a touch, old man! Trying to work here."
+				]
+				}
+			}
+		  ]
+		}
+	},
+	{
+		"event": {
+		  "name": "level5pirateAngry",
+		  "speeches": [
+			{
+				"speech": {
+				"actor": "pirate",
+				"text": [
+				  "That's it. A new plan - we steal the lighthouse"
+				]
+				}
+			}
+		  ]
+		}
+	},
+	{
+		"event": {
+		  "name": "sonarLevel3",
+		  "speeches": [
+			{
+				"speech": {
+				"actor": "mummo",
+				"text": [
+				  "There’s a rock out there covered in symbols, and I’m telling you it’s not decorative. Maybe I should shine the light on it."
+				]
+				}
+			}
+		  ]
+		}
+	},
+	{
+		"event": {
+		  "name": "activateSonar",
+		  "speeches": [
+			{
+				"speech": {
+				"actor": "mummo",
+				"text": [
+				  "Oh dear, the symbols are glowing. It activated a pulse"
+				]
+				}
+			},
+			{
+				"speech": {
+				"actor": "jonne",
+				"text": [
+				  "Wait... those symbols look familiar. This can not be a good sign."
+				]
+				}
+			}
+		  ]
+		}
+	},
+	{
+		"event": {
+		  "name": "seeMonster",
+		  "speeches": [
+			{
+				"speech": {
+				"actor": "monster",
+				"text": [
+				  "I rise from the abyss, and for what? Pathetic."
+				]
+				}
+			},
+			{
+				"speech": {
+				"actor": "monster",
+				"text": [
+				  "Ph’nglui mglw’nafh… ehyeh nafl’zhroth vulgtlagln—shogg r’luhh y’hah!"
+				]
+				}
+			},
+			{
+				"speech": {
+				"actor": "monster",
+				"text": [
+				  "My minions... Destroy… driftwood of men…"
+				]
+				}
+			},
+			{
+				"speech": {
+				"actor": "monster",
+				"text": [
+				  "break them beneath the dreaming tide…"
+				]
+				}
+			}
+		  ]
+		}
+	},
+	{
+		"event": {
+		  "name": "hitMonster2",
+		  "speeches": [
+			{
+				"speech": {
+				"actor": "monster",
+				"text": [
+				  "They cannot harm us. They cannot even be remembered. Break them. Let the sea take back what was never theirs."
+				]
+				}
+			}
+		  ]
+		}
+	},
+	{
+		"event": {
+		  "name": "level6Win",
+		  "speeches": [
+			{
+				"speech": {
+				"actor": "monster",
+				"text": [
+				  "Futile resistance. You strike, and we withdraw — but only as the deep withdraws before the greater wave."
+				]
+				}
+			},
+			{
+				"speech": {
+				"actor": "monster",
+				"text": [
+				  "We will come again, and again, until nothing stands to remember the struggle."
+				]
+				}
+			},
+			{
+				"speech": {
+				"actor": "mummo",
+				"text": [
+				  "Good riddance."
+				]
+				}
+			},
+			{
+				"speech": {
+				"actor": "jonne",
+				"text": [
+					"That was quite… Are those runes glowing? ...Shogg’na thrii, ul’ghor ah"
+				]
+				}
+			},
+			{
+				"speech": {
+				"actor": "jonne",
+				"text": [
+					"Wait what…? - shogg'nafh"
+				]
+				}
+			},
+			{
+				"speech": {
+				"actor": "hulluJonne",
+				"text": [
+					"Rhyleh shogg r’luhh"
+				]
+				}
+			},
+			{
+				"speech": {
+				"actor": "hulluJonne",
+				"text": [
+					"nafl'zhroth vulgtlagln"
+				]
+				}
+			}
+		  ]
+		}
+	},
+	{
+		"event": {
+		  "name": "shipwreck",
+		  "speeches": [
+			{
+				"speech": {
+				"actor": "jonne",
+				"text": [
+				  "Oh no, they lost a ship!"
+				]
+				}
+			},
+			{
+				"speech": {
+				"actor": "jonne",
+				"text": [
+				  "I hope that was the only one... If they lost five ships, it would be a disaster."
+				]
+				}
+			}
+		  ]
+		}
+	}
+	
+  ]
+}

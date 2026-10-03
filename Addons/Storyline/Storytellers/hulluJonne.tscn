@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bkhv67lrjfi7i"]
+
+[ext_resource type="Texture2D" uid="uid://bvcgdboctco1a" path="res://addons/Storyline/icons/vinksahtanujonne 1.png" id="1_vj1"]
+[ext_resource type="Texture2D" uid="uid://dtryaa5agi0oc" path="res://addons/Storyline/icons/vinksahtanujonne 2.png" id="2_vj2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p8hhp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_vj1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_vj2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_p8hhp")
