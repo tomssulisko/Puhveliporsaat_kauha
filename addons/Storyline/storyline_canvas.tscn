@@ -2,15 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cvm7mgfagqqna" path="res://addons/Storyline/storyline_controller.gd" id="1_ybto5"]
 [ext_resource type="Resource" uid="uid://dhserpr5r0va6" path="res://addons/Storyline/Storytellers/placeholder.tres" id="3_i6gnt"]
-[ext_resource type="Resource" uid="uid://cbd826nk21f0f" path="res://addons/Storyline/Storytellers/jonne.tres" id="3_otbre"]
-[ext_resource type="Resource" uid="uid://eodq60l0skr" path="res://addons/Storyline/Storytellers/gramps1.tres" id="4_knaia"]
-[ext_resource type="Resource" uid="uid://qpdegcu5codw" path="res://addons/Storyline/Storytellers/gramps2.tres" id="5_g2"]
-[ext_resource type="Resource" uid="uid://qpeegcu5codw" path="res://addons/Storyline/Storytellers/gramps3.tres" id="6_g3"]
-[ext_resource type="Resource" uid="uid://qpfegcu5codw" path="res://addons/Storyline/Storytellers/gramps4.tres" id="7_g4"]
-[ext_resource type="Resource" uid="uid://d2b1d8ikyxkq7" path="res://addons/Storyline/Storytellers/mummo.tres" id="9_mummo"]
-[ext_resource type="Resource" uid="uid://ul7dalm4h3ms" path="res://addons/Storyline/Storytellers/pirate.tres" id="10_pirate"]
-[ext_resource type="Resource" uid="uid://dkbab41kodv0e" path="res://addons/Storyline/Storytellers/monster.tres" id="11_monster"]
-[ext_resource type="Resource" uid="uid://bkhv67lvl1h7i" path="res://addons/Storyline/Storytellers/hulluJonne.tres" id="12_hullujonne"]
 [ext_resource type="Resource" uid="uid://cauttajatres001" path="res://addons/Storyline/Storytellers/auttaja.tres" id="14_auttaja"]
 [ext_resource type="Resource" uid="uid://cpelaajatres001" path="res://addons/Storyline/Storytellers/pelaaja.tres" id="15_pelaaja"]
 [ext_resource type="Script" path="res://addons/Storyline/storyline_hold_indicator.gd" id="13_hold"]
@@ -25,7 +16,7 @@ Panel/styles/panel = SubResource("StyleBoxFlat_wgqrs")
 process_mode = 3
 layer = 2
 script = ExtResource("1_ybto5")
-storytellers = Array[Resource]([ExtResource("3_i6gnt"), ExtResource("3_otbre"), ExtResource("4_knaia"), ExtResource("5_g2"), ExtResource("6_g3"), ExtResource("7_g4"), ExtResource("9_mummo"), ExtResource("10_pirate"), ExtResource("11_monster"), ExtResource("12_hullujonne"), ExtResource("14_auttaja"), ExtResource("15_pelaaja")])
+storytellers = Array[Resource]([ExtResource("3_i6gnt"), ExtResource("14_auttaja"), ExtResource("15_pelaaja")])
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=738247730]
 

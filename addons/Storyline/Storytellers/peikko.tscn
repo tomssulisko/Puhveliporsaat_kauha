@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://bkefwsniydimg"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_p8hhp"]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" unique_id=344697042]
-sprite_frames = SubResource("SpriteFrames_p8hhp")
