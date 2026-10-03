@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7xsnacbc1tku"]
+
+[ext_resource type="Texture2D" uid="uid://dah01yu1b16nb" path="res://Texture/Aaron/auto.png" id="1_tex"]
+[ext_resource type="PackedScene" uid="uid://cheadlightskau01" path="res://Effects/headlights.tscn" id="2_lights"]
+
+[node name="Auto" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_tex")
+
+[node name="Headlights" parent="." instance=ExtResource("2_lights")]
+position = Vector2(22, 0)

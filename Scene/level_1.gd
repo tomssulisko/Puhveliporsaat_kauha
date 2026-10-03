@@ -1,22 +1,86 @@
 extends Node2D
 
+const CAR_START := Vector2(-120, 587)
+const CAR_STOP := Vector2(220, 587)
+const PLAYER_EXIT := Vector2(280, 587)
+const INTRO_DRIVE_SECONDS := 2.8
 
-# Called when the node enters the scene tree for the first time.
+@onready var player: CharacterBody2D = $Player
+@onready var auto: Node2D = $Auto
+@onready var headlights: Node2D = $Auto/Headlights
+
+
 func _ready() -> void:
-	pass # Replace with function body.
+	var manager := get_node_or_null("/root/StorylineManager")
+	var intro_done: bool = manager != null and manager.events_played.has("carBroken")
+	if intro_done:
+		auto.global_position = CAR_STOP
+		player.global_position = PLAYER_EXIT
+		_set_headlights(false)
+	else:
+		await _play_car_intro()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _play_car_intro() -> void:
+	_set_player_control(false)
+	player.visible = false
+	auto.global_position = CAR_START
+	player.global_position = CAR_START
+	_set_headlights(true)
+
+	var tween := create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(auto, "global_position", CAR_STOP, INTRO_DRIVE_SECONDS) \
+		.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tween.tween_property(player, "global_position", CAR_STOP, INTRO_DRIVE_SECONDS) \
+		.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	await tween.finished
+
+	# Small stall jolt before the car dies
+	var jolt := create_tween()
+	jolt.tween_property(auto, "global_position:x", CAR_STOP.x + 10.0, 0.08)
+	jolt.tween_property(auto, "global_position:x", CAR_STOP.x - 4.0, 0.1)
+	jolt.tween_property(auto, "global_position:x", CAR_STOP.x, 0.12)
+	await jolt.finished
+	_set_headlights(false)
+	await get_tree().create_timer(0.35).timeout
+
+	player.global_position = PLAYER_EXIT
+	player.visible = true
+	_set_player_control(true)
+
+	await get_tree().process_frame
+	var manager := get_node_or_null("/root/StorylineManager")
+	if manager != null and manager.has_method("play_storyline_event"):
+		manager.play_storyline_event("carBroken")
+
+
+func _set_player_control(enabled: bool) -> void:
+	player.set_physics_process(enabled)
+	player.set_process(enabled)
+	player.velocity = Vector2.ZERO
+	var flashlight := player.get_node_or_null("Flashlight")
+	if flashlight != null:
+		flashlight.set_process(enabled)
+		flashlight.visible = enabled
+
+
+func _set_headlights(enabled: bool) -> void:
+	if headlights == null:
+		return
+	headlights.visible = enabled
+	for child in headlights.get_children():
+		if child is Light2D:
+			(child as Light2D).enabled = enabled
+
+
+func _on_collision_shape_2d_area_entered(_area: Area2D) -> void:
 	pass
 
 
-func _on_collision_shape_2d_area_entered(area: Area2D) -> void:
-	pass # Replace with function body.
-
-
 func _on_collision_shape_2d_body_entered(body: Node2D) -> void:
-	print(body.name)
 	if body.name == "Player":
+		var manager := get_node_or_null("/root/StorylineManager")
+		if manager != null and manager.has_method("on_scene_about_to_change"):
+			manager.on_scene_about_to_change()
 		get_tree().change_scene_to_file("res://Scene/level_2.tscn")
-	pass # Replace with function body.
