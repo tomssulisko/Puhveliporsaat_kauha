@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://comg7e1lel1a4"
+path="res://.godot/imported/SFX jonne 1.ogg-c45084bf9fe929201566dcbfb0d51264.oggvorbisstr"
+
+[deps]
+
+source_file="res://Addons/Storyline/Storytellers/SFX jonne 1.ogg"
+dest_files=["res://.godot/imported/SFX jonne 1.ogg-c45084bf9fe929201566dcbfb0d51264.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

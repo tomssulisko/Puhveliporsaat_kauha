@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://18giukfx3jtl"
+path="res://.godot/imported/SFX merirosvo 2.wav-a0ce195cc8d120faefe1dbe2cdf6d245.sample"
+
+[deps]
+
+source_file="res://Addons/Storyline/puhe/merirosvo/SFX merirosvo 2.wav"
+dest_files=["res://.godot/imported/SFX merirosvo 2.wav-a0ce195cc8d120faefe1dbe2cdf6d245.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

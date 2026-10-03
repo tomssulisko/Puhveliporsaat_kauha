@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://3lheaywnn8i0"
+path="res://.godot/imported/SFX majakkamies 5.wav-f9b1d381f5f26fbf665e87a80db0f988.sample"
+
+[deps]
+
+source_file="res://Addons/Storyline/puhe/majakkamies/SFX majakkamies 5.wav"
+dest_files=["res://.godot/imported/SFX majakkamies 5.wav-f9b1d381f5f26fbf665e87a80db0f988.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

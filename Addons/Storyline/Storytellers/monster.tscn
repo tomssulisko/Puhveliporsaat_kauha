@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://monsterscene_ld59"]
+
+[ext_resource type="Texture2D" uid="uid://ds7pkkyrvo0nc" path="res://addons/Storyline/icons/cthulhupää1.png" id="1_tx"]
+[ext_resource type="Texture2D" uid="uid://cumi21ute8bve" path="res://addons/Storyline/icons/cthulhupää2.png" id="2_tx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p8hhp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_tx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_tx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+position = Vector2(13, -15)
+sprite_frames = SubResource("SpriteFrames_p8hhp")

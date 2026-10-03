@@ -1,0 +1,16 @@
+[gd_resource type="Resource" format=3 uid="uid://qpdegcu5codw"]
+
+[ext_resource type="Script" uid="uid://bf1phctnb4136" path="res://addons/Storyline/storyteller.gd" id="1_7wqrk"]
+[ext_resource type="PackedScene" uid="uid://ckvnvy0csgq33" path="res://addons/Storyline/Storytellers/gramps2.tscn" id="2_scene"]
+[ext_resource type="AudioStream" uid="uid://kgo37rlkq5u3" path="res://addons/Storyline/puhe/majakkamies/SFX majakkamies 1.wav" id="3_s1"]
+[ext_resource type="AudioStream" uid="uid://d051jr6hay74u" path="res://addons/Storyline/puhe/majakkamies/SFX majakkamies 2.wav" id="4_s2"]
+[ext_resource type="AudioStream" uid="uid://buou4tfjnnw8x" path="res://addons/Storyline/puhe/majakkamies/SFX majakkamies 3.wav" id="5_s3"]
+[ext_resource type="AudioStream" uid="uid://c8ib02momxdgf" path="res://addons/Storyline/puhe/majakkamies/SFX majakkamies 4.wav" id="6_s4"]
+[ext_resource type="AudioStream" uid="uid://3lheaywnn8i0" path="res://addons/Storyline/puhe/majakkamies/SFX majakkamies 5.wav" id="7_s5"]
+
+[resource]
+script = ExtResource("1_7wqrk")
+id = "gramps2"
+teller_name = "gramps2"
+sounds = Array[AudioStreamWAV]([ExtResource("3_s1"), ExtResource("4_s2"), ExtResource("5_s3"), ExtResource("6_s4"), ExtResource("7_s5")])
+scene = ExtResource("2_scene")
