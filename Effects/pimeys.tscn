@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cpimeyskauha01"]
+
+[node name="pimeys" type="DirectionalLight2D"]
+color = Color(0.04, 0.04, 0.06, 1)
+energy = 0.95
+blend_mode = 2

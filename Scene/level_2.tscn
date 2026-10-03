@@ -9,11 +9,14 @@
 [ext_resource type="Texture2D" uid="uid://cw1443bomsn26" path="res://Texture/Aaron/ruoste auto.png" id="7_nquh6"]
 [ext_resource type="Texture2D" uid="uid://dl8c4mtfoktcl" path="res://Texture/Aaron/silmä.png" id="8_vg3ep"]
 [ext_resource type="Texture2D" uid="uid://s0tt3th4x5bj" path="res://Texture/Aaron/taskulamppu.png" id="9_g67xk"]
+[ext_resource type="PackedScene" uid="uid://cpimeyskauha01" path="res://Effects/pimeys.tscn" id="10_pimeys"]
 
 [node name="Level2" type="Node2D" unique_id=2057355036]
 
 [node name="Player" parent="." unique_id=1640559784 instance=ExtResource("1_jte5b")]
 position = Vector2(336, 448)
+
+[node name="pimeys" parent="." instance=ExtResource("10_pimeys")]
 
 [node name="Auto" type="Sprite2D" parent="." unique_id=992766677]
 position = Vector2(242, 156)

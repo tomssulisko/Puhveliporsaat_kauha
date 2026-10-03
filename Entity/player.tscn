@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://12n46uq060o2" path="res://Entity/player.gd" id="1_g647p"]
 [ext_resource type="Texture2D" uid="uid://dnermmhfk8hby" path="res://Texture/pelaaja/playeri.png" id="2_ta3ek"]
+[ext_resource type="PackedScene" uid="uid://cflashkauha001" path="res://Effects/flashlight.tscn" id="3_flashlight"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0fxvp"]
 radius = 81.055534
@@ -12,6 +13,8 @@ script = ExtResource("1_g647p")
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
 position_smoothing_speed = 5.0
+
+[node name="Flashlight" parent="." instance=ExtResource("3_flashlight")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1901683300]
 shape = SubResource("CircleShape2D_0fxvp")
