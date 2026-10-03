@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://b7xsnacbc1tku"]
+
+[ext_resource type="Texture2D" uid="uid://dah01yu1b16nb" path="res://Texture/Aaron/auto.png" id="1_tex"]
+[ext_resource type="PackedScene" uid="uid://cq6oabq8t53ue" path="res://Effects/headlights.tscn" id="2_lights"]
+
+[node name="Auto" type="Node2D" unique_id=783387436]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=30875777]
+texture = ExtResource("1_tex")
+
+[node name="Headlights" parent="." unique_id=145457386 instance=ExtResource("2_lights")]
+position = Vector2(22, 6)

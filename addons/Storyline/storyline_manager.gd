@@ -1,5 +1,7 @@
 extends Node
 
+signal storyline_finished
+
 var storyline_control: CanvasLayer = null
 var player: CharacterBody2D = null
 #@onready var sub_viewport_container = $"../player/Camera2D/SubViewportContainer"
@@ -9,6 +11,7 @@ var storyline_json
 # { name: String, played: boolean }
 var events_played: Array[String] = []
 var _paused_tree_for_storyline := false
+var _storyline_active := false
 
 func _storyline_json_path() -> String:
 	if FileAccess.file_exists("res://addons/Storyline/storyline.json"):
@@ -50,6 +53,7 @@ func play_storyline_event(event):
 			_paused_tree_for_storyline = true
 		else:
 			_paused_tree_for_storyline = false
+		_storyline_active = true
 		events_played.append(event)
 		for entry in story_data["speeches"]:
 			#print(entry.speech.actor)
@@ -136,6 +140,7 @@ func _on_storyline_cancelled():
 	if _paused_tree_for_storyline:
 		get_tree().paused = false
 		_paused_tree_for_storyline = false
+	_finish_storyline()
 
 func hide_storyline_control():
 	if storyline_control != null and is_instance_valid(storyline_control):
@@ -164,3 +169,11 @@ func _on_storyline_ready():
 		if _paused_tree_for_storyline:
 			get_tree().paused = false
 			_paused_tree_for_storyline = false
+		_finish_storyline()
+
+
+func _finish_storyline() -> void:
+	if not _storyline_active:
+		return
+	_storyline_active = false
+	storyline_finished.emit()

@@ -1,0 +1,24 @@
+[gd_resource type="TileSet" format=3 uid="uid://cruosteautotset1"]
+
+[ext_resource type="Texture2D" uid="uid://dlxybxf7jymcq" path="res://Texture/Aaron/ruoste autot.png" id="1_tex"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cars"]
+texture = ExtResource("1_tex")
+texture_region_size = Vector2i(48, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-21, -6, 21, -6, 21, 10, -21, 10)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-21, -6, 20, -6, 20, 10, -21, 10)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-23, -7, 19, -7, 19, 8, -23, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-19, -9, 23, -9, 23, 7, -19, 7)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-21, -8, 21, -8, 21, 7, -21, 7)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-22, -7, 20, -7, 20, 8, -22, 8)
+
+[resource]
+physics_layer_0/collision_layer = 1
+tile_size = Vector2i(16, 16)
+sources/0 = SubResource("TileSetAtlasSource_cars")
