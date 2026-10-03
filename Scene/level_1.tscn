@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://duatlmsuc8yso"]
+
+[ext_resource type="Script" uid="uid://by2gb6jo6nx15" path="res://Scene/level_1.gd" id="1_5exfe"]
+[ext_resource type="PackedScene" uid="uid://bxghvffaxdp6l" path="res://Entity/player.tscn" id="1_8ko5r"]
+[ext_resource type="Texture2D" uid="uid://dah01yu1b16nb" path="res://Texture/Aaron/auto.png" id="2_au1pm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_15q6v"]
+size = Vector2(38, 24)
+
+[node name="Level1" type="Node2D" unique_id=1647334681]
+script = ExtResource("1_5exfe")
+
+[node name="Player" parent="." unique_id=1640559784 instance=ExtResource("1_8ko5r")]
+position = Vector2(127, 94)
+
+[node name="Transition" type="Node2D" parent="." unique_id=139513353]
+position = Vector2(594, 235)
+
+[node name="Sprite2D" type="Sprite2D" parent="Transition" unique_id=1647188648]
+texture = ExtResource("2_au1pm")
+
+[node name="CollisionShape2D" type="Area2D" parent="Transition" unique_id=893396990]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Transition/CollisionShape2D" unique_id=813867747]
+position = Vector2(-1, 2)
+shape = SubResource("RectangleShape2D_15q6v")
+
+[connection signal="area_entered" from="Transition/CollisionShape2D" to="." method="_on_collision_shape_2d_area_entered"]
+[connection signal="body_entered" from="Transition/CollisionShape2D" to="." method="_on_collision_shape_2d_body_entered"]

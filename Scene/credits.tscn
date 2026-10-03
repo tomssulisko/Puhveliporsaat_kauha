@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://brl1qrioqvjo8"]
+
+[ext_resource type="Texture2D" uid="uid://d1djdcdkahfeo" path="res://Texture/new-behind-the-scenes-look-at-robert-bobroczkyi-as-captain-v0-qrpc7g6bpfdh1.webp" id="1_7whrh"]
+
+[node name="Credits" type="Node2D" unique_id=1269418400]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1122239184]
+position = Vector2(541, 325)
+scale = Vector2(0.48425925, 0.48425925)
+texture = ExtResource("1_7whrh")
