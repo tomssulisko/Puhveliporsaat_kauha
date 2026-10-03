@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bg8lm1dkruo8m"]
 
-[ext_resource type="Texture2D" uid="uid://ffp1sxabq7pw" path="res://addons/Storyline/icons/Narrator 1.png" id="1_k5baq"]
-[ext_resource type="Texture2D" uid="uid://t8tlrs8imw2k" path="res://addons/Storyline/icons/Narrator 2.png" id="2_8ssj4"]
+[ext_resource type="Texture2D" uid="uid://ffp1sxabq7pw" path="res://Addons/Storyline/icons/Narrator 1.png" id="1_k5baq"]
+[ext_resource type="Texture2D" uid="uid://t8tlrs8imw2k" path="res://Addons/Storyline/icons/Narrator 2.png" id="2_8ssj4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p8hhp"]
 animations = [{

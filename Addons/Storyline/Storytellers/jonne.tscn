@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d4gsw1ov21gjv"]
 
-[ext_resource type="Texture2D" uid="uid://1vjryxijhn2d" path="res://addons/Storyline/icons/jonnepää1.png" id="1_slirb"]
-[ext_resource type="Texture2D" uid="uid://vhmbo4374y5s" path="res://addons/Storyline/icons/jonnepää2.png" id="2_i28p7"]
+[ext_resource type="Texture2D" uid="uid://1vjryxijhn2d" path="res://Addons/Storyline/icons/jonnepää1.png" id="1_slirb"]
+[ext_resource type="Texture2D" uid="uid://vhmbo4374y5s" path="res://Addons/Storyline/icons/jonnepää2.png" id="2_i28p7"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p8hhp"]
 animations = [{

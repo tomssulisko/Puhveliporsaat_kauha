@@ -36,7 +36,7 @@ When adding a new storyteller character to the system, follow these steps:
 
 ### 3. Create Storyteller Resource
 1. **Create new resource** in `addons/Storyline/Storytellers/` directory (e.g., `newcharacter.tres`)
-2. **Set script** to `res://addons/Storyline/storyteller.gd`
+2. **Set script** to `res://Addons/Storyline/storyteller.gd`
 3. **Configure properties:**
    - `id`: Unique identifier (e.g., "newcharacter")
    - `teller_name`: Display name (e.g., "New Character")

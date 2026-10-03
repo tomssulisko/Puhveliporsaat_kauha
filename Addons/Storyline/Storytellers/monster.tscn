@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://monsterscene_ld59"]
 
-[ext_resource type="Texture2D" uid="uid://ds7pkkyrvo0nc" path="res://addons/Storyline/icons/cthulhupää1.png" id="1_tx"]
-[ext_resource type="Texture2D" uid="uid://cumi21ute8bve" path="res://addons/Storyline/icons/cthulhupää2.png" id="2_tx"]
+[ext_resource type="Texture2D" uid="uid://ds7pkkyrvo0nc" path="res://Addons/Storyline/icons/cthulhupää1.png" id="1_tx"]
+[ext_resource type="Texture2D" uid="uid://cumi21ute8bve" path="res://Addons/Storyline/icons/cthulhupää2.png" id="2_tx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p8hhp"]
 animations = [{
