@@ -5,7 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://biyp415b7nyy2" path="res://Scene/map 1.png" id="2_poeaa"]
 [ext_resource type="TileSet" uid="uid://8yq3p5uu7kds" path="res://Texture/Aaron/laattoja_tileset.tres" id="3_tileset"]
 [ext_resource type="Texture2D" uid="uid://6fqweeuioghy" path="res://Texture/Aaron/patteri.png" id="5_poeaa"]
-[ext_resource type="PackedScene" uid="uid://cpimeyskauha01" path="res://Effects/pimeys.tscn" id="6_pimeys"]
+[ext_resource type="PackedScene" uid="uid://cc14ll8yy7v3y" path="res://Effects/pimeys.tscn" id="6_pimeys"]
+[ext_resource type="Script" path="res://Effects/darksumu_border.gd" id="7_sumuborder"]
+[ext_resource type="PackedScene" uid="uid://b8xu8xbs4hfno" path="res://Effects/darksumu.tscn" id="8_darksumu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_15q6v"]
 size = Vector2(38, 24)
@@ -23,9 +25,16 @@ tile_map_data = PackedByteArray("AAAMACQAAAAAAAIAAAAMACMAAAAAAAEAAAANACIAAAAAAAI
 tile_set = ExtResource("3_tileset")
 
 [node name="Player" parent="." unique_id=1640559784 instance=ExtResource("1_8ko5r")]
-position = Vector2(202, 598)
+position = Vector2(280, 587)
 
-[node name="pimeys" parent="." instance=ExtResource("6_pimeys")]
+[node name="pimeys" parent="." unique_id=630818630 instance=ExtResource("6_pimeys")]
+
+[node name="DarksumuBorder" type="Node2D" parent="."]
+z_index = 100
+script = ExtResource("7_sumuborder")
+fog_scene = ExtResource("8_darksumu")
+spacing = 50.0
+tilemap_path = NodePath("../TileMapLayer")
 
 [node name="Transition" type="Node2D" parent="." unique_id=139513353]
 position = Vector2(1069, 263)
