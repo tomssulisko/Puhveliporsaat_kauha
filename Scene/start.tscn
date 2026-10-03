@@ -13,4 +13,12 @@ offset_right = 349.0
 offset_bottom = 388.0
 texture_normal = ExtResource("2_tvf0n")
 
+[node name="Button" type="Button" parent="." unique_id=1655647433]
+offset_left = 810.0
+offset_top = 237.0
+offset_right = 1020.0
+offset_bottom = 339.0
+text = "Credits"
+
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
