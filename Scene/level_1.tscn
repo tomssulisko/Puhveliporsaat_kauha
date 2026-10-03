@@ -22,10 +22,10 @@ tile_map_data = PackedByteArray("AAAMACQAAAAAAAIAAAAMACMAAAAAAAEAAAANACIAAAAAAAI
 tile_set = ExtResource("3_tileset")
 
 [node name="Player" parent="." unique_id=1640559784 instance=ExtResource("1_8ko5r")]
-position = Vector2(547, 886)
+position = Vector2(202, 598)
 
 [node name="Transition" type="Node2D" parent="." unique_id=139513353]
-position = Vector2(357, 287)
+position = Vector2(134, 594)
 
 [node name="Sprite2D" type="Sprite2D" parent="Transition" unique_id=1647188648]
 position = Vector2(67, 7)
