@@ -343,9 +343,9 @@ func get_sound_paths_for_storyteller(teller_name: String) -> Array[String]:
 			]
 		"pelaaja":
 			return [
-				"res://Addons/Storyline/puhe/pelaaja/SFX pelaaja 1.wav",
-				"res://Addons/Storyline/puhe/pelaaja/SFX pelaaja 2.wav",
-				"res://Addons/Storyline/puhe/pelaaja/SFX pelaaja 3.wav",
+				"res://Addons/Storyline/puhe/pelaaja/pelaaja1.wav",
+				"res://Addons/Storyline/puhe/pelaaja/pelaaja2.wav",
+				"res://Addons/Storyline/puhe/pelaaja/pelaaja3.wav",
 			]
 		_:
 			return []
