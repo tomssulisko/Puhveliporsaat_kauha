@@ -1,6 +1,18 @@
 [gd_scene format=3 uid="uid://bxghvffaxdp6l"]
 
 [ext_resource type="Script" uid="uid://12n46uq060o2" path="res://Entity/player.gd" id="1_g647p"]
+[ext_resource type="Texture2D" uid="uid://d20ks7qvfoj5w" path="res://Texture/WhatsApp_Image_2025-03-25_at_20.26.13.jpeg" id="2_ta3ek"]
 
-[node name="Player" type="Node2D" unique_id=1790266544]
+[sub_resource type="CircleShape2D" id="CircleShape2D_0fxvp"]
+radius = 16.03122
+
+[node name="Player" type="CharacterBody2D" unique_id=1640559784]
 script = ExtResource("1_g647p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1901683300]
+shape = SubResource("CircleShape2D_0fxvp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2082642725]
+position = Vector2(0.50000286, -0.99999905)
+scale = Vector2(0.09305556, 0.093333334)
+texture = ExtResource("2_ta3ek")
