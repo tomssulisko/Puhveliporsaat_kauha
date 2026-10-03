@@ -3,12 +3,16 @@
 [ext_resource type="Script" uid="uid://by2gb6jo6nx15" path="res://Scene/level_1.gd" id="1_5exfe"]
 [ext_resource type="PackedScene" uid="uid://bxghvffaxdp6l" path="res://Entity/player.tscn" id="1_8ko5r"]
 [ext_resource type="Texture2D" uid="uid://dah01yu1b16nb" path="res://Texture/Aaron/auto.png" id="2_au1pm"]
+[ext_resource type="TileSet" uid="uid://8yq3p5uu7kds" path="res://Texture/Aaron/laattoja_tileset.tres" id="3_tileset"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_15q6v"]
 size = Vector2(38, 24)
 
 [node name="Level1" type="Node2D" unique_id=1647334681]
 script = ExtResource("1_5exfe")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1633910423]
+tile_set = ExtResource("3_tileset")
 
 [node name="Player" parent="." unique_id=1640559784 instance=ExtResource("1_8ko5r")]
 position = Vector2(127, 94)
