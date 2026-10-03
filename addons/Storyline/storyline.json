@@ -167,6 +167,22 @@
 				  "Wonderful! Though I have to tell you, your tire looks a bit flat. Get a new one, it hurts my eyes to see it like that! Follow that path and look for it."
 				]
 				}
+			},
+			{
+				"speech": {
+				"actor": "pelaaja",
+				"text": [
+				  "It didn't look flat before.."
+				]
+				}
+			},
+			{
+				"speech": {
+				"actor": "auttaja",
+				"text": [
+				  "Oh how the magic happens!"
+				]
+				}
 			}
 		  ]
 		}
@@ -218,6 +234,14 @@
 				"actor": "pelaaja",
 				"text": [
 				  "Alright finally. I'm leaving this place for good! Appreciate the help.. I guess?"
+				]
+				}
+			},
+			{
+				"speech": {
+				"actor": "auttaja",
+				"text": [
+				  "You got lucky my friend! This place eats cars!"
 				]
 				}
 			}
