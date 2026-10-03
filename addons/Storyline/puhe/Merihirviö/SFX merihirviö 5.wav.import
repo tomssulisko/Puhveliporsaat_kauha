@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dcorplx0nuixx"
+path="res://.godot/imported/SFX merihirviö 5.wav-774c22ebd8d5c1de879fe37334fc1501.sample"
+
+[deps]
+
+source_file="res://addons/Storyline/puhe/Merihirviö/SFX merihirviö 5.wav"
+dest_files=["res://.godot/imported/SFX merihirviö 5.wav-774c22ebd8d5c1de879fe37334fc1501.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" format=3 uid="uid://dkbab41kodv0e"]
+
+[ext_resource type="Script" uid="uid://bf1phctnb4136" path="res://addons/Storyline/storyteller.gd" id="1_7wqrk"]
+[ext_resource type="PackedScene" path="res://addons/Storyline/Storytellers/monster.tscn" id="2_scene"]
+[ext_resource type="AudioStream" uid="uid://bclrm8kjc7oug" path="res://addons/Storyline/puhe/MatalaHirviö/MatalaHirviö-01.wav" id="3_s1"]
+[ext_resource type="AudioStream" uid="uid://d1qtyn4oxdofe" path="res://addons/Storyline/puhe/MatalaHirviö/MatalaHirviö-02.wav" id="4_s2"]
+[ext_resource type="AudioStream" uid="uid://dlmgnsd86mn37" path="res://addons/Storyline/puhe/MatalaHirviö/MatalaHirviö-03.wav" id="5_s3"]
+[ext_resource type="AudioStream" uid="uid://beoe4pt7b021n" path="res://addons/Storyline/puhe/MatalaHirviö/MatalaHirviö-04.wav" id="6_s4"]
+[ext_resource type="AudioStream" uid="uid://cqpcbxj2kbdcf" path="res://addons/Storyline/puhe/MatalaHirviö/MatalaHirviö-05.wav" id="7_s5"]
+
+[resource]
+script = ExtResource("1_7wqrk")
+id = "monster"
+teller_name = "monster"
+sounds = Array[AudioStreamWAV]([ExtResource("3_s1"), ExtResource("4_s2"), ExtResource("5_s3"), ExtResource("6_s4"), ExtResource("7_s5")])
+scene = ExtResource("2_scene")

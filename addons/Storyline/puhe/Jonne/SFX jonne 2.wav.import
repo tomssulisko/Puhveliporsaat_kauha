@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://drn7q03nd01hj"
+path="res://.godot/imported/SFX jonne 2.wav-34084ca2e94e893429a5f6673d55d48b.sample"
+
+[deps]
+
+source_file="res://addons/Storyline/puhe/Jonne/SFX jonne 2.wav"
+dest_files=["res://.godot/imported/SFX jonne 2.wav-34084ca2e94e893429a5f6673d55d48b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

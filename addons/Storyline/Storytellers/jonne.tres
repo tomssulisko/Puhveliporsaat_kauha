@@ -1,0 +1,16 @@
+[gd_resource type="Resource" format=3 uid="uid://cbd826nk21f0f"]
+
+[ext_resource type="PackedScene" uid="uid://d4gsw1ov21gjv" path="res://addons/Storyline/Storytellers/jonne.tscn" id="1_42ba6"]
+[ext_resource type="Script" uid="uid://bf1phctnb4136" path="res://addons/Storyline/storyteller.gd" id="2_q0qtn"]
+[ext_resource type="AudioStream" uid="uid://1yrwyuqouhrb" path="res://addons/Storyline/puhe/Jonne/SFX jonne 1.wav" id="3_42ba6"]
+[ext_resource type="AudioStream" uid="uid://djrc4hgwrdukc" path="res://addons/Storyline/puhe/Jonne/SFX jonne 2.wav" id="4_q0qtn"]
+[ext_resource type="AudioStream" uid="uid://dywqh05owk8v4" path="res://addons/Storyline/puhe/Jonne/SFX jonne 3.wav" id="5_1v4c7"]
+[ext_resource type="AudioStream" uid="uid://gmos0546hbr7" path="res://addons/Storyline/puhe/Jonne/SFX jonne 4.wav" id="6_mqw07"]
+[ext_resource type="AudioStream" uid="uid://bye3da7yfy0pk" path="res://addons/Storyline/puhe/Jonne/SFX jonne 5.wav" id="7_xi5e8"]
+
+[resource]
+script = ExtResource("2_q0qtn")
+id = "jonne"
+teller_name = "jonne"
+sounds = Array[AudioStreamWAV]([ExtResource("3_42ba6"), ExtResource("4_q0qtn"), ExtResource("5_1v4c7"), ExtResource("6_mqw07"), ExtResource("7_xi5e8")])
+scene = ExtResource("1_42ba6")

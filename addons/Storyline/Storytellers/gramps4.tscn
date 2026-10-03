@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dcw75bco2jdxs"]
+
+[ext_resource type="Texture2D" uid="uid://eu5h1bofpmet" path="res://addons/Storyline/icons/vaari1.png" id="1_tx"]
+[ext_resource type="Texture2D" uid="uid://dnwi7x0e1dp5o" path="res://addons/Storyline/icons/vaari2.png" id="2_tx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p8hhp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_tx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_tx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" unique_id=1784946291]
+position = Vector2(13, -15)
+sprite_frames = SubResource("SpriteFrames_p8hhp")
+frame_progress = 0.9942877
