@@ -172,15 +172,41 @@ func init_storyteller(storyteller):
 func position_talking_head(talking_head: Node) -> void:
 	var top_left = get_portrait_top_left()
 	if talking_head is Control:
-		(talking_head as Control).global_position = top_left
+		var control := talking_head as Control
+		control.global_position = top_left
+		control.custom_minimum_size = portrait_size
+		control.size = portrait_size
 		return
 	if talking_head is Node2D:
 		var node2d := talking_head as Node2D
+		_fit_node2d_to_portrait(node2d)
 		var target_position: Vector2 = top_left
 		# AnimatedSprite2D is usually centered, so adjust to keep the portrait inside the target box.
 		if has_property(node2d, "centered") and node2d.get("centered"):
 			target_position += portrait_size * 0.5
 		node2d.global_position = target_position
+
+
+func _fit_node2d_to_portrait(node2d: Node2D) -> void:
+	var sprite_size := Vector2.ZERO
+	if node2d is AnimatedSprite2D:
+		var anim_sprite := node2d as AnimatedSprite2D
+		if anim_sprite.sprite_frames != null:
+			var anim := anim_sprite.animation
+			if anim == &"" and not anim_sprite.sprite_frames.get_animation_names().is_empty():
+				anim = anim_sprite.sprite_frames.get_animation_names()[0]
+			if anim_sprite.sprite_frames.has_animation(anim) and anim_sprite.sprite_frames.get_frame_count(anim) > 0:
+				var tex := anim_sprite.sprite_frames.get_frame_texture(anim, 0)
+				if tex != null:
+					sprite_size = tex.get_size()
+	elif node2d is Sprite2D:
+		var sprite := node2d as Sprite2D
+		if sprite.texture != null:
+			sprite_size = sprite.texture.get_size()
+	if sprite_size.x <= 0.0 or sprite_size.y <= 0.0:
+		return
+	var scale_factor := minf(portrait_size.x / sprite_size.x, portrait_size.y / sprite_size.y)
+	node2d.scale = Vector2(scale_factor, scale_factor)
 
 func get_portrait_top_left() -> Vector2:
 	var panel_pos = panel_container.global_position

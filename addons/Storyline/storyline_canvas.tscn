@@ -17,6 +17,8 @@ process_mode = 3
 layer = 2
 script = ExtResource("1_ybto5")
 storytellers = Array[Resource]([ExtResource("3_i6gnt"), ExtResource("14_auttaja"), ExtResource("15_pelaaja")])
+portrait_size = Vector2(128, 128)
+portrait_left_margin = 8.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=738247730]
 
@@ -26,10 +28,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -359.0
-offset_top = -330.0
-offset_right = 355.0
-offset_bottom = -192.0
+offset_left = -180.0
+offset_top = -165.0
+offset_right = 178.0
+offset_bottom = -96.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
@@ -46,16 +48,16 @@ columns = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/GridContainer/MarginContainer" unique_id=1655350686]
-custom_minimum_size = Vector2(560, 256)
+custom_minimum_size = Vector2(280, 128)
 layout_mode = 2
-theme_override_constants/line_separation = 4
-theme_override_font_sizes/normal_font_size = 24
+theme_override_constants/line_separation = 2
+theme_override_font_sizes/normal_font_size = 12
 bbcode_enabled = true
 scroll_active = false
 shortcut_keys_enabled = false
@@ -77,15 +79,18 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -136.0
-offset_top = -136.0
-offset_right = -8.0
-offset_bottom = -8.0
+offset_left = -68.0
+offset_top = -68.0
+offset_right = -4.0
+offset_bottom = -4.0
 grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 2
 script = ExtResource("13_hold")
+indicator_diameter = 64.0
+ring_line_width = 6.0
+corner_margin = 4.0
 
 [node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/GridContainer" unique_id=1693380560]
-custom_minimum_size = Vector2(128, 0)
+custom_minimum_size = Vector2(64, 0)
 layout_mode = 2

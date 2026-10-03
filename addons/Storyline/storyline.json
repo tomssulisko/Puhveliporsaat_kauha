@@ -223,6 +223,21 @@
 			}
 		  ]
 		}
+	},
+	{
+		"event": {
+		  "name": "edgeRefuse",
+		  "speeches": [
+			{
+				"speech": {
+				"actor": "pelaaja",
+				"text": [
+				  "Yeah... I'm not walking out there."
+				]
+				}
+			}
+		  ]
+		}
 	}
   ]
 }

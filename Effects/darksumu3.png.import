@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dycvxtu4f5oxf"
-path="res://.godot/imported/darksumu.png-1fe81ce6a8c1cf8454ac2e2ffd8a3421.ctex"
+uid="uid://c10qrfbmyru5w"
+path="res://.godot/imported/darksumu3.png-ce12b8efe983593df4b8680bc51bb0ea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Effects/darksumu.png"
-dest_files=["res://.godot/imported/darksumu.png-1fe81ce6a8c1cf8454ac2e2ffd8a3421.ctex"]
+source_file="res://Effects/darksumu3.png"
+dest_files=["res://.godot/imported/darksumu3.png-ce12b8efe983593df4b8680bc51bb0ea.ctex"]
 
 [params]
 

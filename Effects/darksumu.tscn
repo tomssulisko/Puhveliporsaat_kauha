@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://b8xu8xbs4hfno"]
+[gd_scene load_steps=3 format=3 uid="uid://b8xu8xbs4hfno"]
 
 [ext_resource type="Script" path="res://Effects/darksumu.gd" id="1_script"]
-[ext_resource type="Texture2D" uid="uid://dycvxtu4f5oxf" path="res://Effects/darksumu.png" id="2_tex"]
+[ext_resource type="Texture2D" uid="uid://dycvxtu4f5oxf" path="res://Effects/darksumu1.png" id="2_tex"]
 
 [node name="Darksumu" type="Sprite2D"]
 z_index = 100

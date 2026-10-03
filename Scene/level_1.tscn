@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://cc14ll8yy7v3y" path="res://Effects/pimeys.tscn" id="6_pimeys"]
 [ext_resource type="Script" path="res://Effects/darksumu_border.gd" id="7_sumuborder"]
 [ext_resource type="PackedScene" uid="uid://b8xu8xbs4hfno" path="res://Effects/darksumu.tscn" id="8_darksumu"]
+[ext_resource type="Script" path="res://Effects/level_bounds.gd" id="9_bounds"]
+[ext_resource type="PackedScene" uid="uid://dy5ba6psu43fw" path="res://addons/Storyline/storyline_canvas.tscn" id="10_storycanvas"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_15q6v"]
 size = Vector2(38, 24)
@@ -35,6 +37,12 @@ script = ExtResource("7_sumuborder")
 fog_scene = ExtResource("8_darksumu")
 spacing = 50.0
 tilemap_path = NodePath("../TileMapLayer")
+
+[node name="LevelBounds" type="Node2D" parent="."]
+script = ExtResource("9_bounds")
+tilemap_path = NodePath("../TileMapLayer")
+
+[node name="StorylineCanvas" parent="." instance=ExtResource("10_storycanvas")]
 
 [node name="Transition" type="Node2D" parent="." unique_id=139513353]
 position = Vector2(1069, 263)
