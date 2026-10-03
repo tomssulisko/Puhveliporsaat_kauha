@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bb13b0u6jtl21"]
+
+[ext_resource type="Texture2D" path="res://Texture/naamat/pelaaja1.png" id="1_tx"]
+[ext_resource type="Texture2D" path="res://Texture/naamat/pelaaja2.png" id="2_tx"]
+[ext_resource type="Texture2D" path="res://Texture/naamat/pelaaja3.png" id="3_tx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pelaaja"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_tx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_tx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_tx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_pelaaja")

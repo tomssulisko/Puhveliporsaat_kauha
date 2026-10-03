@@ -1,12 +1,12 @@
 [gd_resource type="Resource" format=3 uid="uid://eodq60l0skr"]
 
-[ext_resource type="Script" uid="uid://bf1phctnb4136" path="res://addons/Storyline/storyteller.gd" id="1_7wqrk"]
-[ext_resource type="PackedScene" uid="uid://us7nfqaj0qr" path="res://addons/Storyline/Storytellers/gramps1.tscn" id="1_dfpg6"]
-[ext_resource type="AudioStream" uid="uid://kgo37rlkq5u3" path="res://addons/Storyline/puhe/majakkamies/SFX majakkamies 1.wav" id="3_dfpg6"]
-[ext_resource type="AudioStream" uid="uid://d051jr6hay74u" path="res://addons/Storyline/puhe/majakkamies/SFX majakkamies 2.wav" id="4_g6t7p"]
-[ext_resource type="AudioStream" uid="uid://buou4tfjnnw8x" path="res://addons/Storyline/puhe/majakkamies/SFX majakkamies 3.wav" id="5_3tpu5"]
-[ext_resource type="AudioStream" uid="uid://c8ib02momxdgf" path="res://addons/Storyline/puhe/majakkamies/SFX majakkamies 4.wav" id="7_lwcxc"]
-[ext_resource type="AudioStream" uid="uid://3lheaywnn8i0" path="res://addons/Storyline/puhe/majakkamies/SFX majakkamies 5.wav" id="8_8o8ov"]
+[ext_resource type="Script" uid="uid://bf1phctnb4136" path="res://Addons/Storyline/storyteller.gd" id="1_7wqrk"]
+[ext_resource type="PackedScene" uid="uid://us7nfqaj0qr" path="res://Addons/Storyline/Storytellers/gramps1.tscn" id="1_dfpg6"]
+[ext_resource type="AudioStream" uid="uid://kgo37rlkq5u3" path="res://Addons/Storyline/puhe/majakkamies/SFX majakkamies 1.wav" id="3_dfpg6"]
+[ext_resource type="AudioStream" uid="uid://d051jr6hay74u" path="res://Addons/Storyline/puhe/majakkamies/SFX majakkamies 2.wav" id="4_g6t7p"]
+[ext_resource type="AudioStream" uid="uid://buou4tfjnnw8x" path="res://Addons/Storyline/puhe/majakkamies/SFX majakkamies 3.wav" id="5_3tpu5"]
+[ext_resource type="AudioStream" uid="uid://c8ib02momxdgf" path="res://Addons/Storyline/puhe/majakkamies/SFX majakkamies 4.wav" id="7_lwcxc"]
+[ext_resource type="AudioStream" uid="uid://3lheaywnn8i0" path="res://Addons/Storyline/puhe/majakkamies/SFX majakkamies 5.wav" id="8_8o8ov"]
 
 [resource]
 script = ExtResource("1_7wqrk")

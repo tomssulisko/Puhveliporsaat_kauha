@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bb13b0vj0tk22"
+path="res://.godot/imported/SFX pelaaja 2.wav-d5775b8357160fc55048291a3c36ef61.sample"
+
+[deps]
+
+source_file="res://Addons/Storyline/puhe/pelaaja/SFX pelaaja 2.wav"
+dest_files=["res://.godot/imported/SFX pelaaja 2.wav-d5775b8357160fc55048291a3c36ef61.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

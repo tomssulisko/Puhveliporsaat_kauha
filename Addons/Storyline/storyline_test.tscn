@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://buq3sac48r3md"]
 
-[ext_resource type="Script" uid="uid://1ft50wx44wag" path="res://addons/Storyline/storyline_test.gd" id="1_test_script"]
-[ext_resource type="PackedScene" uid="uid://c86trmpb7dffp" path="res://addons/Storyline/storyline_manager.tscn" id="2_manager"]
-[ext_resource type="PackedScene" uid="uid://dy5ba6psu43fw" path="res://addons/Storyline/storyline_canvas.tscn" id="3_canvas"]
+[ext_resource type="Script" uid="uid://1ft50wx44wag" path="res://Addons/Storyline/storyline_test.gd" id="1_test_script"]
+[ext_resource type="PackedScene" uid="uid://c86trmpb7dffp" path="res://Addons/Storyline/storyline_manager.tscn" id="2_manager"]
+[ext_resource type="PackedScene" uid="uid://dy5ba6psu43fw" path="res://Addons/Storyline/storyline_canvas.tscn" id="3_canvas"]
 
 [node name="StorylineTest" type="Control" unique_id=1668626687]
 layout_mode = 3

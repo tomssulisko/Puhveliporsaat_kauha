@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c21sqc7w150r7"]
 
-[ext_resource type="Texture2D" uid="uid://dq2egvcp03pu0" path="res://addons/Storyline/icons/mummo1.png" id="1_tx"]
-[ext_resource type="Texture2D" uid="uid://caowos4bghfh3" path="res://addons/Storyline/icons/mummo2.png" id="2_tx"]
+[ext_resource type="Texture2D" uid="uid://dq2egvcp03pu0" path="res://Addons/Storyline/icons/mummo1.png" id="1_tx"]
+[ext_resource type="Texture2D" uid="uid://caowos4bghfh3" path="res://Addons/Storyline/icons/mummo2.png" id="2_tx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p8hhp"]
 animations = [{
