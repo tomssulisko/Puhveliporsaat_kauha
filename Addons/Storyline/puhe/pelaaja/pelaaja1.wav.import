@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bb13b0vj0tk21"
-path="res://.godot/imported/SFX pelaaja 1.wav-02b4d01a5605f925d1c8a51ce0cce2a3.sample"
+path="res://.godot/imported/pelaaja1.wav-c9db00db719ab3afe95aa910937d543b.sample"
 
 [deps]
 
-source_file="res://Addons/Storyline/puhe/pelaaja/SFX pelaaja 1.wav"
-dest_files=["res://.godot/imported/SFX pelaaja 1.wav-02b4d01a5605f925d1c8a51ce0cce2a3.sample"]
+source_file="res://Addons/Storyline/puhe/pelaaja/pelaaja1.wav"
+dest_files=["res://.godot/imported/pelaaja1.wav-c9db00db719ab3afe95aa910937d543b.sample"]
 
 [params]
 

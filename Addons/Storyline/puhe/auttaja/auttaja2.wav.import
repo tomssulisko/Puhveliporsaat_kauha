@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://caths8jsbpl2x"
-path="res://.godot/imported/SFX auttaja 2.wav-e186fdc16f375e356cdaf4cf8ca717c2.sample"
+path="res://.godot/imported/auttaja2.wav-d4e90e96ebd692a0fc66fe7054b34e67.sample"
 
 [deps]
 
-source_file="res://Addons/Storyline/puhe/auttaja/SFX auttaja 2.wav"
-dest_files=["res://.godot/imported/SFX auttaja 2.wav-e186fdc16f375e356cdaf4cf8ca717c2.sample"]
+source_file="res://Addons/Storyline/puhe/auttaja/auttaja2.wav"
+dest_files=["res://.godot/imported/auttaja2.wav-d4e90e96ebd692a0fc66fe7054b34e67.sample"]
 
 [params]
 
