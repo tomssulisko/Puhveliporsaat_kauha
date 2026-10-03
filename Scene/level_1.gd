@@ -17,6 +17,9 @@ func _ready() -> void:
 		auto.global_position = CAR_STOP
 		player.global_position = PLAYER_EXIT
 		_set_headlights(false)
+		_set_player_ambient(true)
+		_set_flashlight_beam(true)
+		_set_player_control(true)
 	else:
 		await _play_car_intro()
 
@@ -24,6 +27,8 @@ func _ready() -> void:
 func _play_car_intro() -> void:
 	_set_player_control(false)
 	player.visible = false
+	_set_player_ambient(false)
+	_set_flashlight_beam(false)
 	auto.global_position = CAR_START
 	player.global_position = CAR_START
 	_set_headlights(true)
@@ -47,22 +52,37 @@ func _play_car_intro() -> void:
 
 	player.global_position = PLAYER_EXIT
 	player.visible = true
+	_set_player_ambient(true)
+	_set_flashlight_beam(false)
 	_set_player_control(true)
 
 	await get_tree().process_frame
 	var manager := get_node_or_null("/root/StorylineManager")
 	if manager != null and manager.has_method("play_storyline_event"):
 		manager.play_storyline_event("carBroken")
+		if manager.has_signal("storyline_finished"):
+			await manager.storyline_finished
+	_set_flashlight_beam(true)
 
 
 func _set_player_control(enabled: bool) -> void:
 	player.set_physics_process(enabled)
 	player.set_process(enabled)
 	player.velocity = Vector2.ZERO
+
+
+func _set_player_ambient(enabled: bool) -> void:
 	var flashlight := player.get_node_or_null("Flashlight")
-	if flashlight != null:
-		flashlight.set_process(enabled)
+	if flashlight != null and flashlight.has_method("set_ambient_enabled"):
+		flashlight.set_ambient_enabled(enabled)
+	elif flashlight != null:
 		flashlight.visible = enabled
+
+
+func _set_flashlight_beam(enabled: bool) -> void:
+	var flashlight := player.get_node_or_null("Flashlight")
+	if flashlight != null and flashlight.has_method("set_beam_enabled"):
+		flashlight.set_beam_enabled(enabled)
 
 
 func _set_headlights(enabled: bool) -> void:

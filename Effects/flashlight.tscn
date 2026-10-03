@@ -21,9 +21,9 @@ script = ExtResource("1_script")
 [node name="SoftLight" type="PointLight2D" parent="."]
 color = Color(1, 0.95, 0.85, 1)
 blend_mode = 2
-energy = 0.4
+energy = 0.55
 texture = SubResource("GradientTexture2D_soft")
-texture_scale = 0.4
+texture_scale = 0.55
 
 [node name="Beam" type="PointLight2D" parent="."]
 position = Vector2(189, 0)
