@@ -45,11 +45,11 @@ Myös passiivisia silmiä joka kenttään, ilmestyvät ja katoavat random paikko
 ## Luuranko
 
 
-- [ ] Seuraa hetken pelaajaa ( hitaasti) jos kuulee tämän
-- [ ] Jos oli paikoillaan kun kuulee pelaajan, niin pieni tauko huomaamisen jälkeen ja sitten lähtee vasta liikkeelle.
-- [ ] Kuulee pelaajan läheltä jos kävelee
-- [ ] Kuulee kaukaa jos juoksee
-- [ ] Päästää luuääniä kun huomaa pelaajan
-- [ ] Päästää luuääniä kävellessään
+- [x] Seuraa hetken pelaajaa ( hitaasti) jos kuulee tämän
+- [x] Jos oli paikoillaan kun kuulee pelaajan, niin pieni tauko huomaamisen jälkeen ja sitten lähtee vasta liikkeelle.
+- [x] Kuulee pelaajan läheltä jos kävelee
+- [x] Kuulee kaukaa jos juoksee
+- [x] Päästää luuääniä kun huomaa pelaajan
+- [x] Päästää luuääniä kävellessään
 
 
