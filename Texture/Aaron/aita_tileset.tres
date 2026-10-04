@@ -39,6 +39,9 @@ margins = Vector2i(0, 32)
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6, -8, 5, -8, 5, 7, -6, 7)
+2:0/0 = 0
+3:0/0 = 0
+1:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kulma"]
 texture = ExtResource("3_kulma")
