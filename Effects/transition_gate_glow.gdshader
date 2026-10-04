@@ -1,6 +1,8 @@
 shader_type canvas_item;
+render_mode unshaded, blend_add;
 
 ## Soft-clip glow to level bounds (world space).
+## unshaded: ignore MIX darkness so the portal stays visible.
 uniform vec2 clip_min = vec2(-99999.0, -99999.0);
 uniform vec2 clip_max = vec2(99999.0, 99999.0);
 uniform float clip_feather: hint_range(0.0, 64.0) = 12.0;
