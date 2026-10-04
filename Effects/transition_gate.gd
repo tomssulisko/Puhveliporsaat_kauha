@@ -1,10 +1,11 @@
 extends Node2D
 
-## Narrow additive portal slit drawn ABOVE darksumu (z > fog).
+## Horizontal portal glow under darksumu, clipped to the level tile bounds.
 @export_file("*.tscn") var target_scene: String = ""
 @export var pulse_alpha_min: float = 0.4
 @export var pulse_alpha_max: float = 1.0
 @export var pulse_seconds: float = 1.8
+@export var tilemap_path: NodePath
 
 @onready var _glow_sprite: Sprite2D = $GlowSprite
 @onready var _core_sprite: Sprite2D = $CoreSprite
@@ -12,17 +13,49 @@ extends Node2D
 
 
 func _ready() -> void:
-	# Fog border is z=100 with children z=100 (relative → ~200). Stay above that.
-	z_index = 300
-	_glow_sprite.z_as_relative = false
-	_core_sprite.z_as_relative = false
-	_glow_sprite.z_index = 301
-	_core_sprite.z_index = 302
+	# Below darksumu (~200) but above ground tiles.
+	z_index = 50
 	_glow_sprite.light_mask = 0
 	_core_sprite.light_mask = 0
-
+	_apply_level_clip()
 	_area.body_entered.connect(_on_body_entered)
 	_start_pulse()
+
+
+func _apply_level_clip() -> void:
+	var rect := _resolve_level_rect()
+	if rect.size.x <= 0.0 or rect.size.y <= 0.0:
+		return
+	for sprite in [_glow_sprite, _core_sprite]:
+		var mat := sprite.material as ShaderMaterial
+		if mat == null:
+			continue
+		# Unique material instance so gates don't share uniforms.
+		mat = mat.duplicate() as ShaderMaterial
+		sprite.material = mat
+		mat.set_shader_parameter("clip_min", rect.position)
+		mat.set_shader_parameter("clip_max", rect.end)
+		mat.set_shader_parameter("clip_feather", 10.0)
+
+
+func _resolve_level_rect() -> Rect2:
+	var tilemap := _find_tilemap()
+	if tilemap != null and tilemap.tile_set != null:
+		var used := tilemap.get_used_rect()
+		var tile_size := Vector2(tilemap.tile_set.tile_size)
+		return Rect2(Vector2(used.position) * tile_size, Vector2(used.size) * tile_size)
+	return Rect2()
+
+
+func _find_tilemap() -> TileMapLayer:
+	if not tilemap_path.is_empty():
+		var from_path := get_node_or_null(tilemap_path) as TileMapLayer
+		if from_path != null:
+			return from_path
+	var scene := get_tree().current_scene
+	if scene == null:
+		return null
+	return scene.get_node_or_null("TileMapLayer") as TileMapLayer
 
 
 func _start_pulse() -> void:
