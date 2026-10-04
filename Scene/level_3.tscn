@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://b8xu8xbs4hfno" path="res://Effects/darksumu.tscn" id="16_darksumu"]
 [ext_resource type="Script" uid="uid://ibbabrr1kfj5" path="res://Effects/level_outside_mask.gd" id="17_outmask"]
 [ext_resource type="PackedScene" uid="uid://sehbt0rfd6wi" path="res://Effects/vihrea_silmat_spawner.tscn" id="18_vihreat"]
+[ext_resource type="PackedScene" uid="uid://ccarryitemkauha1" path="res://Entity/carry_item.tscn" id="19_carry"]
+[ext_resource type="Texture2D" uid="uid://6fqweeuioghy" path="res://Texture/Aaron/patteri.png" id="20_patteri"]
 
 [node name="Level3" type="Node2D" unique_id=414431185]
 script = ExtResource("1_side")
@@ -33,7 +35,6 @@ tile_set = ExtResource("14_ruoste")
 position = Vector2(40, 259)
 
 [node name="pimeys" parent="." unique_id=1384955196 instance=ExtResource("10_pimeys")]
-visible = false
 
 [node name="DarksumuBorder" type="Node2D" parent="." unique_id=491750080]
 z_index = 100
@@ -54,17 +55,16 @@ metadata/_edit_lock_ = true
 
 [node name="VihreaSilmatSpawner" parent="." unique_id=1059128520 instance=ExtResource("18_vihreat")]
 
+[node name="Patteri" parent="." instance=ExtResource("19_carry")]
+position = Vector2(720, 280)
+item_id = "patteri"
+item_texture = ExtResource("20_patteri")
+
 [node name="Lepakko" parent="." unique_id=1621889305 instance=ExtResource("12_qh52m")]
 position = Vector2(89, 89)
 
-[node name="Lepakko2" parent="." unique_id=828873508 instance=ExtResource("12_qh52m")]
-position = Vector2(321, 26)
-
 [node name="Lepakko3" parent="." unique_id=1972989899 instance=ExtResource("12_qh52m")]
 position = Vector2(874, 323)
-
-[node name="Lepakko4" parent="." unique_id=603485591 instance=ExtResource("12_qh52m")]
-position = Vector2(533, 27)
 
 [node name="Lepakko5" parent="." unique_id=275795437 instance=ExtResource("12_qh52m")]
 position = Vector2(337, 422)
@@ -72,20 +72,11 @@ position = Vector2(337, 422)
 [node name="Lepakko6" parent="." unique_id=1568271272 instance=ExtResource("12_qh52m")]
 position = Vector2(135, 370)
 
-[node name="Lepakko7" parent="." unique_id=989534073 instance=ExtResource("12_qh52m")]
-position = Vector2(869, 28)
-
 [node name="Lepakko8" parent="." unique_id=1764649323 instance=ExtResource("12_qh52m")]
 position = Vector2(636, 433)
 
 [node name="Lepakko9" parent="." unique_id=480876027 instance=ExtResource("12_qh52m")]
 position = Vector2(682, 190)
 
-[node name="Lepakko10" parent="." unique_id=1284075583 instance=ExtResource("12_qh52m")]
-position = Vector2(900, 451)
-
 [node name="Lepakko11" parent="." unique_id=2016413338 instance=ExtResource("12_qh52m")]
 position = Vector2(423, 281)
-
-[node name="Lepakko12" parent="." unique_id=1071881852 instance=ExtResource("12_qh52m")]
-position = Vector2(634, 28)

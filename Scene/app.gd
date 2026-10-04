@@ -8,15 +8,149 @@ var has_level1_reentry: bool = false
 var pending_death_dream: bool = false
 var start_faded_black: bool = false
 
+## Items currently riding with the player (persist across scenes).
+## Each entry: { "id": String, "texture": Texture2D, "scale": Vector2 }
+var carried_items: Array[Dictionary] = []
+## Items already returned to the car.
+var delivered_items: Array[String] = []
+
 const DEATH_DREAM_EVENTS := ["deathDream1", "deathDream2", "deathDream3"]
+
+const FOUND_EVENTS := {
+	"patteri": "batteryFound",
+	"jakoavain": "wrenchFound",
+	"rengas": "tireFound",
+}
+
+const RETURN_EVENTS := {
+	"patteri": "batteryReturn",
+	"jakoavain": "wrenchReturn",
+	"rengas": "tireReturn",
+}
 
 var _dying: bool = false
 var _fade: CanvasLayer
+var _pickup_busy: bool = false
+var _deliver_busy: bool = false
 
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	_fade = preload("res://Effects/screen_fade.tscn").instantiate()
 	add_child(_fade)
+
+
+func has_carried_item(item_id: String) -> bool:
+	for entry in carried_items:
+		if String(entry.get("id", "")) == item_id:
+			return true
+	return false
+
+
+func has_delivered_item(item_id: String) -> bool:
+	return delivered_items.has(item_id)
+
+
+func is_item_gone_from_world(item_id: String) -> bool:
+	return has_carried_item(item_id) or has_delivered_item(item_id)
+
+
+func pickup_item(item_id: String, texture: Texture2D, carry_scale: Vector2 = Vector2.ONE) -> void:
+	if item_id.is_empty() or is_item_gone_from_world(item_id):
+		return
+	carried_items.append({
+		"id": item_id,
+		"texture": texture,
+		"scale": carry_scale,
+	})
+	_sync_player_carry_visuals()
+	_run_pickup_reaction(item_id)
+
+
+func deliver_carried_item(item_id: String) -> bool:
+	if _deliver_busy or item_id.is_empty():
+		return false
+	if has_delivered_item(item_id) or not has_carried_item(item_id):
+		return false
+	_deliver_busy = true
+	_remove_carried(item_id)
+	delivered_items.append(item_id)
+	_sync_player_carry_visuals()
+	_run_delivery_reaction(item_id)
+	return true
+
+
+## 0 = only level 3, 1 = only level 2, 2 = only level 4, 3 = all done.
+func get_portal_stage() -> int:
+	if not has_delivered_item("patteri"):
+		return 0
+	if not has_delivered_item("jakoavain"):
+		return 1
+	if not has_delivered_item("rengas"):
+		return 2
+	return 3
+
+
+func get_expected_delivery_item() -> String:
+	match get_portal_stage():
+		0:
+			return "patteri"
+		1:
+			return "jakoavain"
+		2:
+			return "rengas"
+		_:
+			return ""
+
+
+func is_delivery_busy() -> bool:
+	return _deliver_busy
+
+
+func get_carried_items() -> Array[Dictionary]:
+	return carried_items
+
+
+func _run_pickup_reaction(item_id: String) -> void:
+	if _pickup_busy:
+		return
+	_pickup_busy = true
+	AudioManager.play_sfx("nonii")
+	await get_tree().create_timer(0.55, true, false, true).timeout
+	var event: String = String(FOUND_EVENTS.get(item_id, ""))
+	if not event.is_empty():
+		var manager := get_node_or_null("/root/StorylineManager")
+		if manager != null and manager.has_method("play_storyline_event"):
+			var started: bool = bool(manager.play_storyline_event(event))
+			if started and manager.has_signal("storyline_finished"):
+				await manager.storyline_finished
+	_pickup_busy = false
+
+
+func _run_delivery_reaction(item_id: String) -> void:
+	var event: String = String(RETURN_EVENTS.get(item_id, ""))
+	var manager := get_node_or_null("/root/StorylineManager")
+	if not event.is_empty() and manager != null and manager.has_method("play_storyline_event"):
+		var started: bool = bool(manager.play_storyline_event(event))
+		if started and manager.has_signal("storyline_finished"):
+			await manager.storyline_finished
+	var scene := get_tree().current_scene
+	if scene != null and scene.has_method("update_portal_gates"):
+		scene.update_portal_gates()
+	_deliver_busy = false
+
+
+func _remove_carried(item_id: String) -> void:
+	for i in range(carried_items.size() - 1, -1, -1):
+		if String(carried_items[i].get("id", "")) == item_id:
+			carried_items.remove_at(i)
+			return
+
+
+func _sync_player_carry_visuals() -> void:
+	var player := get_tree().get_first_node_in_group("player")
+	if player != null and player.has_method("sync_carried_items"):
+		player.sync_carried_items(carried_items)
 
 
 func remember_level1_exit(player_global: Vector2, exit_dir: Vector2 = Vector2.RIGHT) -> void:

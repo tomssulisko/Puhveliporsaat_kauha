@@ -39,7 +39,7 @@
   - [x] Pysyy piilossa samassa paikassa
   - [x] Jos valo on poissa ja pelaaja kaukana, silmät aktivoituvat uudelleen
 
-Myös passiivisia silmiä joka kenttään, ilmestyvät ja katoavat random paikkoihin harvakseen.
+- [x] Myös passiivisia silmiä joka kenttään, ilmestyvät ja katoavat random paikkoihin harvakseen.
 
 
 ## Luuranko
