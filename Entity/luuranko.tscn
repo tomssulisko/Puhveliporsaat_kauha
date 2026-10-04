@@ -1,15 +1,101 @@
 [gd_scene format=3 uid="uid://ckpdhi6m88duq"]
 
 [ext_resource type="Script" path="res://Entity/luuranko.gd" id="1_script"]
-[ext_resource type="Texture2D" uid="uid://8gfovonojd1c" path="res://Texture/Aaron/patsas.png" id="2_placeholder"]
+[ext_resource type="Texture2D" uid="uid://cei8tao5scm27" path="res://Texture/pelaaja/luuranko eteen1.png" id="2_e1"]
+[ext_resource type="Texture2D" uid="uid://di8f2jj53vf3d" path="res://Texture/pelaaja/luuranko eteen2.png" id="3_e2"]
+[ext_resource type="Texture2D" uid="uid://dkalvqugam4f8" path="res://Texture/pelaaja/luuranko eteen3.png" id="4_e3"]
+[ext_resource type="Texture2D" uid="uid://dbuas26e28j1p" path="res://Texture/pelaaja/luuranko eteen4.png" id="5_e4"]
+[ext_resource type="Texture2D" uid="uid://bu0lbv7mopwyt" path="res://Texture/pelaaja/luuranko takaa1.png" id="6_t1"]
+[ext_resource type="Texture2D" uid="uid://b2s43q6ntip6x" path="res://Texture/pelaaja/luuranko takaa2.png" id="7_t2"]
+[ext_resource type="Texture2D" uid="uid://c1ji5s7pqw6a2" path="res://Texture/pelaaja/luuranko takaa3.png" id="8_t3"]
+[ext_resource type="Texture2D" uid="uid://bu73ofaxrwr4i" path="res://Texture/pelaaja/luuranko takaa4.png" id="9_t4"]
+[ext_resource type="Texture2D" uid="uid://dutkbjne4au1d" path="res://Texture/pelaaja/luuranko vasen1.png" id="10_v1"]
+[ext_resource type="Texture2D" uid="uid://bu5uakc5pciwp" path="res://Texture/pelaaja/luuranko vasen2.png" id="11_v2"]
+[ext_resource type="Texture2D" uid="uid://pjtaayoo6px" path="res://Texture/pelaaja/luuranko vasen3.png" id="12_v3"]
+[ext_resource type="Texture2D" uid="uid://dnb5g25jhugkj" path="res://Texture/pelaaja/luuranko vasen4.png" id="13_v4"]
+[ext_resource type="Texture2D" uid="uid://b655fdfvti7jk" path="res://Texture/pelaaja/luuranko oikee1.png" id="14_o1"]
+[ext_resource type="Texture2D" uid="uid://crqqpn64oy7ck" path="res://Texture/pelaaja/luuranko oikee2.png" id="15_o2"]
+[ext_resource type="Texture2D" uid="uid://bgolxwvnhacfd" path="res://Texture/pelaaja/luuranko oikee3.png" id="16_o3"]
+[ext_resource type="Texture2D" uid="uid://d1pvatsr0u6x5" path="res://Texture/pelaaja/luuranko oikee4.png" id="17_o4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_luuranko"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_e1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_e2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_e3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_e4")
+}],
+"loop": true,
+"name": &"eteen",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_t1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_t2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_t3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_t4")
+}],
+"loop": true,
+"name": &"takaa",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_v1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_v2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_v3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_v4")
+}],
+"loop": true,
+"name": &"vasen",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_o1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_o2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_o3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_o4")
+}],
+"loop": true,
+"name": &"oikee",
+"speed": 6.0
+}]
 
 [node name="Luuranko" type="CharacterBody2D"]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_script")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.92, 0.9, 0.82, 1)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 0
-scale = Vector2(0.55, 0.55)
-texture = ExtResource("2_placeholder")
+sprite_frames = SubResource("SpriteFrames_luuranko")
+animation = &"eteen"
+frame = 0
