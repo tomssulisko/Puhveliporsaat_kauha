@@ -31,6 +31,9 @@ func on_scene_about_to_change() -> void:
 	if _paused_tree_for_storyline:
 		get_tree().paused = false
 		_paused_tree_for_storyline = false
+	var am := get_node_or_null("/root/AudioManager")
+	if am != null and am.has_method("stop_ambient"):
+		am.stop_ambient()
 
 
 func play_storyline_event(event):

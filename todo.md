@@ -51,3 +51,5 @@ Myös passiivisia silmiä joka kenttään, ilmestyvät ja katoavat random paikko
 - [ ] Kuulee kaukaa jos juoksee
 - [ ] Päästää luuääniä kun huomaa pelaajan
 - [ ] Päästää luuääniä kävellessään
+
+

@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://ktfwgf70vdcq"
-path="res://.godot/imported/sirkatsoittaa.wav-7ad7e5044b1fbc939aa247f07ec83376.sample"
+uid="uid://dc0ije3si1wx7"
+path="res://.godot/imported/tuuli.wav-7d042115f626a3c3642517170851d9ad.sample"
 
 [deps]
 
-source_file="res://Audio/sirkatsoittaa.wav"
-dest_files=["res://.godot/imported/sirkatsoittaa.wav-7ad7e5044b1fbc939aa247f07ec83376.sample"]
+source_file="res://Audio/tuuli.wav"
+dest_files=["res://.godot/imported/tuuli.wav-7d042115f626a3c3642517170851d9ad.sample"]
 
 [params]
 

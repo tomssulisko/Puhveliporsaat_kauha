@@ -11,6 +11,8 @@ const INTRO_DRIVE_SECONDS := 2.8
 
 
 func _ready() -> void:
+	AudioManager.play_ambient("tuuli", 0.0, true)
+
 	var manager := get_node_or_null("/root/StorylineManager")
 	var intro_done: bool = manager != null and manager.events_played.has("carBroken")
 	if intro_done:

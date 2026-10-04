@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 App="*res://Scene/app.gd"
 StorylineManager="*res://addons/Storyline/storyline_manager.tscn"
+AudioManager="*res://addons/AudioManager/audio_manager.tscn"
 
 [display]
 
