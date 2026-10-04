@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bo2d3bjnsnvis"]
+
+[ext_resource type="PackedScene" uid="uid://boif1d6788duq" path="res://Entity/kynttila.tscn" id="1_base"]
+
+[node name="KynttilaKirkas" unique_id=1086353905 instance=ExtResource("1_base")]
+light_energy_base = 1.55
+light_energy_amp = 0.28
+light_scale_base = 0.48
+light_scale_amp = 0.07
+
+[node name="Light" parent="." index="1"]
+energy = 1.55
+texture_scale = 0.6
