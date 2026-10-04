@@ -17,7 +17,9 @@ func _ready() -> void:
 	var intro_done: bool = manager != null and manager.events_played.has("carBroken")
 	if intro_done:
 		auto.global_position = CAR_STOP
-		player.global_position = PLAYER_EXIT
+		var app := get_node_or_null("/root/App")
+		var reentry = app.consume_level1_reentry() if app != null and app.has_method("consume_level1_reentry") else null
+		player.global_position = reentry if reentry is Vector2 else PLAYER_EXIT
 		_set_headlights(false)
 		_set_player_ambient(true)
 		_set_flashlight_beam(true)
@@ -94,15 +96,3 @@ func _set_headlights(enabled: bool) -> void:
 	for child in headlights.get_children():
 		if child is Light2D:
 			(child as Light2D).enabled = enabled
-
-
-func _on_collision_shape_2d_area_entered(_area: Area2D) -> void:
-	pass
-
-
-func _on_collision_shape_2d_body_entered(body: Node2D) -> void:
-	if body.name == "Player":
-		var manager := get_node_or_null("/root/StorylineManager")
-		if manager != null and manager.has_method("on_scene_about_to_change"):
-			manager.on_scene_about_to_change()
-		get_tree().change_scene_to_file("res://Scene/level_2.tscn")

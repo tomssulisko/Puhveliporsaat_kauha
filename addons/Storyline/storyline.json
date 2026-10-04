@@ -110,6 +110,14 @@
 				"speech": {
 				"actor": "auttaja",
 				"text": [
+				  "You need some tools my lovely friend! "
+				]
+				}
+			},
+						{
+				"speech": {
+				"actor": "auttaja",
+				"text": [
 				  "You need some tools my lovely friend! You may find some in the place where dead people rest.."
 				]
 				}
