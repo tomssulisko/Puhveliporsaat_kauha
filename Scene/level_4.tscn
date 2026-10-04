@@ -81,7 +81,6 @@ texture = ExtResource("9_g67xk")
 position = Vector2(451, 604)
 rotation = 1.5707964
 target_scene = "res://Scene/level_1.tscn"
-enter_direction = Vector2(-1, 0)
 metadata/_edit_lock_ = true
 
 [node name="Ympyrä" type="Sprite2D" parent="." unique_id=1260949198]

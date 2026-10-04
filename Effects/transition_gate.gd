@@ -7,8 +7,8 @@ extends Node2D
 @export var pulse_alpha_max: float = 0.2
 @export var pulse_seconds: float = 1.8
 @export var tilemap_path: NodePath
-## Local direction the player walks when exiting through this gate.
-@export var enter_direction: Vector2 = Vector2.RIGHT
+## Optional local override for exit walk. Leave ZERO to auto-walk away from the map.
+@export var enter_direction: Vector2 = Vector2.ZERO
 @export var walk_distance: float = 90.0
 @export var walk_seconds: float = 0.9
 
@@ -55,6 +55,10 @@ func _arm_gate_if_allowed() -> void:
 
 ## World-space direction used when walking out through this gate.
 func get_exit_direction() -> Vector2:
+	# Prefer auto: always leave the playable area (away from tilemap center).
+	var auto := _auto_exit_direction()
+	if auto != Vector2.ZERO:
+		return auto
 	var local := enter_direction
 	if local == Vector2.ZERO:
 		local = Vector2.RIGHT
@@ -62,6 +66,39 @@ func get_exit_direction() -> Vector2:
 	if world.length_squared() < 0.0001:
 		return Vector2.RIGHT
 	return world.normalized()
+
+
+func _auto_exit_direction() -> Vector2:
+	var rect := _level_rect()
+	if rect.size.x <= 0.0 or rect.size.y <= 0.0:
+		return Vector2.ZERO
+	var from_center := global_position - rect.get_center()
+	if from_center.length_squared() < 0.001:
+		return Vector2.ZERO
+	# Cardinal snap so portal walks stay axis-aligned.
+	if absf(from_center.x) >= absf(from_center.y):
+		return Vector2(signf(from_center.x), 0.0)
+	return Vector2(0.0, signf(from_center.y))
+
+
+func _level_rect() -> Rect2:
+	var tilemap := _find_tilemap()
+	if tilemap == null or tilemap.tile_set == null:
+		return Rect2()
+	var used := tilemap.get_used_rect()
+	var tile_size := Vector2(tilemap.tile_set.tile_size)
+	return Rect2(Vector2(used.position) * tile_size, Vector2(used.size) * tile_size)
+
+
+func _find_tilemap() -> TileMapLayer:
+	if not tilemap_path.is_empty():
+		var from_path := get_node_or_null(tilemap_path) as TileMapLayer
+		if from_path != null:
+			return from_path
+	var parent := get_parent()
+	if parent != null:
+		return parent.get_node_or_null("TileMapLayer") as TileMapLayer
+	return null
 
 
 func set_gate_enabled(enabled: bool) -> void:

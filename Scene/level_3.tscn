@@ -48,5 +48,4 @@ tilemap_path = NodePath("../TileMapLayer")
 position = Vector2(-66, 255)
 rotation = 3.1415927
 target_scene = "res://Scene/level_1.tscn"
-enter_direction = Vector2(-1, 0)
 metadata/_edit_lock_ = true
