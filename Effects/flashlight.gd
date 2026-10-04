@@ -1,8 +1,9 @@
 extends Node2D
 
 @export var follow_speed: float = 10.0
-@export var beam_range: float = 260.0
-@export var beam_half_angle: float = 0.42
+@export var beam_range: float = 155.0
+@export var beam_half_angle: float = 0.36
+@export var cone_edge_softness: int = 10
 
 @onready var soft_light: PointLight2D = $SoftLight
 @onready var beam: PointLight2D = $Beam
@@ -11,6 +12,7 @@ var _beam_enabled: bool = true
 
 
 func _ready() -> void:
+	_soften_beam_edges()
 	set_beam_enabled(_beam_enabled)
 
 
@@ -50,3 +52,52 @@ func illuminates_point(world_pos: Vector2) -> bool:
 		return false
 	var angle_diff := absf(angle_difference(global_rotation, to_point.angle()))
 	return angle_diff <= beam_half_angle
+
+
+func _soften_beam_edges() -> void:
+	if beam == null or beam.texture == null or cone_edge_softness <= 0:
+		return
+	var src := beam.texture.get_image()
+	if src == null:
+		return
+	src.convert(Image.FORMAT_RGBA8)
+	var blurred := _box_blur_alpha(src, cone_edge_softness)
+	beam.texture = ImageTexture.create_from_image(blurred)
+
+
+func _box_blur_alpha(src: Image, radius: int) -> Image:
+	var w := src.get_width()
+	var h := src.get_height()
+	var out := Image.create(w, h, false, Image.FORMAT_RGBA8)
+	var r := maxi(1, radius)
+	# Separable-ish two-pass approximation for soft cone edges.
+	var tmp := Image.create(w, h, false, Image.FORMAT_RGBA8)
+	for y in h:
+		for x in w:
+			var sum_a := 0.0
+			var sum_rgb := Vector3.ZERO
+			var count := 0
+			for dx in range(-r, r + 1):
+				var xx := clampi(x + dx, 0, w - 1)
+				var c := src.get_pixel(xx, y)
+				sum_a += c.a
+				sum_rgb += Vector3(c.r, c.g, c.b) * c.a
+				count += 1
+			var a := sum_a / float(count)
+			var rgb := sum_rgb / maxf(sum_a, 0.0001)
+			tmp.set_pixel(x, y, Color(rgb.x, rgb.y, rgb.z, a))
+	for y in h:
+		for x in w:
+			var sum_a := 0.0
+			var sum_rgb := Vector3.ZERO
+			var count := 0
+			for dy in range(-r, r + 1):
+				var yy := clampi(y + dy, 0, h - 1)
+				var c := tmp.get_pixel(x, yy)
+				sum_a += c.a
+				sum_rgb += Vector3(c.r, c.g, c.b) * c.a
+				count += 1
+			var a := sum_a / float(count)
+			var rgb := sum_rgb / maxf(sum_a, 0.0001)
+			out.set_pixel(x, y, Color(rgb.x, rgb.y, rgb.z, a))
+	return out

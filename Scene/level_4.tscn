@@ -6,6 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://8gfovonojd1c" path="res://Texture/Aaron/patsas.png" id="9_nctk5"]
 [ext_resource type="PackedScene" uid="uid://cc14ll8yy7v3y" path="res://Effects/pimeys.tscn" id="10_pimeys"]
 [ext_resource type="PackedScene" uid="uid://c4xjsuyn8rtay" path="res://Effects/transition_gate.tscn" id="11_gate"]
+[ext_resource type="Script" uid="uid://csuju8hvbovy6" path="res://Effects/darksumu_border.gd" id="15_sumuborder"]
+[ext_resource type="PackedScene" uid="uid://b8xu8xbs4hfno" path="res://Effects/darksumu.tscn" id="16_darksumu"]
+[ext_resource type="Script" uid="uid://ibbabrr1kfj5" path="res://Effects/level_outside_mask.gd" id="17_outmask"]
+
 [ext_resource type="TileSet" uid="uid://8yq3p5uu7kds" path="res://Texture/Aaron/laattoja_tileset.tres" id="12_tileset"]
 [ext_resource type="TileSet" uid="uid://buinkpvnjivc7" path="res://Texture/Aaron/aita_tileset.tres" id="13_aita"]
 [ext_resource type="TileSet" uid="uid://q3b6n750jwaa" path="res://Texture/Aaron/ruoste_autot_tileset.tres" id="14_ruoste"]
@@ -31,6 +35,49 @@ position = Vector2(447, 444)
 
 [node name="pimeys" parent="." unique_id=1720259318 instance=ExtResource("10_pimeys")]
 visible = false
+
+[node name="DarksumuBorder" type="Node2D" parent="."]
+z_index = 100
+script = ExtResource("15_sumuborder")
+fog_scene = ExtResource("16_darksumu")
+tilemap_path = NodePath("../TileMapLayer")
+
+[node name="LevelOutsideMask" type="Node2D" parent="."]
+z_index = 80
+script = ExtResource("17_outmask")
+tilemap_path = NodePath("../TileMapLayer")
+
+[node name="Auto" type="Sprite2D" parent="." unique_id=1153818863]
+position = Vector2(-227, 50)
+texture = ExtResource("2_71r3i")
+
+[node name="Hauta" type="Sprite2D" parent="." unique_id=2140483231]
+position = Vector2(-200, 74)
+texture = ExtResource("3_nwjwq")
+
+[node name="JakoAvain" type="Sprite2D" parent="." unique_id=795605277]
+position = Vector2(-203, 37)
+texture = ExtResource("4_67jix")
+
+[node name="Patteri" type="Sprite2D" parent="." unique_id=279908176]
+position = Vector2(-214, 81)
+texture = ExtResource("5_f3pwq")
+
+[node name="Rengas" type="Sprite2D" parent="." unique_id=2076102705]
+position = Vector2(-202, 57)
+texture = ExtResource("6_ccfm3")
+
+[node name="RuosteAuto" type="Sprite2D" parent="." unique_id=1463590344]
+position = Vector2(-262, 84)
+texture = ExtResource("7_nquh6")
+
+[node name="Silmä" type="Sprite2D" parent="." unique_id=322230791]
+position = Vector2(-213, 77)
+texture = ExtResource("8_vg3ep")
+
+[node name="Taskulamppu" type="Sprite2D" parent="." unique_id=1302117535]
+position = Vector2(-209, 41)
+texture = ExtResource("9_g67xk")
 
 [node name="TransitionToLevel1" parent="." unique_id=735330404 instance=ExtResource("11_gate")]
 position = Vector2(451, 604)

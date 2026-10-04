@@ -4,6 +4,10 @@
 [ext_resource type="Script" uid="uid://cqtgx4ee478jc" path="res://Scene/level_side.gd" id="1_side"]
 [ext_resource type="PackedScene" uid="uid://cc14ll8yy7v3y" path="res://Effects/pimeys.tscn" id="10_pimeys"]
 [ext_resource type="PackedScene" uid="uid://c4xjsuyn8rtay" path="res://Effects/transition_gate.tscn" id="11_gate"]
+[ext_resource type="Script" uid="uid://csuju8hvbovy6" path="res://Effects/darksumu_border.gd" id="15_sumuborder"]
+[ext_resource type="PackedScene" uid="uid://b8xu8xbs4hfno" path="res://Effects/darksumu.tscn" id="16_darksumu"]
+[ext_resource type="Script" uid="uid://ibbabrr1kfj5" path="res://Effects/level_outside_mask.gd" id="17_outmask"]
+
 [ext_resource type="TileSet" uid="uid://8yq3p5uu7kds" path="res://Texture/Aaron/laattoja_tileset.tres" id="12_tileset"]
 [ext_resource type="TileSet" uid="uid://buinkpvnjivc7" path="res://Texture/Aaron/aita_tileset.tres" id="13_aita"]
 [ext_resource type="TileSet" uid="uid://q3b6n750jwaa" path="res://Texture/Aaron/ruoste_autot_tileset.tres" id="14_ruoste"]
@@ -28,6 +32,17 @@ tile_set = ExtResource("14_ruoste")
 position = Vector2(40, 259)
 
 [node name="pimeys" parent="." unique_id=1384955196 instance=ExtResource("10_pimeys")]
+
+[node name="DarksumuBorder" type="Node2D" parent="."]
+z_index = 100
+script = ExtResource("15_sumuborder")
+fog_scene = ExtResource("16_darksumu")
+tilemap_path = NodePath("../TileMapLayer")
+
+[node name="LevelOutsideMask" type="Node2D" parent="."]
+z_index = 80
+script = ExtResource("17_outmask")
+tilemap_path = NodePath("../TileMapLayer")
 
 [node name="TransitionToLevel1" parent="." unique_id=218299868 instance=ExtResource("11_gate")]
 position = Vector2(-66, 255)
