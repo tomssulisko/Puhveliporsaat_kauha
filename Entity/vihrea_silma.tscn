@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://ii67hxuajx5q"]
+
+[ext_resource type="Script" path="res://Entity/vihrea_silma.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://dl8c4mtfoktcl" path="res://Texture/Aaron/silmä.png" id="2_eyes"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_unshaded"]
+light_mode = 1
+
+[node name="VihreaSilma" type="Node2D"]
+script = ExtResource("1_script")
+
+[node name="Eyes" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 6
+light_mask = 0
+material = SubResource("CanvasItemMaterial_unshaded")
+texture_filter = 0
+texture = ExtResource("2_eyes")
