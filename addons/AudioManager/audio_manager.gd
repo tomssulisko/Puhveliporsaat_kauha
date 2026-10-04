@@ -55,6 +55,9 @@ const SFX_LIBRARY := {
 	"nonii": [
 		"res://Audio/pelaaja_no_niin.wav",
 	],
+	"reitin_avaus": [
+		"res://Audio/reitin_avaus.wav",
+	],
 }
 
 const AMBIENT_LIBRARY := {

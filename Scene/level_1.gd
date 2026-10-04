@@ -19,7 +19,9 @@ func _ready() -> void:
 		if gate == null:
 			continue
 		gate.visible = false
-		if gate.has_method("set_gate_enabled"):
+		if gate.has_method("set_gate_open"):
+			gate.set_gate_open(false, false, 0.75, false)
+		elif gate.has_method("set_gate_enabled"):
 			gate.set_gate_enabled(false)
 
 	var app := get_node_or_null("/root/App")
@@ -135,7 +137,9 @@ func _set_portal_active(gate: Node, active: bool) -> void:
 	if gate == null:
 		return
 	gate.visible = active
-	if gate.has_method("set_gate_enabled"):
+	if gate.has_method("set_gate_open"):
+		gate.set_gate_open(active, true)
+	elif gate.has_method("set_gate_enabled"):
 		gate.set_gate_enabled(active)
 
 

@@ -17,6 +17,7 @@ extends Node2D
 @onready var _area: Area2D = $ExitArea
 
 var _busy: bool = false
+var _is_open: bool = true
 var _light_mul: float = 1.0
 var _pulse_alpha: float = 0.2
 var _fade_tween: Tween
@@ -105,13 +106,17 @@ func _find_tilemap() -> TileMapLayer:
 
 
 func set_gate_enabled(enabled: bool) -> void:
+	## Silent lock/arm — use set_gate_open for audible open/close + fade.
 	_busy = not enabled
 	if _area != null:
 		_area.monitoring = enabled
 
 
 ## Open/close the portal: monitoring + glow fade.
-func set_gate_open(open: bool, animate: bool = true, fade_seconds: float = 0.75) -> void:
+func set_gate_open(open: bool, animate: bool = true, fade_seconds: float = 0.75, play_sound: bool = true) -> void:
+	if play_sound and _is_open != open:
+		AudioManager.play_sfx("reitin_avaus")
+	_is_open = open
 	_busy = not open
 	if _area != null:
 		_area.monitoring = open
