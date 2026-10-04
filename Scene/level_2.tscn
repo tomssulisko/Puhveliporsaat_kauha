@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://ba1cgo4fbkih7"]
+[gd_scene format=4 uid="uid://ba1cgo4fbkih7"]
 
 [ext_resource type="PackedScene" uid="uid://bxghvffaxdp6l" path="res://Entity/player.tscn" id="1_jte5b"]
 [ext_resource type="Script" uid="uid://cqtgx4ee478jc" path="res://Scene/level_side.gd" id="1_side"]
@@ -12,9 +12,24 @@
 [ext_resource type="Texture2D" uid="uid://s0tt3th4x5bj" path="res://Texture/Aaron/taskulamppu.png" id="9_g67xk"]
 [ext_resource type="PackedScene" uid="uid://cc14ll8yy7v3y" path="res://Effects/pimeys.tscn" id="10_pimeys"]
 [ext_resource type="PackedScene" uid="uid://c4xjsuyn8rtay" path="res://Effects/transition_gate.tscn" id="11_gate"]
+[ext_resource type="TileSet" uid="uid://8yq3p5uu7kds" path="res://Texture/Aaron/laattoja_tileset.tres" id="12_tileset"]
+[ext_resource type="TileSet" uid="uid://buinkpvnjivc7" path="res://Texture/Aaron/aita_tileset.tres" id="13_aita"]
+[ext_resource type="TileSet" uid="uid://q3b6n750jwaa" path="res://Texture/Aaron/ruoste_autot_tileset.tres" id="14_ruoste"]
 
 [node name="Level2" type="Node2D" unique_id=392092015]
 script = ExtResource("1_side")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1769447298]
+tile_map_data = PackedByteArray("AAAWABAAAAACAAEAAAAXABAAAAACAAEAAAAYABAAAAACAAEAAAAZABAAAAACAAEAAAAYAA8AAAACAAEAAAAXAA8AAAACAAEAAAAWAA8AAAACAAEAAAAVAA8AAAACAAEAAAAVABAAAAACAAEAAAAZAA8AAAACAAEAAAAaAA8AAAACAAEAAAAaAA4AAAACAAEAAAAZAA4AAAACAAEAAAAYAA4AAAACAAEAAAAaABAAAAACAAEAAAAbAA8AAAACAAEAAAAcAA4AAAACAAEAAAAcAA0AAAACAAEAAAAbAA0AAAACAAEAAAAaAA0AAAACAAEAAAAZAA0AAAACAAEAAAAYAA0AAAACAAEAAAAXAA0AAAACAAEAAAAWAA0AAAACAAEAAAAVAA0AAAACAAEAAAAVAA4AAAACAAEAAAAbAA4AAAACAAEAAAAXAA4AAAACAAEAAAA=")
+tile_set = ExtResource("12_tileset")
+
+[node name="AitaTileMap" type="TileMapLayer" parent="." unique_id=1123626879]
+z_index = 2
+tile_set = ExtResource("13_aita")
+
+[node name="RuosteAutotTileMap" type="TileMapLayer" parent="." unique_id=1866025911]
+z_index = 2
+tile_set = ExtResource("14_ruoste")
 
 [node name="Player" parent="." unique_id=1360547194 instance=ExtResource("1_jte5b")]
 position = Vector2(400, 422)

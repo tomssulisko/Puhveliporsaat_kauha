@@ -12,10 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://b7xsnacbc1tku" path="res://Entity/auto.tscn" id="11_auto"]
 [ext_resource type="TileSet" uid="uid://buinkpvnjivc7" path="res://Texture/Aaron/aita_tileset.tres" id="12_aita"]
 [ext_resource type="TileSet" uid="uid://q3b6n750jwaa" path="res://Texture/Aaron/ruoste_autot_tileset.tres" id="13_ruoste"]
-[ext_resource type="PackedScene" uid="uid://ctransgatekau01" path="res://Effects/transition_gate.tscn" id="14_gate"]
-[ext_resource type="Script" path="res://Effects/level_outside_mask.gd" id="15_outmask"]
+[ext_resource type="PackedScene" uid="uid://c4xjsuyn8rtay" path="res://Effects/transition_gate.tscn" id="14_gate"]
+[ext_resource type="Script" uid="uid://ibbabrr1kfj5" path="res://Effects/level_outside_mask.gd" id="15_outmask"]
 [ext_resource type="PackedScene" uid="uid://cn28rmva4xm87" path="res://Entity/lepakko.tscn" id="16_lepakko"]
-
 
 [node name="Level1" type="Node2D" unique_id=1647334681]
 script = ExtResource("1_5exfe")
@@ -46,6 +45,7 @@ position = Vector2(220, 587)
 position = Vector2(280, 587)
 
 [node name="pimeys" parent="." unique_id=630818630 instance=ExtResource("6_pimeys")]
+visible = false
 
 [node name="DarksumuBorder" type="Node2D" parent="." unique_id=467318831]
 z_index = 100
@@ -57,26 +57,24 @@ tilemap_path = NodePath("../TileMapLayer")
 script = ExtResource("9_bounds")
 tilemap_path = NodePath("../TileMapLayer")
 
-[node name="LevelOutsideMask" type="Node2D" parent="."]
+[node name="LevelOutsideMask" type="Node2D" parent="." unique_id=163167997]
 z_index = 80
 script = ExtResource("15_outmask")
 tilemap_path = NodePath("../TileMapLayer")
-cover_depth = 240.0
-cover_z_index = 80
 
 [node name="StorylineCanvas" parent="." unique_id=2108214649 instance=ExtResource("10_storycanvas")]
 
-[node name="Lepakko" parent="." instance=ExtResource("16_lepakko")]
+[node name="Lepakko" parent="." unique_id=1424345467 instance=ExtResource("16_lepakko")]
 position = Vector2(620, 360)
 
-[node name="TransitionLevel2" parent="." instance=ExtResource("14_gate")]
+[node name="TransitionLevel2" parent="." unique_id=485322852 instance=ExtResource("14_gate")]
 position = Vector2(1136, 270)
 target_scene = "res://Scene/level_2.tscn"
 
-[node name="TransitionLevel3" parent="." instance=ExtResource("14_gate")]
+[node name="TransitionLevel3" parent="." unique_id=190137810 instance=ExtResource("14_gate")]
 position = Vector2(1136, 407)
 target_scene = "res://Scene/level_3.tscn"
 
-[node name="TransitionLevel4" parent="." instance=ExtResource("14_gate")]
+[node name="TransitionLevel4" parent="." unique_id=477525294 instance=ExtResource("14_gate")]
 position = Vector2(1136, 147)
 target_scene = "res://Scene/level_4.tscn"

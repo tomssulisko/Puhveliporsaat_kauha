@@ -12,10 +12,24 @@
 [ext_resource type="Texture2D" uid="uid://s0tt3th4x5bj" path="res://Texture/Aaron/taskulamppu.png" id="9_g67xk"]
 [ext_resource type="PackedScene" uid="uid://cpimeyskauha01" path="res://Effects/pimeys.tscn" id="10_pimeys"]
 [ext_resource type="PackedScene" uid="uid://ctransgatekau01" path="res://Effects/transition_gate.tscn" id="11_gate"]
+[ext_resource type="TileSet" uid="uid://8yq3p5uu7kds" path="res://Texture/Aaron/laattoja_tileset.tres" id="12_tileset"]
+[ext_resource type="TileSet" uid="uid://buinkpvnjivc7" path="res://Texture/Aaron/aita_tileset.tres" id="13_aita"]
+[ext_resource type="TileSet" uid="uid://q3b6n750jwaa" path="res://Texture/Aaron/ruoste_autot_tileset.tres" id="14_ruoste"]
 
 [node name="Level3" type="Node2D"]
 script = ExtResource("1_side")
 ambient_id = "tuuli"
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_set = ExtResource("12_tileset")
+
+[node name="AitaTileMap" type="TileMapLayer" parent="."]
+z_index = 2
+tile_set = ExtResource("13_aita")
+
+[node name="RuosteAutotTileMap" type="TileMapLayer" parent="."]
+z_index = 2
+tile_set = ExtResource("14_ruoste")
 
 [node name="Player" parent="." instance=ExtResource("1_jte5b")]
 position = Vector2(336, 448)
