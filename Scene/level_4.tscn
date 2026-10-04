@@ -30,6 +30,7 @@ tile_set = ExtResource("14_ruoste")
 position = Vector2(447, 444)
 
 [node name="pimeys" parent="." unique_id=1720259318 instance=ExtResource("10_pimeys")]
+visible = false
 
 [node name="TransitionToLevel1" parent="." unique_id=735330404 instance=ExtResource("11_gate")]
 position = Vector2(451, 604)
