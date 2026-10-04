@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://c4xjsuyn8rtay" path="res://Effects/transition_gate.tscn" id="14_gate"]
 [ext_resource type="Script" uid="uid://ibbabrr1kfj5" path="res://Effects/level_outside_mask.gd" id="15_outmask"]
 [ext_resource type="PackedScene" uid="uid://cn28rmva4xm87" path="res://Entity/lepakko.tscn" id="16_lepakko"]
+[ext_resource type="PackedScene" uid="uid://b8silmaeyes001" path="res://Entity/silma.tscn" id="17_silma"]
 
 [node name="Level1" type="Node2D" unique_id=1647334681]
 script = ExtResource("1_5exfe")
@@ -66,6 +67,9 @@ tilemap_path = NodePath("../TileMapLayer")
 
 [node name="Lepakko" parent="." unique_id=1424345467 instance=ExtResource("16_lepakko")]
 position = Vector2(620, 360)
+
+[node name="Silma" parent="." instance=ExtResource("17_silma")]
+position = Vector2(480, 420)
 
 [node name="TransitionLevel2" parent="." unique_id=485322852 instance=ExtResource("14_gate")]
 position = Vector2(1136, 270)
