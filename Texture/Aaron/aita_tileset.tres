@@ -2,6 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://1ubjx261hf7g" path="res://Texture/Aaron/oikee aita.png" id="1_fence"]
 [ext_resource type="Texture2D" uid="uid://eepgyru1sq8c" path="res://Texture/Aaron/aita_atlas.png" id="2_atlas"]
+[ext_resource type="Texture2D" uid="uid://cg54vve7b102f" path="res://Texture/Aaron/kulma aita.png" id="3_kulma"]
+[ext_resource type="Texture2D" uid="uid://dyf1hekp4agok" path="res://Texture/Aaron/lisä kulma.png" id="4_lisa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fence"]
 texture = ExtResource("1_fence")
@@ -38,8 +40,26 @@ texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6, -8, 5, -8, 5, 7, -6, 7)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kulma"]
+texture = ExtResource("3_kulma")
+texture_region_size = Vector2i(16, 16)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -3, 8, -3, 8, 7, -8, 7)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -3, 8, -3, 8, 7, -8, 7)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lisa_kulma"]
+texture = ExtResource("4_lisa")
+texture_region_size = Vector2i(16, 16)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -3, 8, -3, 8, 7, -8, 7)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -3, 8, -3, 8, 7, -8, 7)
+
 [resource]
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_fence")
 sources/1 = SubResource("TileSetAtlasSource_trees")
 sources/2 = SubResource("TileSetAtlasSource_tomb")
+sources/3 = SubResource("TileSetAtlasSource_kulma")
+sources/4 = SubResource("TileSetAtlasSource_lisa_kulma")
