@@ -55,6 +55,28 @@ func illuminates_point(world_pos: Vector2) -> bool:
 	return angle_diff <= beam_half_angle
 
 
+## Pickup highlight: beam cone OR soft ambient glow around the player.
+func illuminates_for_pickup(world_pos: Vector2) -> bool:
+	if not visible:
+		return false
+	# Beam check with a slightly wider angle so aiming at the item is forgiving.
+	if is_beam_enabled():
+		var to_point := world_pos - global_position
+		var dist := to_point.length()
+		if dist <= beam_range and dist >= 1.0:
+			var angle_diff := absf(angle_difference(global_rotation, to_point.angle()))
+			if angle_diff <= beam_half_angle * 1.35:
+				return true
+	if soft_light == null or not soft_light.enabled:
+		return false
+	var tex_r := 80.0
+	if soft_light.texture != null:
+		tex_r = float(soft_light.texture.get_width()) * 0.5
+	# Generous radius: soft glow looks larger than its hard texture scale.
+	var radius := maxf(70.0, tex_r * soft_light.texture_scale * 2.0)
+	return global_position.distance_to(world_pos) <= radius
+
+
 func _soften_beam_edges() -> void:
 	if beam == null or beam.texture == null or cone_edge_softness <= 0:
 		return

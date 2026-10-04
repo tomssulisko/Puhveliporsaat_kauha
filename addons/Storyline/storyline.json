@@ -301,7 +301,7 @@
 			},
 			{
 				"speech": {
-				"actor": "auttaja",
+				"actor": "pelaaja",
 				"text": [
 				  "Next hit like that will definitely kill me!"
 				]
