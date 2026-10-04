@@ -2,20 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://bxghvffaxdp6l" path="res://Entity/player.tscn" id="1_jte5b"]
 [ext_resource type="Script" uid="uid://cqtgx4ee478jc" path="res://Scene/level_side.gd" id="1_side"]
-[ext_resource type="Texture2D" uid="uid://dah01yu1b16nb" path="res://Texture/Aaron/auto.png" id="2_71r3i"]
-[ext_resource type="Texture2D" uid="uid://c7l5e4p6hid41" path="res://Texture/Aaron/hauta.png" id="3_nwjwq"]
-[ext_resource type="Texture2D" uid="uid://b6jegi6atyua2" path="res://Texture/Aaron/jako avain.png" id="4_67jix"]
-[ext_resource type="Texture2D" uid="uid://6fqweeuioghy" path="res://Texture/Aaron/patteri.png" id="5_f3pwq"]
-[ext_resource type="Texture2D" uid="uid://dk8mi0v3dbq4a" path="res://Texture/Aaron/rengas.png" id="6_ccfm3"]
-[ext_resource type="Texture2D" uid="uid://cw1443bomsn26" path="res://Texture/Aaron/ruoste auto.png" id="7_nquh6"]
-[ext_resource type="Texture2D" uid="uid://dl8c4mtfoktcl" path="res://Texture/Aaron/silmä.png" id="8_vg3ep"]
-[ext_resource type="Texture2D" uid="uid://s0tt3th4x5bj" path="res://Texture/Aaron/taskulamppu.png" id="9_g67xk"]
 [ext_resource type="PackedScene" uid="uid://cc14ll8yy7v3y" path="res://Effects/pimeys.tscn" id="10_pimeys"]
 [ext_resource type="PackedScene" uid="uid://c4xjsuyn8rtay" path="res://Effects/transition_gate.tscn" id="11_gate"]
 [ext_resource type="TileSet" uid="uid://8yq3p5uu7kds" path="res://Texture/Aaron/laattoja_tileset.tres" id="12_tileset"]
 [ext_resource type="TileSet" uid="uid://buinkpvnjivc7" path="res://Texture/Aaron/aita_tileset.tres" id="13_aita"]
 [ext_resource type="TileSet" uid="uid://q3b6n750jwaa" path="res://Texture/Aaron/ruoste_autot_tileset.tres" id="14_ruoste"]
-[ext_resource type="Texture2D" uid="uid://br8lsun2qv3r3" path="res://Scene/Screenshot 2026-10-04 111900.png" id="16_r5jac"]
 
 [node name="Level3" type="Node2D" unique_id=414431185]
 script = ExtResource("1_side")
@@ -39,46 +30,9 @@ position = Vector2(40, 259)
 [node name="pimeys" parent="." unique_id=1384955196 instance=ExtResource("10_pimeys")]
 visible = false
 
-[node name="Auto" type="Sprite2D" parent="." unique_id=1532167112]
-position = Vector2(-143, -20)
-texture = ExtResource("2_71r3i")
-
-[node name="Hauta" type="Sprite2D" parent="." unique_id=1196167941]
-position = Vector2(431, -131)
-texture = ExtResource("3_nwjwq")
-
-[node name="JakoAvain" type="Sprite2D" parent="." unique_id=425563469]
-position = Vector2(982, 256)
-texture = ExtResource("4_67jix")
-
-[node name="Patteri" type="Sprite2D" parent="." unique_id=1432473590]
-position = Vector2(1568, 289)
-texture = ExtResource("5_f3pwq")
-
-[node name="Rengas" type="Sprite2D" parent="." unique_id=326470177]
-position = Vector2(1225, 198)
-texture = ExtResource("6_ccfm3")
-
-[node name="RuosteAuto" type="Sprite2D" parent="." unique_id=1889008255]
-position = Vector2(419, 250)
-texture = ExtResource("7_nquh6")
-
-[node name="Silmä" type="Sprite2D" parent="." unique_id=631144482]
-position = Vector2(1046, 291)
-texture = ExtResource("8_vg3ep")
-
-[node name="Taskulamppu" type="Sprite2D" parent="." unique_id=1141037524]
-position = Vector2(519, 238)
-texture = ExtResource("9_g67xk")
-
 [node name="TransitionToLevel1" parent="." unique_id=218299868 instance=ExtResource("11_gate")]
 position = Vector2(-66, 255)
 rotation = 3.1415927
 target_scene = "res://Scene/level_1.tscn"
 enter_direction = Vector2(-1, 0)
 metadata/_edit_lock_ = true
-
-[node name="Screenshot20261004111900" type="Sprite2D" parent="." unique_id=441588580]
-visible = false
-position = Vector2(485, 262)
-texture = ExtResource("16_r5jac")
