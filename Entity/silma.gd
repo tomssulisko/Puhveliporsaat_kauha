@@ -41,6 +41,10 @@ func _ready() -> void:
 	add_to_group("enemy")
 	collision_layer = 0
 	collision_mask = 0
+	# Above darksumu fog (z=100) so eyes cut through the mist.
+	_eyes.z_index = maxi(_eyes.z_index, 110)
+	_eyes.light_mask = 0
+	_ensure_unshaded(_eyes)
 	_set_eye_alpha(0.0)
 	_body.modulate.a = 0.0
 	_glint_timer = randf_range(glint_interval_min, glint_interval_max)
@@ -48,6 +52,17 @@ func _ready() -> void:
 	if hit_shape != null:
 		hit_shape.radius = hit_radius
 	_hit.body_entered.connect(_on_hit_body_entered)
+
+
+func _ensure_unshaded(sprite: Sprite2D) -> void:
+	var mat := sprite.material as CanvasItemMaterial
+	if mat == null:
+		mat = CanvasItemMaterial.new()
+		sprite.material = mat
+	else:
+		mat = mat.duplicate() as CanvasItemMaterial
+		sprite.material = mat
+	mat.light_mode = CanvasItemMaterial.LIGHT_MODE_UNSHADED
 
 
 func _physics_process(delta: float) -> void:

@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://l6qy7rxcjnku" path="res://Entity/silma.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://bwf4w304bc3ty" path="res://Texture/Aaron/puna_silma.png" id="2_eyes"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_eyes"]
+light_mode = 1
+
 [sub_resource type="Gradient" id="Gradient_body"]
 offsets = PackedFloat32Array(0, 0.55, 1)
 colors = PackedColorArray(0, 0, 0, 0.9, 0, 0, 0, 0.55, 0, 0, 0, 0)
@@ -33,8 +36,10 @@ texture = SubResource("GradientTexture2D_body")
 
 [node name="Eyes" type="Sprite2D" parent="." unique_id=1351174324]
 modulate = Color(1.6, 0.3, 0.2, 0)
+z_index = 110
 light_mask = 0
-z_index = 5
+material = SubResource("CanvasItemMaterial_eyes")
+texture_filter = 0
 texture = ExtResource("2_eyes")
 
 [node name="HitArea" type="Area2D" parent="." unique_id=685710922]
