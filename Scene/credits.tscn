@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://ccnkcr161oba4" path="res://Scene/credits.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://c1yrxyhkglio1" path="res://Texture/pfp/a953a4898b62c70bacc7e3e39ef32d45.webp" id="2_3hbp5"]
-[ext_resource type="Texture2D" uid="uid://b0jgqbxl602qd" path="res://icon.svg" id="3_3rv14"]
 [ext_resource type="Texture2D" uid="uid://bin3phim0jj0h" path="res://Texture/pfp/IMG_0169.jpg" id="3_wofek"]
 [ext_resource type="Texture2D" uid="uid://dah01yu1b16nb" path="res://Texture/Aaron/auto.png" id="4_auto"]
 [ext_resource type="PackedScene" uid="uid://cq6oabq8t53ue" path="res://Effects/headlights.tscn" id="5_lights"]
 [ext_resource type="PackedScene" uid="uid://cc14ll8yy7v3y" path="res://Effects/pimeys.tscn" id="6_pimeys"]
 [ext_resource type="Texture2D" uid="uid://bbywiw0hfk0bx" path="res://Texture/credits/1.jpg" id="8_1tvkg"]
+[ext_resource type="Texture2D" uid="uid://dei05ve28muoy" path="res://Texture/credits/aaron.png" id="8_a4d7a"]
 [ext_resource type="Texture2D" uid="uid://cm1tuseed7l5t" path="res://Texture/credits/Eemeli2.png" id="9_a4d7a"]
 [ext_resource type="SpriteFrames" uid="uid://buuyn3ljy618t" path="res://Texture/credits/pitkatie_scroll.tres" id="10_road"]
 
@@ -122,7 +122,7 @@ theme_override_constants/separation = 10
 [node name="Portrait" type="TextureRect" parent="CreditsUI/Root/Center/Rows/TopRow/3" unique_id=296883028]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture = ExtResource("3_3rv14")
+texture = ExtResource("8_a4d7a")
 expand_mode = 1
 stretch_mode = 5
 
