@@ -3,17 +3,22 @@ extends CharacterBody2D
 enum State { HANGING, ALERT_DELAY, SCREECH_WAIT, FLYING }
 
 @export var sense_radius: float = 18.0
+@export var hit_radius: float = 12.0
 @export var alert_delay: float = 0.25
 @export var screech_wait: float = 0.5
 @export var fly_speed: float = 160.0
 @export var flap_sound_interval: float = 0.35
+@export var despawn_margin: float = 48.0
 
 @onready var _anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var _sense: Area2D = $SenseArea
+@onready var _hit: Area2D = $HitArea
 
 var _state: State = State.HANGING
 var _fly_dir: Vector2 = Vector2.RIGHT
 var _flap_timer: float = 0.0
+var _level_rect: Rect2 = Rect2()
+var _fly_origin: Vector2 = Vector2.ZERO
 
 
 func _ready() -> void:
@@ -21,10 +26,14 @@ func _ready() -> void:
 	collision_layer = 0
 	collision_mask = 0
 	_anim.play("hang")
-	# Keep sense shape in sync with export.
-	var shape := _sense.get_node("CollisionShape2D").shape as CircleShape2D
-	if shape != null:
-		shape.radius = sense_radius
+	_level_rect = _resolve_level_rect()
+	var sense_shape := _sense.get_node("CollisionShape2D").shape as CircleShape2D
+	if sense_shape != null:
+		sense_shape.radius = sense_radius
+	var hit_shape := _hit.get_node("CollisionShape2D").shape as CircleShape2D
+	if hit_shape != null:
+		hit_shape.radius = hit_radius
+	_hit.body_entered.connect(_on_hit_body_entered)
 
 
 func _physics_process(delta: float) -> void:
@@ -35,6 +44,10 @@ func _physics_process(delta: float) -> void:
 		State.FLYING:
 			velocity = _fly_dir * fly_speed
 			move_and_slide()
+			_check_player_overlap()
+			if _is_outside_level():
+				queue_free()
+				return
 			_flap_timer -= delta
 			if _flap_timer <= 0.0:
 				_flap_timer = flap_sound_interval
@@ -50,7 +63,6 @@ func _is_lit() -> bool:
 	var flashlight := player.get_node_or_null("Flashlight")
 	if flashlight == null or not flashlight.has_method("illuminates_point"):
 		return false
-	# Check bat body + a couple of sense offsets so thin cone still hits.
 	if flashlight.illuminates_point(global_position):
 		return true
 	if flashlight.illuminates_point(_sense.global_position):
@@ -82,5 +94,46 @@ func _begin_alert() -> void:
 
 	_state = State.FLYING
 	_flap_timer = 0.0
-	# Face flight direction roughly (flip if going left).
+	_fly_origin = global_position
 	_anim.flip_h = _fly_dir.x < 0.0
+
+
+func _on_hit_body_entered(body: Node2D) -> void:
+	if _state != State.FLYING:
+		return
+	if body.is_in_group("player"):
+		_kill_player()
+
+
+func _check_player_overlap() -> void:
+	var player := get_tree().get_first_node_in_group("player") as Node2D
+	if player == null:
+		return
+	if global_position.distance_to(player.global_position) <= hit_radius + 10.0:
+		_kill_player()
+
+
+func _kill_player() -> void:
+	var app := get_node_or_null("/root/App")
+	if app != null and app.has_method("trigger_player_death"):
+		app.trigger_player_death()
+
+
+func _is_outside_level() -> bool:
+	if _level_rect.size.x <= 0.0 or _level_rect.size.y <= 0.0:
+		# Fallback if no tilemap: despawn after flying far from takeoff.
+		return global_position.distance_to(_fly_origin) > 700.0
+	# Small margin so it clears the fog edge before vanishing.
+	return not _level_rect.grow(despawn_margin).has_point(global_position)
+
+
+func _resolve_level_rect() -> Rect2:
+	var scene := get_tree().current_scene
+	if scene == null:
+		return Rect2()
+	var tilemap := scene.get_node_or_null("TileMapLayer") as TileMapLayer
+	if tilemap == null or tilemap.tile_set == null:
+		return Rect2()
+	var used := tilemap.get_used_rect()
+	var tile_size := Vector2(tilemap.tile_set.tile_size)
+	return Rect2(Vector2(used.position) * tile_size, Vector2(used.size) * tile_size)

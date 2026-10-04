@@ -36,13 +36,13 @@ func on_scene_about_to_change() -> void:
 		am.stop_ambient()
 
 
-func play_storyline_event(event):
+func play_storyline_event(event, repeatable: bool = false):
 	print("DEBUG: play_storyline_event called with: ", event)
 	
 	if not _ensure_storyline_control():
 		return false
 	
-	if events_played.has(event):
+	if not repeatable and events_played.has(event):
 		print("DEBUG: Event already played: ", event)
 		return false
 		
@@ -57,7 +57,8 @@ func play_storyline_event(event):
 		else:
 			_paused_tree_for_storyline = false
 		_storyline_active = true
-		events_played.append(event)
+		if not repeatable and not events_played.has(event):
+			events_played.append(event)
 		for entry in story_data["speeches"]:
 			#print(entry.speech.actor)
 			var texts = entry.speech.text

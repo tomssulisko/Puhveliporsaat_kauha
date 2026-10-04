@@ -31,6 +31,10 @@ const SFX_LIBRARY := {
 	"lepakko_lento": [
 		"res://Audio/lepakko_lentää.wav",
 	],
+	"kuolema": [
+		"res://Audio/kuolema2.mp3",
+	],
+
 
 	"silmat": [
 		"res://Audio/silmät1.wav",
