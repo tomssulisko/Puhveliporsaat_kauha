@@ -7,11 +7,17 @@ extends Node2D
 @export var arrival_walk_seconds: float = 0.95
 @export var arrival_start_offset: float = 45.0
 @export var gate_fade_seconds: float = 0.8
+## Optional one-shot SFX id played at random intervals (e.g. "auto_narina").
+@export var random_sfx_id: String = ""
+@export var random_sfx_interval_min: float = 3.0
+@export var random_sfx_interval_max: float = 7.0
 
 const STATUE_INTACT := preload("res://Texture/Aaron/patsas.png")
 const STATUE_HEADLESS := preload("res://Texture/Aaron/patsas päätön.png")
 
 @onready var player: CharacterBody2D = $Player
+
+var _random_sfx_timer: float = 0.0
 
 
 func _ready() -> void:
@@ -23,7 +29,26 @@ func _ready() -> void:
 			g.set_gate_enabled(false)
 	if not ambient_id.is_empty():
 		AudioManager.play_ambient(ambient_id, 0.0, true)
+	_reset_random_sfx_timer()
 	await _play_arrival_from_gate()
+
+
+func _process(delta: float) -> void:
+	if random_sfx_id.is_empty():
+		return
+	if get_tree().paused:
+		return
+	_random_sfx_timer -= delta
+	if _random_sfx_timer > 0.0:
+		return
+	AudioManager.play_sfx(random_sfx_id)
+	_reset_random_sfx_timer()
+
+
+func _reset_random_sfx_timer() -> void:
+	var lo := minf(random_sfx_interval_min, random_sfx_interval_max)
+	var hi := maxf(random_sfx_interval_min, random_sfx_interval_max)
+	_random_sfx_timer = randf_range(lo, hi)
 
 
 func _ensure_storyline_canvas() -> void:

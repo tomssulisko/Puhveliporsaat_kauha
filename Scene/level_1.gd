@@ -2,7 +2,7 @@ extends Node2D
 
 const CAR_START := Vector2(-120, 587)
 const CAR_STOP := Vector2(220, 587)
-const CAR_EXIT := Vector2(-280, 587)
+const CAR_EXIT := Vector2(720, 587)
 ## Keep spawn clear of the car dropoff so return dialogue cannot fire on load.
 const PLAYER_EXIT := Vector2(340, 587)
 const INTRO_DRIVE_SECONDS := 2.8
@@ -59,6 +59,7 @@ func _play_car_intro() -> void:
 	auto.global_position = CAR_START
 	player.global_position = CAR_START
 	_set_headlights(true)
+	AudioManager.play_sfx("auto_ajo")
 
 	var tween := create_tween()
 	tween.set_parallel(true)
@@ -164,13 +165,7 @@ func play_ending() -> void:
 	_set_headlights(true)
 	await get_tree().create_timer(0.45).timeout
 
-	var sprite := auto.get_node_or_null("Sprite2D") as Sprite2D
-	if sprite != null:
-		sprite.flip_h = true
-	if headlights != null:
-		headlights.scale.x = -absf(headlights.scale.x)
-		headlights.position.x = -absf(headlights.position.x)
-
+	AudioManager.play_sfx("auto_ajo")
 	var drive := create_tween()
 	drive.tween_property(auto, "global_position", CAR_EXIT, ENDING_DRIVE_SECONDS) \
 		.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)

@@ -58,15 +58,20 @@ const SFX_LIBRARY := {
 	"reitin_avaus": [
 		"res://Audio/reitin_avaus.wav",
 	],
+	"auto_ajo": [
+		"res://Audio/auto_parempi.wav",
+	],
+	"auto_narina": [
+		"res://Audio/nariseva_auto1.wav",
+		"res://Audio/nariseva_auto2.wav",
+		"res://Audio/nariseva_auto3.wav",
+	],
 }
 
 const AMBIENT_LIBRARY := {
 	"sirkat": "res://Audio/sirkat2.wav",
 	"tuuli": "res://Audio/tuuli.wav",
 	"linnut": "res://Audio/linnut_uusi.wav",
-	# "naakat": "res://Audio/naakat.wav",
-	# "narina": "res://Audio/narina.wav",
-	# "auto_ajo": "res://Audio/auto_ajo.wav",
 }
 
 var masterVolume: float = 100.0
