@@ -17,6 +17,9 @@ extends Node2D
 @onready var _area: Area2D = $ExitArea
 
 var _busy: bool = false
+var _light_mul: float = 1.0
+var _pulse_alpha: float = 0.2
+var _fade_tween: Tween
 
 
 func _ready() -> void:
@@ -107,6 +110,27 @@ func set_gate_enabled(enabled: bool) -> void:
 		_area.monitoring = enabled
 
 
+## Open/close the portal: monitoring + glow fade.
+func set_gate_open(open: bool, animate: bool = true, fade_seconds: float = 0.75) -> void:
+	_busy = not open
+	if _area != null:
+		_area.monitoring = open
+	var target := 1.0 if open else 0.0
+	if not animate or is_equal_approx(_light_mul, target):
+		_set_light_mul(target)
+		return
+	if _fade_tween != null and _fade_tween.is_valid():
+		_fade_tween.kill()
+	_fade_tween = create_tween()
+	_fade_tween.tween_method(_set_light_mul, _light_mul, target, fade_seconds) \
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
+
+func _set_light_mul(mul: float) -> void:
+	_light_mul = clampf(mul, 0.0, 1.0)
+	_apply_pulse_visual()
+
+
 func _offset_trigger_into_map() -> void:
 	var shape_node := _area.get_node_or_null("CollisionShape2D") as CollisionShape2D
 	if shape_node == null:
@@ -126,9 +150,14 @@ func _start_pulse() -> void:
 
 
 func _set_pulse(alpha: float) -> void:
-	var t := inverse_lerp(pulse_alpha_min, pulse_alpha_max, alpha)
-	_glow_sprite.modulate.a = alpha
-	_core_sprite.modulate.a = lerpf(0.12, 0.24, t)
+	_pulse_alpha = alpha
+	_apply_pulse_visual()
+
+
+func _apply_pulse_visual() -> void:
+	var t := inverse_lerp(pulse_alpha_min, pulse_alpha_max, _pulse_alpha)
+	_glow_sprite.modulate.a = _pulse_alpha * _light_mul
+	_core_sprite.modulate.a = lerpf(0.12, 0.24, t) * _light_mul
 
 
 func _on_body_entered(body: Node2D) -> void:

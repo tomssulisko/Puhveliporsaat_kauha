@@ -12,8 +12,12 @@ enum State { HANGING, ALERT_DELAY, SCREECH_WAIT, FLYING }
 @export var eye_fade_in: float = 0.12
 @export var eye_fade_out: float = 0.08
 @export var trail_fade: float = 0.22
-@export var trail_start_alpha: float = 0.55
-@export var trail_interval: float = 0.08
+@export var trail_start_alpha: float = 0.65
+## Distance between trail ghosts while flying (same idea as silmä).
+@export var trail_spacing: float = 8.0
+## Fallback spawn rate while hanging alert (not moving).
+@export var trail_idle_interval: float = 0.05
+@export var trail_texture: Texture2D = preload("res://Texture/Aaron/kelta_silmä.png")
 
 @onready var _anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var _eyes: Sprite2D = $Eyes
@@ -24,6 +28,7 @@ var _state: State = State.HANGING
 var _fly_dir: Vector2 = Vector2.RIGHT
 var _flap_timer: float = 0.0
 var _trail_timer: float = 0.0
+var _trail_accum: float = 0.0
 var _level_rect: Rect2 = Rect2()
 var _fly_origin: Vector2 = Vector2.ZERO
 var _eye_alpha: float = 0.0
@@ -57,10 +62,11 @@ func _physics_process(delta: float) -> void:
 				_begin_alert()
 		State.ALERT_DELAY, State.SCREECH_WAIT:
 			velocity = Vector2.ZERO
-			_update_alert_trail(delta)
+			_update_trail(delta)
 		State.FLYING:
 			velocity = _fly_dir * fly_speed
 			move_and_slide()
+			_update_trail(delta)
 			_check_player_overlap()
 			if _is_outside_level():
 				queue_free()
@@ -111,13 +117,17 @@ func _begin_alert() -> void:
 	_hide_alert_eyes()
 	_state = State.FLYING
 	_flap_timer = 0.0
+	_trail_timer = 0.0
+	_trail_accum = 0.0
 	_fly_origin = global_position
 	_anim.flip_h = _fly_dir.x < 0.0
+	_spawn_trail()
 
 
 func _show_alert_eyes() -> void:
 	_kill_eye_tween()
 	_trail_timer = 0.0
+	_trail_accum = 0.0
 	_eye_tween = create_tween()
 	_eye_tween.tween_method(_set_eye_alpha, _eye_alpha, 1.0, eye_fade_in)
 	_spawn_trail()
@@ -129,32 +139,40 @@ func _hide_alert_eyes() -> void:
 	_eye_tween.tween_method(_set_eye_alpha, _eye_alpha, 0.0, eye_fade_out)
 
 
-func _update_alert_trail(delta: float) -> void:
-	if _eye_alpha < 0.2:
+func _update_trail(delta: float) -> void:
+	var moved := velocity.length() * delta
+	if moved > 0.01:
+		_trail_accum += moved
+		while _trail_accum >= trail_spacing:
+			_trail_accum -= trail_spacing
+			_spawn_trail()
 		return
 	_trail_timer -= delta
 	if _trail_timer > 0.0:
 		return
-	_trail_timer = trail_interval
+	_trail_timer = trail_idle_interval
 	_spawn_trail()
 
 
 func _spawn_trail() -> void:
-	if _eyes == null or _eyes.texture == null:
+	var tex: Texture2D = trail_texture
+	if tex == null and _eyes != null:
+		tex = _eyes.texture
+	if tex == null:
 		return
 	var ghost := Sprite2D.new()
-	ghost.texture = _eyes.texture
-	ghost.texture_filter = _eyes.texture_filter
-	ghost.scale = _eyes.scale
-	ghost.z_index = _eyes.z_index
+	ghost.texture = tex
+	ghost.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	ghost.scale = _eyes.scale if _eyes != null else Vector2.ONE
+	ghost.z_index = 110
 	ghost.light_mask = 0
 	var mat := CanvasItemMaterial.new()
 	mat.light_mode = CanvasItemMaterial.LIGHT_MODE_UNSHADED
 	ghost.material = mat
-	ghost.global_position = _eyes.global_position
-	var c := _eyes.modulate
-	c.a = trail_start_alpha * _eye_alpha
-	ghost.modulate = c
+	ghost.global_position = global_position
+	if _eyes != null:
+		ghost.global_position = _eyes.global_position
+	ghost.modulate = Color(1, 1, 1, trail_start_alpha)
 	var parent := get_parent()
 	if parent == null:
 		ghost.queue_free()

@@ -8,6 +8,7 @@ enum State { IDLE, NOTICE_DELAY, FOLLOWING }
 @export var follow_duration: float = 3.5
 @export var notice_delay: float = 0.55
 @export var step_distance: float = 22.0
+@export var hit_radius: float = 14.0
 @export var move_noise_threshold: float = 8.0
 @export var anim_fps: float = 6.0
 
@@ -66,11 +67,28 @@ func _process_follow(delta: float) -> void:
 		velocity = Vector2.ZERO
 		_set_idle_pose()
 	move_and_slide()
+	_check_player_hit()
 
 	_step_accum += velocity.length() * delta
 	if _step_accum >= step_distance:
 		_step_accum = 0.0
 		AudioManager.play_sfx_at("luuranko", global_position)
+
+
+func _check_player_hit() -> void:
+	if _state != State.FOLLOWING:
+		return
+	var player := _player()
+	if player == null:
+		return
+	if global_position.distance_to(player.global_position) <= hit_radius:
+		_kill_player()
+
+
+func _kill_player() -> void:
+	var app := get_node_or_null("/root/App")
+	if app != null and app.has_method("trigger_player_death"):
+		app.trigger_player_death()
 
 
 func _play_walk(dir: Vector2) -> void:

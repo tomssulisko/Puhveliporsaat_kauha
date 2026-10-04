@@ -2,12 +2,16 @@ extends CharacterBody2D
 
 enum State { IDLE, CHASING, HIDING }
 
-@export var detect_radius: float = 130.0
-@export var reactivate_radius: float = 220.0
+@export var detect_radius: float = 200.0
+@export var reactivate_radius: float = 260.0
 @export var hit_radius: float = 14.0
-@export var chase_speed_start: float = 55.0
+@export var chase_speed_start: float = 20.0
 @export var chase_speed_max: float = 110.0
-@export var chase_accel: float = 28.0
+## Acceleration during the first slow seconds of a chase.
+@export var chase_accel_slow: float = 10.0
+## Acceleration after the wind-up, up to chase_speed_max.
+@export var chase_accel: float = 70.0
+@export var chase_windup: float = 0.85
 @export var growl_interval_min: float = 2.8
 @export var growl_interval_max: float = 5.5
 @export var glint_interval_min: float = 2.5
@@ -34,6 +38,7 @@ var _growl_timer: float = 0.0
 var _step_accum: float = 0.0
 var _trail_accum: float = 0.0
 var _current_speed: float = 0.0
+var _chase_time: float = 0.0
 var _hiding_locked: bool = false
 
 
@@ -106,7 +111,9 @@ func _process_chase(delta: float) -> void:
 		velocity = Vector2.ZERO
 		return
 
-	_current_speed = minf(_current_speed + chase_accel * delta, chase_speed_max)
+	_chase_time += delta
+	var accel := chase_accel_slow if _chase_time < chase_windup else chase_accel
+	_current_speed = minf(_current_speed + accel * delta, chase_speed_max)
 	var dir := (player.global_position - global_position)
 	if dir.length_squared() > 0.001:
 		dir = dir.normalized()
@@ -152,6 +159,7 @@ func _begin_chase() -> void:
 	_kill_glint_tween()
 	_state = State.CHASING
 	_current_speed = chase_speed_start
+	_chase_time = 0.0
 	_step_accum = 0.0
 	_trail_accum = 0.0
 	_growl_timer = randf_range(growl_interval_min, growl_interval_max)
