@@ -60,6 +60,7 @@ const SFX_LIBRARY := {
 const AMBIENT_LIBRARY := {
 	"sirkat": "res://Audio/sirkatsoittaa.wav",
 	"tuuli": "res://Audio/tuuli.wav",
+	"linnut": "res://Audio/linnut_uusi.wav",
 	# "naakat": "res://Audio/naakat.wav",
 	# "narina": "res://Audio/narina.wav",
 	# "auto_ajo": "res://Audio/auto_ajo.wav",
