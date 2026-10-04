@@ -1,10 +1,137 @@
 [gd_scene format=3 uid="uid://brl1qrioqvjo8"]
 
 [ext_resource type="Texture2D" uid="uid://d1djdcdkahfeo" path="res://Texture/new-behind-the-scenes-look-at-robert-bobroczkyi-as-captain-v0-qrpc7g6bpfdh1.webp" id="1_7whrh"]
+[ext_resource type="Texture2D" uid="uid://c1yrxyhkglio1" path="res://Texture/pfp/a953a4898b62c70bacc7e3e39ef32d45.webp" id="2_3hbp5"]
+[ext_resource type="Texture2D" uid="uid://b0jgqbxl602qd" path="res://icon.svg" id="3_3rv14"]
 
 [node name="Credits" type="Node2D" unique_id=1269418400]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1122239184]
+visible = false
 position = Vector2(541, 325)
 scale = Vector2(0.48425925, 0.48425925)
 texture = ExtResource("1_7whrh")
+
+[node name="Move" type="Control" parent="." unique_id=736994099]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 120.94638
+offset_top = 118.91937
+offset_right = 1087.9464
+offset_bottom = 654.9194
+
+[node name="top" type="Control" parent="Move" unique_id=286689777]
+anchors_preset = 0
+offset_left = 69.05362
+offset_top = 1.0806274
+offset_right = 109.05362
+offset_bottom = 41.080627
+
+[node name="1" type="Control" parent="Move/top" unique_id=699565998]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Move/top/1" unique_id=945080670]
+position = Vector2(42, 41)
+texture = ExtResource("2_3hbp5")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Move/top/1" unique_id=810146815]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 1.0
+offset_right = 220.0
+offset_bottom = 82.0
+bbcode_enabled = true
+text = "[center][b]Tomi[/b][/center]
+sample text"
+
+[node name="2" type="Control" parent="Move/top" unique_id=173311497]
+anchors_preset = 0
+offset_left = 200.0
+offset_right = 240.0
+offset_bottom = 40.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Move/top/2" unique_id=1981009172]
+position = Vector2(43, 41.500004)
+scale = Vector2(0.640625, 0.6328125)
+texture = ExtResource("3_3rv14")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Move/top/2" unique_id=881244790]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 1.0
+offset_right = 220.0
+offset_bottom = 82.0
+bbcode_enabled = true
+text = "[center][b]Johannes[/b][/center]
+sample text"
+
+[node name="3" type="Control" parent="Move/top" unique_id=1264781490]
+anchors_preset = 0
+offset_left = 400.0
+offset_right = 440.0
+offset_bottom = 40.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Move/top/3" unique_id=1962776864]
+position = Vector2(43, 41.500004)
+scale = Vector2(0.640625, 0.6328125)
+texture = ExtResource("3_3rv14")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Move/top/3" unique_id=479200011]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 1.0
+offset_right = 220.0
+offset_bottom = 82.0
+bbcode_enabled = true
+text = "[center][b]Aaron[/b][/center]
+sample text"
+
+[node name="bot" type="Control" parent="Move" unique_id=280191763]
+anchors_preset = 0
+offset_left = 169.05362
+offset_top = 201.08063
+offset_right = 209.05362
+offset_bottom = 241.08063
+
+[node name="1" type="Control" parent="Move/bot" unique_id=1123934392]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Move/bot/1" unique_id=831130122]
+position = Vector2(42, 41)
+scale = Vector2(0.640625, 0.6328125)
+texture = ExtResource("3_3rv14")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Move/bot/1" unique_id=2034183756]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 1.0
+offset_right = 220.0
+offset_bottom = 82.0
+bbcode_enabled = true
+text = "[center][b]Tinja[/b][/center]
+sample text"
+
+[node name="2" type="Control" parent="Move/bot" unique_id=1114915663]
+anchors_preset = 0
+offset_left = 200.0
+offset_right = 240.0
+offset_bottom = 40.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Move/bot/2" unique_id=1815579157]
+position = Vector2(43, 41.500004)
+scale = Vector2(0.640625, 0.6328125)
+texture = ExtResource("3_3rv14")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Move/bot/2" unique_id=1579950116]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 1.0
+offset_right = 220.0
+offset_bottom = 82.0
+bbcode_enabled = true
+text = "[center][b]Eemeli[/b][/center]
+sample text"
