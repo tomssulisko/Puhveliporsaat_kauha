@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://b3kslbrosd441" path="res://Entity/silma.tscn" id="17_silma"]
 [ext_resource type="PackedScene" uid="uid://ckpdhi6m88duq" path="res://Entity/luuranko.tscn" id="18_luuranko"]
 [ext_resource type="PackedScene" uid="uid://boif1d6788duq" path="res://Entity/kynttila.tscn" id="19_kynttila"]
-[ext_resource type="PackedScene" uid="uid://cvihreasilmatsp1" path="res://Effects/vihrea_silmat_spawner.tscn" id="20_vihreat"]
+[ext_resource type="PackedScene" uid="uid://sehbt0rfd6wi" path="res://Effects/vihrea_silmat_spawner.tscn" id="20_vihreat"]
 
 [node name="Level1" type="Node2D" unique_id=1647334681]
 script = ExtResource("1_5exfe")
@@ -80,7 +80,7 @@ position = Vector2(836, 46)
 position = Vector2(319, 121)
 
 [node name="Luuranko" parent="." unique_id=314760940 instance=ExtResource("18_luuranko")]
-position = Vector2(480, 520)
+position = Vector2(528, 285)
 
 [node name="Kynttila" parent="." unique_id=1726867006 instance=ExtResource("19_kynttila")]
 position = Vector2(689, 356)
@@ -109,5 +109,4 @@ position = Vector2(387, 348)
 [node name="Kynttila3" parent="." unique_id=2143017229 instance=ExtResource("19_kynttila")]
 position = Vector2(1076, 271)
 
-[node name="VihreaSilmatSpawner" parent="." instance=ExtResource("20_vihreat")]
-tilemap_path = NodePath("../TileMapLayer")
+[node name="VihreaSilmatSpawner" parent="." unique_id=2020822645 instance=ExtResource("20_vihreat")]
