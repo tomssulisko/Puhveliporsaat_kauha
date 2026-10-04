@@ -33,25 +33,8 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("7_e4")
 }],
-"loop": true,
+"loop": 1,
 "name": &"eteen",
-"speed": 8.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("8_t1")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_t2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_t3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_t4")
-}],
-"loop": true,
-"name": &"takaa",
 "speed": 8.0
 }, {
 "frames": [{
@@ -67,8 +50,25 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("15_o4")
 }],
-"loop": true,
+"loop": 1,
 "name": &"oikee",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_t1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_t2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_t3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_t4")
+}],
+"loop": 1,
+"name": &"takaa",
 "speed": 8.0
 }]
 
@@ -83,10 +83,8 @@ position_smoothing_enabled = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1901683300]
 shape = SubResource("CircleShape2D_0fxvp")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-texture_filter = 0
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1279253933]
 sprite_frames = SubResource("SpriteFrames_player")
 animation = &"eteen"
-frame = 0
 
 [node name="CarriedItems" type="Node2D" parent="." unique_id=371499500]

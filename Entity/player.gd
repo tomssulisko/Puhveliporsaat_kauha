@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const WALK_SPEED := 100.0
-const SPRINT_MULTIPLIER := 2.0
+const SPRINT_MULTIPLIER := 1.5
 ## Held against the torso / in the lap, not floating off to the side.
 const CARRY_OFFSET := Vector2(0, -2)
 const CARRY_STACK_STEP := Vector2(0, -5)
