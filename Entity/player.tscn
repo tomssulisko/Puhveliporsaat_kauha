@@ -1,11 +1,76 @@
 [gd_scene format=3 uid="uid://bxghvffaxdp6l"]
 
 [ext_resource type="Script" uid="uid://12n46uq060o2" path="res://Entity/player.gd" id="1_g647p"]
-[ext_resource type="Texture2D" uid="uid://dnermmhfk8hby" path="res://Texture/pelaaja/playeri.png" id="2_ta3ek"]
 [ext_resource type="PackedScene" uid="uid://d0w4ujqcbnaea" path="res://Effects/flashlight.tscn" id="3_flashlight"]
+[ext_resource type="Texture2D" uid="uid://l7q15d823l8l" path="res://Texture/pelaaja/playeri_kavely1.png" id="4_e1"]
+[ext_resource type="Texture2D" uid="uid://p76300w4rp2o" path="res://Texture/pelaaja/playeri_kavely2.png" id="5_e2"]
+[ext_resource type="Texture2D" uid="uid://nn14en4ovjq5" path="res://Texture/pelaaja/playeri_kavely3.png" id="6_e3"]
+[ext_resource type="Texture2D" uid="uid://dmsuqpso2gkdb" path="res://Texture/pelaaja/playeri_kavely4.png" id="7_e4"]
+[ext_resource type="Texture2D" uid="uid://bebeyr873raey" path="res://Texture/pelaaja/playeri taakse1.png" id="8_t1"]
+[ext_resource type="Texture2D" uid="uid://dvuqyflivjof" path="res://Texture/pelaaja/playeri taakse2.png" id="9_t2"]
+[ext_resource type="Texture2D" uid="uid://d4tqmtifkxqg" path="res://Texture/pelaaja/playeri taakse3.png" id="10_t3"]
+[ext_resource type="Texture2D" uid="uid://cmvmwq2xmmqby" path="res://Texture/pelaaja/playeri taakse4.png" id="11_t4"]
+[ext_resource type="Texture2D" uid="uid://cw2gd6sm7qven" path="res://Texture/pelaaja/playeri oikee1.png" id="12_o1"]
+[ext_resource type="Texture2D" uid="uid://m2vohbcamytb" path="res://Texture/pelaaja/playeri oikee2.png" id="13_o2"]
+[ext_resource type="Texture2D" uid="uid://cekw0jugr4bck" path="res://Texture/pelaaja/playeri oikee3.png" id="14_o3"]
+[ext_resource type="Texture2D" uid="uid://c5bfe2p2tosb0" path="res://Texture/pelaaja/playeri oikee4.png" id="15_o4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0fxvp"]
-radius = 16.03122
+radius = 5.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_player"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_e1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_e2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_e3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_e4")
+}],
+"loop": true,
+"name": &"eteen",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_t1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_t2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_t3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_t4")
+}],
+"loop": true,
+"name": &"takaa",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_o1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_o2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_o3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_o4")
+}],
+"loop": true,
+"name": &"oikee",
+"speed": 8.0
+}]
 
 [node name="Player" type="CharacterBody2D" unique_id=1640559784]
 script = ExtResource("1_g647p")
@@ -18,7 +83,10 @@ position_smoothing_enabled = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1901683300]
 shape = SubResource("CircleShape2D_0fxvp")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2082642725]
-texture = ExtResource("2_ta3ek")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_player")
+animation = &"eteen"
+frame = 0
 
-[node name="CarriedItems" type="Node2D" parent="."]
+[node name="CarriedItems" type="Node2D" parent="." unique_id=371499500]

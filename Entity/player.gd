@@ -4,16 +4,26 @@ const WALK_SPEED := 100.0
 const SPRINT_MULTIPLIER := 2.0
 const CARRY_OFFSET := Vector2(14, -6)
 const CARRY_STACK_STEP := Vector2(10, -4)
+const MOVE_ANIM_THRESHOLD := 1.0
+
+@export var anim_fps: float = 8.0
 
 var speed: float = WALK_SPEED
 var input_direction := Vector2.ZERO
 var control_enabled: bool = true
 
 var _carry_root: Node2D
+var _facing: StringName = &"eteen"
+
+@onready var _anim: AnimatedSprite2D = $AnimatedSprite2D
 
 
 func _ready() -> void:
 	add_to_group("player")
+	if _anim.sprite_frames != null:
+		for anim_name in _anim.sprite_frames.get_animation_names():
+			_anim.sprite_frames.set_animation_speed(anim_name, anim_fps)
+	_set_idle_pose()
 	_ensure_carry_root()
 	call_deferred("_sync_carry_from_app")
 
@@ -23,6 +33,7 @@ func set_control_enabled(enabled: bool) -> void:
 	if not enabled:
 		velocity = Vector2.ZERO
 		input_direction = Vector2.ZERO
+		_set_idle_pose()
 
 
 func get_input() -> void:
@@ -40,6 +51,37 @@ func get_input() -> void:
 func _physics_process(_delta: float) -> void:
 	get_input()
 	move_and_slide()
+	_update_walk_animation()
+
+
+func _update_walk_animation() -> void:
+	if velocity.length_squared() > MOVE_ANIM_THRESHOLD * MOVE_ANIM_THRESHOLD:
+		_play_walk(velocity)
+	else:
+		_set_idle_pose()
+
+
+func _play_walk(dir: Vector2) -> void:
+	_facing = _dir_to_anim(dir)
+	_anim.flip_h = (_facing == &"vasen")
+	var anim_name := &"oikee" if _facing == &"vasen" else _facing
+	if _anim.animation != anim_name or not _anim.is_playing():
+		_anim.play(anim_name)
+
+
+func _set_idle_pose() -> void:
+	_anim.flip_h = (_facing == &"vasen")
+	var anim_name := &"oikee" if _facing == &"vasen" else _facing
+	if _anim.animation != anim_name:
+		_anim.animation = anim_name
+	_anim.pause()
+	_anim.frame = 0
+
+
+func _dir_to_anim(dir: Vector2) -> StringName:
+	if absf(dir.x) > absf(dir.y):
+		return &"oikee" if dir.x > 0.0 else &"vasen"
+	return &"eteen" if dir.y > 0.0 else &"takaa"
 
 
 func sync_carried_items(items: Array) -> void:
