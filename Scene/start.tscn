@@ -1,24 +1,39 @@
 [gd_scene format=3 uid="uid://dj2yvcbo0v12"]
 
 [ext_resource type="Script" uid="uid://b2r3ckjxt40o" path="res://Scene/start.gd" id="1_mhiop"]
-[ext_resource type="Texture2D" uid="uid://xo0q4w8y4ist" path="res://Texture/Volume_01.webp" id="2_tvf0n"]
+[ext_resource type="Texture2D" uid="uid://c4ssf8s5nttlo" path="res://Texture/Aaron/menu1.png" id="2_4j8re"]
+[ext_resource type="Texture2D" uid="uid://cdi4g575ma1u6" path="res://Texture/Aaron/start.png" id="3_44wi4"]
+[ext_resource type="Texture2D" uid="uid://bxyhakl4g41x0" path="res://Texture/Aaron/credits.png" id="4_v5eq2"]
 
 [node name="Start" type="Node2D" unique_id=374401242]
 script = ExtResource("1_mhiop")
 
+[node name="Menu1" type="Sprite2D" parent="." unique_id=939658634]
+position = Vector2(466, 282)
+texture = ExtResource("2_4j8re")
+
 [node name="TextureButton" type="TextureButton" parent="." unique_id=1369092316]
-offset_left = 169.0
-offset_top = 104.0
-offset_right = 349.0
-offset_bottom = 388.0
-texture_normal = ExtResource("2_tvf0n")
+offset_left = 103.0
+offset_top = 300.0
+offset_right = 164.0
+offset_bottom = 330.0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("3_44wi4")
+
+[node name="TextureButton2" type="TextureButton" parent="." unique_id=504240518]
+offset_left = 330.0
+offset_top = 294.0
+offset_right = 391.0
+offset_bottom = 324.0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("4_v5eq2")
 
 [node name="Button" type="Button" parent="." unique_id=1655647433]
-offset_left = 810.0
-offset_top = 237.0
-offset_right = 1020.0
-offset_bottom = 339.0
-text = "Credits"
+offset_left = 330.0
+offset_top = 294.0
+offset_right = 510.0
+offset_bottom = 384.0
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="TextureButton2" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
