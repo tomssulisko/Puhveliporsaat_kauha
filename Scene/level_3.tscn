@@ -4,17 +4,14 @@
 [ext_resource type="Script" uid="uid://cqtgx4ee478jc" path="res://Scene/level_side.gd" id="1_side"]
 [ext_resource type="PackedScene" uid="uid://cc14ll8yy7v3y" path="res://Effects/pimeys.tscn" id="10_pimeys"]
 [ext_resource type="PackedScene" uid="uid://c4xjsuyn8rtay" path="res://Effects/transition_gate.tscn" id="11_gate"]
-[ext_resource type="Script" uid="uid://csuju8hvbovy6" path="res://Effects/darksumu_border.gd" id="15_sumuborder"]
-[ext_resource type="PackedScene" uid="uid://b8xu8xbs4hfno" path="res://Effects/darksumu.tscn" id="16_darksumu"]
-[ext_resource type="Script" uid="uid://ibbabrr1kfj5" path="res://Effects/level_outside_mask.gd" id="17_outmask"]
-[ext_resource type="PackedScene" uid="uid://cvihreasilmatsp1" path="res://Effects/vihrea_silmat_spawner.tscn" id="18_vihreat"]
-
+[ext_resource type="PackedScene" uid="uid://cn28rmva4xm87" path="res://Entity/lepakko.tscn" id="12_qh52m"]
 [ext_resource type="TileSet" uid="uid://8yq3p5uu7kds" path="res://Texture/Aaron/laattoja_tileset.tres" id="12_tileset"]
 [ext_resource type="TileSet" uid="uid://buinkpvnjivc7" path="res://Texture/Aaron/aita_tileset.tres" id="13_aita"]
 [ext_resource type="TileSet" uid="uid://q3b6n750jwaa" path="res://Texture/Aaron/ruoste_autot_tileset.tres" id="14_ruoste"]
 [ext_resource type="Script" uid="uid://csuju8hvbovy6" path="res://Effects/darksumu_border.gd" id="15_sumuborder"]
 [ext_resource type="PackedScene" uid="uid://b8xu8xbs4hfno" path="res://Effects/darksumu.tscn" id="16_darksumu"]
 [ext_resource type="Script" uid="uid://ibbabrr1kfj5" path="res://Effects/level_outside_mask.gd" id="17_outmask"]
+[ext_resource type="PackedScene" uid="uid://sehbt0rfd6wi" path="res://Effects/vihrea_silmat_spawner.tscn" id="18_vihreat"]
 
 [node name="Level3" type="Node2D" unique_id=414431185]
 script = ExtResource("1_side")
@@ -55,5 +52,40 @@ rotation = 3.1415927
 target_scene = "res://Scene/level_1.tscn"
 metadata/_edit_lock_ = true
 
-[node name="VihreaSilmatSpawner" parent="." instance=ExtResource("18_vihreat")]
-tilemap_path = NodePath("../TileMapLayer")
+[node name="VihreaSilmatSpawner" parent="." unique_id=1059128520 instance=ExtResource("18_vihreat")]
+
+[node name="Lepakko" parent="." unique_id=1621889305 instance=ExtResource("12_qh52m")]
+position = Vector2(89, 89)
+
+[node name="Lepakko2" parent="." unique_id=828873508 instance=ExtResource("12_qh52m")]
+position = Vector2(321, 26)
+
+[node name="Lepakko3" parent="." unique_id=1972989899 instance=ExtResource("12_qh52m")]
+position = Vector2(874, 323)
+
+[node name="Lepakko4" parent="." unique_id=603485591 instance=ExtResource("12_qh52m")]
+position = Vector2(533, 27)
+
+[node name="Lepakko5" parent="." unique_id=275795437 instance=ExtResource("12_qh52m")]
+position = Vector2(337, 422)
+
+[node name="Lepakko6" parent="." unique_id=1568271272 instance=ExtResource("12_qh52m")]
+position = Vector2(135, 370)
+
+[node name="Lepakko7" parent="." unique_id=989534073 instance=ExtResource("12_qh52m")]
+position = Vector2(869, 28)
+
+[node name="Lepakko8" parent="." unique_id=1764649323 instance=ExtResource("12_qh52m")]
+position = Vector2(636, 433)
+
+[node name="Lepakko9" parent="." unique_id=480876027 instance=ExtResource("12_qh52m")]
+position = Vector2(682, 190)
+
+[node name="Lepakko10" parent="." unique_id=1284075583 instance=ExtResource("12_qh52m")]
+position = Vector2(900, 451)
+
+[node name="Lepakko11" parent="." unique_id=2016413338 instance=ExtResource("12_qh52m")]
+position = Vector2(423, 281)
+
+[node name="Lepakko12" parent="." unique_id=1071881852 instance=ExtResource("12_qh52m")]
+position = Vector2(634, 28)
