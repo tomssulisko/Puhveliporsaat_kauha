@@ -41,6 +41,7 @@ tile_set = ExtResource("14_ruoste")
 position = Vector2(447, 444)
 
 [node name="pimeys" parent="." unique_id=1720259318 instance=ExtResource("10_pimeys")]
+visible = false
 
 [node name="DarksumuBorder" type="Node2D" parent="." unique_id=1381014566]
 z_index = 100
@@ -68,7 +69,7 @@ position = Vector2(442, 228)
 texture = ExtResource("9_nctk5")
 
 [node name="Rengas" parent="." unique_id=2005444488 instance=ExtResource("22_carry")]
-position = Vector2(520, 320)
+position = Vector2(442, 211)
 item_id = "rengas"
 item_texture = ExtResource("23_rengas")
 
