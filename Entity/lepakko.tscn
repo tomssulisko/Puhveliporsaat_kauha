@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cn28rmva4xm87"]
+[gd_scene load_steps=13 format=3 uid="uid://cn28rmva4xm87"]
 
 [ext_resource type="Script" path="res://Entity/lepakko.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://clepakkohang001" path="res://Texture/Aaron/lepakko_hang.png" id="2_hang"]
@@ -6,6 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://d1xg4a06sfuv7" path="res://Texture/Aaron/lepakko 3.png" id="4_f3"]
 [ext_resource type="Texture2D" uid="uid://cxe6wsowwyfve" path="res://Texture/Aaron/lepakko 4.png" id="5_f4"]
 [ext_resource type="Texture2D" uid="uid://xrkyjdfdsf2b" path="res://Texture/Aaron/lepakko 5.png" id="6_f5"]
+[ext_resource type="Texture2D" uid="uid://bwf4w304bc3ty" path="res://Texture/Aaron/puna_silma.png" id="7_eyes"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_eyes"]
+light_mode = 1
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lepakko"]
 animations = [{
@@ -54,6 +58,15 @@ texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_lepakko")
 animation = &"hang"
 autoplay = "hang"
+
+[node name="Eyes" type="Sprite2D" parent="."]
+modulate = Color(1.6, 0.3, 0.2, 0)
+z_index = 110
+light_mask = 0
+material = SubResource("CanvasItemMaterial_eyes")
+texture_filter = 0
+position = Vector2(0, 2)
+texture = ExtResource("7_eyes")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_body")
