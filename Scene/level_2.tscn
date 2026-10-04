@@ -18,7 +18,8 @@
 [ext_resource type="Script" uid="uid://csuju8hvbovy6" path="res://Effects/darksumu_border.gd" id="15_sumuborder"]
 [ext_resource type="PackedScene" uid="uid://b8xu8xbs4hfno" path="res://Effects/darksumu.tscn" id="16_darksumu"]
 [ext_resource type="Script" uid="uid://ibbabrr1kfj5" path="res://Effects/level_outside_mask.gd" id="17_outmask"]
-[ext_resource type="PackedScene" uid="uid://cvihreasilmatsp1" path="res://Effects/vihrea_silmat_spawner.tscn" id="18_vihreat"]
+[ext_resource type="PackedScene" uid="uid://sehbt0rfd6wi" path="res://Effects/vihrea_silmat_spawner.tscn" id="18_vihreat"]
+[ext_resource type="PackedScene" uid="uid://b3kslbrosd441" path="res://Entity/silma.tscn" id="20_jg8n8"]
 
 [node name="Level2" type="Node2D" unique_id=392092015]
 script = ExtResource("1_side")
@@ -38,10 +39,9 @@ z_index = 2
 tile_set = ExtResource("14_ruoste")
 
 [node name="Player" parent="." unique_id=1360547194 instance=ExtResource("1_jte5b")]
-position = Vector2(818, 297)
+position = Vector2(882, 410)
 
 [node name="pimeys" parent="." unique_id=772425960 instance=ExtResource("10_pimeys")]
-visible = false
 
 [node name="DarksumuBorder" type="Node2D" parent="." unique_id=25649409]
 z_index = 100
@@ -91,5 +91,28 @@ texture = ExtResource("9_g67xk")
 position = Vector2(1000, 422)
 target_scene = "res://Scene/level_1.tscn"
 
-[node name="VihreaSilmatSpawner" parent="." instance=ExtResource("18_vihreat")]
-tilemap_path = NodePath("../TileMapLayer")
+[node name="VihreaSilmatSpawner" parent="." unique_id=992690896 instance=ExtResource("18_vihreat")]
+
+[node name="Silma" parent="." unique_id=1051585217 instance=ExtResource("20_jg8n8")]
+position = Vector2(664, 473)
+
+[node name="Silma2" parent="." unique_id=1319545710 instance=ExtResource("20_jg8n8")]
+position = Vector2(188, 478)
+
+[node name="Silma3" parent="." unique_id=1169488963 instance=ExtResource("20_jg8n8")]
+position = Vector2(187, 277)
+
+[node name="Silma4" parent="." unique_id=845270853 instance=ExtResource("20_jg8n8")]
+position = Vector2(56, 399)
+
+[node name="Silma5" parent="." unique_id=392011699 instance=ExtResource("20_jg8n8")]
+position = Vector2(833, 272)
+
+[node name="Silma6" parent="." unique_id=1456048422 instance=ExtResource("20_jg8n8")]
+position = Vector2(554, 549)
+
+[node name="Silma7" parent="." unique_id=432476523 instance=ExtResource("20_jg8n8")]
+position = Vector2(82, 559)
+
+[node name="Silma8" parent="." unique_id=307179433 instance=ExtResource("20_jg8n8")]
+position = Vector2(466, 362)
