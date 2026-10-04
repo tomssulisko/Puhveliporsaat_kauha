@@ -9,28 +9,36 @@ enum State { IDLE, NOTICE_DELAY, FOLLOWING }
 @export var notice_delay: float = 0.55
 @export var step_distance: float = 22.0
 @export var move_noise_threshold: float = 8.0
+@export var anim_fps: float = 6.0
 
-@onready var _sprite: Sprite2D = $Sprite2D
+@onready var _anim: AnimatedSprite2D = $AnimatedSprite2D
 
 var _state: State = State.IDLE
 var _follow_timer: float = 0.0
 var _step_accum: float = 0.0
+var _facing: StringName = &"eteen"
 
 
 func _ready() -> void:
 	add_to_group("enemy")
 	collision_layer = 0
 	collision_mask = 0
+	if _anim.sprite_frames != null:
+		for anim_name in _anim.sprite_frames.get_animation_names():
+			_anim.sprite_frames.set_animation_speed(anim_name, anim_fps)
+	_set_idle_pose()
 
 
 func _physics_process(delta: float) -> void:
 	match _state:
 		State.IDLE:
 			velocity = Vector2.ZERO
+			_set_idle_pose()
 			if _can_hear_player():
 				_begin_notice()
 		State.NOTICE_DELAY:
 			velocity = Vector2.ZERO
+			_set_idle_pose()
 		State.FOLLOWING:
 			_process_follow(delta)
 
@@ -41,25 +49,47 @@ func _process_follow(delta: float) -> void:
 		_state = State.IDLE
 		velocity = Vector2.ZERO
 		_step_accum = 0.0
+		_set_idle_pose()
 		return
 
 	var player := _player()
 	if player == null:
 		velocity = Vector2.ZERO
+		_set_idle_pose()
 		return
 
 	var dir := player.global_position - global_position
 	if dir.length_squared() > 1.0:
 		velocity = dir.normalized() * follow_speed
-		_sprite.flip_h = dir.x < 0.0
+		_play_walk(dir)
 	else:
 		velocity = Vector2.ZERO
+		_set_idle_pose()
 	move_and_slide()
 
 	_step_accum += velocity.length() * delta
 	if _step_accum >= step_distance:
 		_step_accum = 0.0
 		AudioManager.play_sfx_at("luuranko", global_position)
+
+
+func _play_walk(dir: Vector2) -> void:
+	_facing = _dir_to_anim(dir)
+	if _anim.animation != _facing or not _anim.is_playing():
+		_anim.play(_facing)
+
+
+func _set_idle_pose() -> void:
+	if _anim.animation != _facing:
+		_anim.animation = _facing
+	_anim.pause()
+	_anim.frame = 0
+
+
+func _dir_to_anim(dir: Vector2) -> StringName:
+	if absf(dir.x) > absf(dir.y):
+		return &"oikee" if dir.x > 0.0 else &"vasen"
+	return &"eteen" if dir.y > 0.0 else &"takaa"
 
 
 func _begin_notice() -> void:
