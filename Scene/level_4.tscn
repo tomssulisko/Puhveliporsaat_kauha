@@ -2,14 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://bxghvffaxdp6l" path="res://Entity/player.tscn" id="1_jte5b"]
 [ext_resource type="Script" uid="uid://cqtgx4ee478jc" path="res://Scene/level_side.gd" id="1_side"]
-[ext_resource type="Texture2D" uid="uid://dah01yu1b16nb" path="res://Texture/Aaron/auto.png" id="2_71r3i"]
-[ext_resource type="Texture2D" uid="uid://c7l5e4p6hid41" path="res://Texture/Aaron/hauta.png" id="3_nwjwq"]
-[ext_resource type="Texture2D" uid="uid://b6jegi6atyua2" path="res://Texture/Aaron/jako avain.png" id="4_67jix"]
-[ext_resource type="Texture2D" uid="uid://6fqweeuioghy" path="res://Texture/Aaron/patteri.png" id="5_f3pwq"]
-[ext_resource type="Texture2D" uid="uid://dk8mi0v3dbq4a" path="res://Texture/Aaron/rengas.png" id="6_ccfm3"]
-[ext_resource type="Texture2D" uid="uid://cw1443bomsn26" path="res://Texture/Aaron/ruoste auto.png" id="7_nquh6"]
-[ext_resource type="Texture2D" uid="uid://dl8c4mtfoktcl" path="res://Texture/Aaron/silmä.png" id="8_vg3ep"]
-[ext_resource type="Texture2D" uid="uid://s0tt3th4x5bj" path="res://Texture/Aaron/taskulamppu.png" id="9_g67xk"]
+[ext_resource type="Texture2D" uid="uid://cmrful2qwtr7r" path="res://Texture/Aaron/ympyrä.png" id="8_1sdim"]
+[ext_resource type="Texture2D" uid="uid://8gfovonojd1c" path="res://Texture/Aaron/patsas.png" id="9_nctk5"]
 [ext_resource type="PackedScene" uid="uid://cc14ll8yy7v3y" path="res://Effects/pimeys.tscn" id="10_pimeys"]
 [ext_resource type="PackedScene" uid="uid://c4xjsuyn8rtay" path="res://Effects/transition_gate.tscn" id="11_gate"]
 [ext_resource type="Script" uid="uid://csuju8hvbovy6" path="res://Effects/darksumu_border.gd" id="15_sumuborder"]
@@ -90,3 +84,11 @@ rotation = 1.5707964
 target_scene = "res://Scene/level_1.tscn"
 enter_direction = Vector2(-1, 0)
 metadata/_edit_lock_ = true
+
+[node name="Ympyrä" type="Sprite2D" parent="." unique_id=1260949198]
+position = Vector2(442, 241)
+texture = ExtResource("8_1sdim")
+
+[node name="Patsas" type="Sprite2D" parent="." unique_id=1774146891]
+position = Vector2(442, 228)
+texture = ExtResource("9_nctk5")
