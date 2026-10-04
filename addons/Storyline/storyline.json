@@ -32,7 +32,15 @@
 				"speech": {
 				"actor": "auttaja",
 				"text": [
-				  "How unfortunate! I know this forest like my right hand that I no longer have, and I know there is no one who can help you out except me! Which I won't do. Just kidding! There is a metal beast graveyard nearby. Perhaps there is something useful."
+				  "How unfortunate! I know this forest like my right hand that I no longer have, and I know there is no one who can help you out except me! Which I won't do."
+				]
+				}
+			},
+			{
+				"speech": {
+				"actor": "auttaja",
+				"text": [
+				  "Just kidding! There is a metal beast graveyard nearby. Perhaps there is something useful."
 				]
 				}
 			},
@@ -164,7 +172,15 @@
 				"speech": {
 				"actor": "auttaja",
 				"text": [
-				  "Wonderful! Though I have to tell you, your tire looks a bit flat. Get a new one, it hurts my eyes to see it like that! Follow that path and look for it."
+				  "Wonderful! Though I have to tell you, your tire looks a bit flat. Get a new one, it hurts my eyes to see it like that!"
+				]
+				}
+			},
+			{
+				"speech": {
+				"actor": "auttaja",
+				"text": [
+				  " Follow that path and look for it."
 				]
 				}
 			},
@@ -257,6 +273,51 @@
 				"actor": "pelaaja",
 				"text": [
 				  "Yeah... I'm not walking out there."
+				]
+				}
+			}
+		  ]
+		}
+	},
+	{
+		"event": {
+		  "name": "deathDream1",
+		  "speeches": [
+			{
+				"speech": {
+				"actor": "pelaaja",
+				"text": [
+				  "Ugh... what a horrible dream..."
+				]
+				}
+			}
+		  ]
+		}
+	},
+	{
+		"event": {
+		  "name": "deathDream2",
+		  "speeches": [
+			{
+				"speech": {
+				"actor": "pelaaja",
+				"text": [
+				  "That felt way too real for a nightmare..."
+				]
+				}
+			}
+		  ]
+		}
+	},
+	{
+		"event": {
+		  "name": "deathDream3",
+		  "speeches": [
+			{
+				"speech": {
+				"actor": "pelaaja",
+				"text": [
+				  "I'm awake... right? Please let me be awake."
 				]
 				}
 			}

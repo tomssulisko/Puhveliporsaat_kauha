@@ -1,16 +1,36 @@
 extends CharacterBody2D
-var speed = 100
-var input_direction = 0
 
-# Called when the node enters the scene tree for the first time.
+const WALK_SPEED := 100.0
+const SPRINT_MULTIPLIER := 2.0
+
+var speed: float = WALK_SPEED
+var input_direction := Vector2.ZERO
+var control_enabled: bool = true
+
+
 func _ready() -> void:
-	pass # Replace with function body.
+	add_to_group("player")
 
 
-func get_input():
+func set_control_enabled(enabled: bool) -> void:
+	control_enabled = enabled
+	if not enabled:
+		velocity = Vector2.ZERO
+		input_direction = Vector2.ZERO
+
+
+func get_input() -> void:
+	if not control_enabled:
+		velocity = Vector2.ZERO
+		return
 	input_direction = Input.get_vector("left", "right", "up", "down")
-	velocity = input_direction * speed
+	var current_speed := WALK_SPEED
+	if Input.is_action_pressed("sprint"):
+		current_speed *= SPRINT_MULTIPLIER
+	speed = current_speed
+	velocity = input_direction * current_speed
 
-func _physics_process(_delta):
+
+func _physics_process(_delta: float) -> void:
 	get_input()
 	move_and_slide()

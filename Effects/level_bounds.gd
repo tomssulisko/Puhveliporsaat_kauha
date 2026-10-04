@@ -22,6 +22,9 @@ func _physics_process(_delta: float) -> void:
 	var player := get_parent().get_node_or_null("Player") as CharacterBody2D
 	if player == null:
 		return
+	# Skip while portal auto-walk (or any forced move) has control locked.
+	if player.get("control_enabled") == false:
+		return
 	for i in player.get_slide_collision_count():
 		var collider := player.get_slide_collision(i).get_collider()
 		if collider is StaticBody2D and _walls.has(collider):
