@@ -11,6 +11,7 @@ extends Node2D
 
 
 func _ready() -> void:
+	_ensure_storyline_canvas()
 	# Lock before gates arm themselves (they defer monitoring one frame).
 	for g in _all_gates():
 		if g.has_method("set_gate_enabled"):
@@ -18,6 +19,14 @@ func _ready() -> void:
 	if not ambient_id.is_empty():
 		AudioManager.play_ambient(ambient_id, 0.0, true)
 	await _play_arrival_from_gate()
+
+
+func _ensure_storyline_canvas() -> void:
+	if get_node_or_null("StorylineCanvas") != null:
+		return
+	var canvas := preload("res://addons/Storyline/storyline_canvas.tscn").instantiate()
+	canvas.name = "StorylineCanvas"
+	add_child(canvas)
 
 
 func _play_arrival_from_gate() -> void:

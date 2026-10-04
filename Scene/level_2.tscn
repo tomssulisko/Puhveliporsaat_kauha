@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://ibbabrr1kfj5" path="res://Effects/level_outside_mask.gd" id="17_outmask"]
 [ext_resource type="PackedScene" uid="uid://sehbt0rfd6wi" path="res://Effects/vihrea_silmat_spawner.tscn" id="18_vihreat"]
 [ext_resource type="PackedScene" uid="uid://b3kslbrosd441" path="res://Entity/silma.tscn" id="20_jg8n8"]
+[ext_resource type="PackedScene" uid="uid://ccarryitemkauha1" path="res://Entity/carry_item.tscn" id="21_carry"]
 
 [node name="Level2" type="Node2D" unique_id=392092015]
 script = ExtResource("1_side")
@@ -63,17 +64,10 @@ texture = ExtResource("2_71r3i")
 position = Vector2(387, -26)
 texture = ExtResource("3_nwjwq")
 
-[node name="JakoAvain" type="Sprite2D" parent="." unique_id=220405744]
+[node name="JakoAvain" parent="." instance=ExtResource("21_carry")]
 position = Vector2(389, 41)
-texture = ExtResource("4_67jix")
-
-[node name="Patteri" type="Sprite2D" parent="." unique_id=1645104330]
-position = Vector2(467, -3)
-texture = ExtResource("5_f3pwq")
-
-[node name="Rengas" type="Sprite2D" parent="." unique_id=1426659230]
-position = Vector2(460, -24)
-texture = ExtResource("6_ccfm3")
+item_id = "jakoavain"
+item_texture = ExtResource("4_67jix")
 
 [node name="RuosteAuto" type="Sprite2D" parent="." unique_id=189374194]
 position = Vector2(242, 46)

@@ -11,6 +11,14 @@ const INTRO_DRIVE_SECONDS := 2.8
 
 
 func _ready() -> void:
+	# Keep portals inert until progression decides which one is open.
+	for gate in [$TransitionLevel2, $TransitionLevel3, $TransitionLevel4]:
+		if gate == null:
+			continue
+		gate.visible = false
+		if gate.has_method("set_gate_enabled"):
+			gate.set_gate_enabled(false)
+
 	var app := get_node_or_null("/root/App")
 	var from_death: bool = app != null and bool(app.get("pending_death_dream"))
 	if from_death and app.has_method("prepare_level1_after_death"):
@@ -30,10 +38,12 @@ func _ready() -> void:
 		_set_player_ambient(true)
 		_set_flashlight_beam(true)
 		_set_player_control(true)
+		update_portal_gates()
 		if from_death and app != null and app.has_method("finish_level1_after_death"):
 			await app.finish_level1_after_death()
 	else:
 		await _play_car_intro()
+		update_portal_gates()
 
 
 func _play_car_intro() -> void:
@@ -106,3 +116,21 @@ func _set_headlights(enabled: bool) -> void:
 	for child in headlights.get_children():
 		if child is Light2D:
 			(child as Light2D).enabled = enabled
+
+
+func update_portal_gates() -> void:
+	var app := get_node_or_null("/root/App")
+	var stage := 0
+	if app != null and app.has_method("get_portal_stage"):
+		stage = int(app.get_portal_stage())
+	_set_portal_active($TransitionLevel3, stage == 0)
+	_set_portal_active($TransitionLevel2, stage == 1)
+	_set_portal_active($TransitionLevel4, stage == 2)
+
+
+func _set_portal_active(gate: Node, active: bool) -> void:
+	if gate == null:
+		return
+	gate.visible = active
+	if gate.has_method("set_gate_enabled"):
+		gate.set_gate_enabled(active)
