@@ -107,6 +107,10 @@ func is_delivery_busy() -> bool:
 	return _deliver_busy
 
 
+func is_pickup_busy() -> bool:
+	return _pickup_busy
+
+
 func get_carried_items() -> Array[Dictionary]:
 	return carried_items
 
@@ -138,6 +142,10 @@ func _run_delivery_reaction(item_id: String) -> void:
 		if started and manager.has_signal("storyline_finished"):
 			await manager.storyline_finished
 	var scene := get_tree().current_scene
+	if item_id == "rengas" and scene != null and scene.has_method("play_ending"):
+		await scene.play_ending()
+		_deliver_busy = false
+		return
 	if scene != null and scene.has_method("update_portal_gates"):
 		scene.update_portal_gates()
 	_deliver_busy = false
@@ -193,9 +201,12 @@ func _run_death_sequence() -> void:
 	else:
 		await get_tree().create_timer(0.85).timeout
 
+	_drop_carried_items_on_death()
 	has_level1_reentry = false
 	pending_death_dream = true
 	start_faded_black = true
+	_pickup_busy = false
+	_deliver_busy = false
 
 	var manager := get_node_or_null("/root/StorylineManager")
 	if manager != null and manager.has_method("on_scene_about_to_change"):
@@ -204,6 +215,47 @@ func _run_death_sequence() -> void:
 	get_tree().change_scene_to_file("res://Scene/level_1.tscn")
 	# Keep _dying until level-1 fade/dream starts handling recovery.
 	await get_tree().process_frame
+
+
+## Drop held quest items back into the world so they must be fetched again.
+func _drop_carried_items_on_death() -> void:
+	if carried_items.is_empty():
+		return
+	var dropped: Array[String] = []
+	for entry in carried_items:
+		var id := String(entry.get("id", ""))
+		if not id.is_empty():
+			dropped.append(id)
+	carried_items.clear()
+	_sync_player_carry_visuals()
+	var manager := get_node_or_null("/root/StorylineManager")
+	if manager == null or not ("events_played" in manager):
+		return
+	for id in dropped:
+		var found_event: String = String(FOUND_EVENTS.get(id, ""))
+		if found_event.is_empty():
+			continue
+		if manager.events_played.has(found_event):
+			manager.events_played.erase(found_event)
+
+
+func fade_to_black(duration: float = 0.8) -> void:
+	if _fade != null and _fade.has_method("fade_to_black"):
+		await _fade.fade_to_black(duration)
+
+
+func fade_from_black(duration: float = 0.8) -> void:
+	if _fade != null and _fade.has_method("fade_from_black"):
+		await _fade.fade_from_black(duration)
+
+
+func go_to_credits() -> void:
+	var manager := get_node_or_null("/root/StorylineManager")
+	if manager != null and manager.has_method("on_scene_about_to_change"):
+		manager.on_scene_about_to_change()
+	get_tree().change_scene_to_file("res://Scene/credits.tscn")
+	await get_tree().process_frame
+	await fade_from_black(1.0)
 
 
 func prepare_level1_after_death() -> void:
