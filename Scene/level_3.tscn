@@ -36,7 +36,6 @@ tile_set = ExtResource("14_ruoste")
 position = Vector2(40, 259)
 
 [node name="pimeys" parent="." unique_id=1384955196 instance=ExtResource("10_pimeys")]
-visible = false
 
 [node name="DarksumuBorder" type="Node2D" parent="." unique_id=491750080]
 z_index = 100

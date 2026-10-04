@@ -15,8 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://boif1d6788duq" path="res://Entity/kynttila.tscn" id="19_8wkkr"]
 [ext_resource type="PackedScene" uid="uid://bo2d3bjnsnvis" path="res://Entity/kynttila_kirkas.tscn" id="19_p38qx"]
 [ext_resource type="PackedScene" uid="uid://ckpdhi6m88duq" path="res://Entity/luuranko.tscn" id="20_3dv22"]
-[ext_resource type="PackedScene" uid="uid://cvihreasilmatsp1" path="res://Effects/vihrea_silmat_spawner.tscn" id="21_vihreat"]
-[ext_resource type="PackedScene" uid="uid://ccarryitemkauha1" path="res://Entity/carry_item.tscn" id="22_carry"]
+[ext_resource type="PackedScene" uid="uid://sehbt0rfd6wi" path="res://Effects/vihrea_silmat_spawner.tscn" id="21_vihreat"]
+[ext_resource type="PackedScene" uid="uid://b23qtc7ffcbic" path="res://Entity/carry_item.tscn" id="22_carry"]
 [ext_resource type="Texture2D" uid="uid://dk8mi0v3dbq4a" path="res://Texture/Aaron/rengas.png" id="23_rengas"]
 
 [node name="Level4" type="Node2D" unique_id=1605077329]
@@ -67,7 +67,7 @@ texture = ExtResource("8_1sdim")
 position = Vector2(442, 228)
 texture = ExtResource("9_nctk5")
 
-[node name="Rengas" parent="." instance=ExtResource("22_carry")]
+[node name="Rengas" parent="." unique_id=2005444488 instance=ExtResource("22_carry")]
 position = Vector2(520, 320)
 item_id = "rengas"
 item_texture = ExtResource("23_rengas")
@@ -129,5 +129,4 @@ position = Vector2(413, 189)
 [node name="Luuranko6" parent="." unique_id=995663182 instance=ExtResource("20_3dv22")]
 position = Vector2(391, 230)
 
-[node name="VihreaSilmatSpawner" parent="." instance=ExtResource("21_vihreat")]
-tilemap_path = NodePath("../TileMapLayer")
+[node name="VihreaSilmatSpawner" parent="." unique_id=2099992826 instance=ExtResource("21_vihreat")]

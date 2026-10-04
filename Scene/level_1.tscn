@@ -46,7 +46,6 @@ position = Vector2(220, 587)
 position = Vector2(340, 587)
 
 [node name="pimeys" parent="." unique_id=630818630 instance=ExtResource("6_pimeys")]
-visible = false
 
 [node name="DarksumuBorder" type="Node2D" parent="." unique_id=467318831]
 z_index = 100
