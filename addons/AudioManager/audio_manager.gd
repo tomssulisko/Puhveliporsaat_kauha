@@ -66,6 +66,9 @@ const SFX_LIBRARY := {
 		"res://Audio/nariseva_auto2.wav",
 		"res://Audio/nariseva_auto3.wav",
 	],
+	"fart": [
+		"res://Audio/Fart.wav",
+	],
 }
 
 const AMBIENT_LIBRARY := {
@@ -229,7 +232,7 @@ func audio_at_location(pos: Vector2, request: String) -> void:
 	play_sfx_at(request, pos)
 
 
-func play_ambient(id: String, fade_out_sec: float = 0.35, force: bool = false) -> void:
+func play_ambient(id: String, fade_out_sec: float = 0.35, force: bool = false, fade_in_sec: float = 0.0) -> void:
 	if not force and id == _current_ambient and _ambient_player.playing:
 		return
 	if not AMBIENT_LIBRARY.has(id):
@@ -250,13 +253,20 @@ func play_ambient(id: String, fade_out_sec: float = 0.35, force: bool = false) -
 
 	# Same simple path as play_sfx. Loop via finished→replay (WAV import loop is flaky).
 	_ambient_player.stream = stream
-	_ambient_gain = 1.0
+	_ambient_gain = 0.0 if fade_in_sec > 0.0 else 1.0
 	_apply_ambient_volume()
 	_ambient_player.play()
 	_current_ambient = id
 	if not _ambient_player.playing:
 		push_warning("AudioManager: ambient '%s' failed to play (%s)" % [id, path])
 		return
+
+	if fade_in_sec > 0.0:
+		var fade_in := create_tween()
+		fade_in.tween_method(_set_ambient_gain, 0.0, 1.0, fade_in_sec)
+		await fade_in.finished
+		if _current_ambient != id:
+			return
 
 	# Breathing starts after playback is confirmed; keeps start path identical to SFX.
 	await get_tree().create_timer(0.5).timeout

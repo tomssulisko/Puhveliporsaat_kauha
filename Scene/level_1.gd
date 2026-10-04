@@ -29,11 +29,10 @@ func _ready() -> void:
 	if from_death and app.has_method("prepare_level1_after_death"):
 		app.prepare_level1_after_death()
 
-	AudioManager.play_ambient("tuuli", 0.0, true)
-
 	var manager := get_node_or_null("/root/StorylineManager")
 	var intro_done: bool = manager != null and manager.events_played.has("carBroken")
 	if intro_done or from_death:
+		AudioManager.play_ambient("tuuli", 0.0, true)
 		auto.global_position = CAR_STOP
 		var reentry: Variant = null
 		if not from_death and app != null and app.has_method("consume_level1_reentry"):
@@ -59,7 +58,7 @@ func _play_car_intro() -> void:
 	auto.global_position = CAR_START
 	player.global_position = CAR_START
 	_set_headlights(true)
-	AudioManager.play_sfx("auto_ajo")
+	AudioManager.play_looping_sfx("auto_ajo")
 
 	var tween := create_tween()
 	tween.set_parallel(true)
@@ -75,7 +74,11 @@ func _play_car_intro() -> void:
 	jolt.tween_property(auto, "global_position:x", CAR_STOP.x - 4.0, 0.1)
 	jolt.tween_property(auto, "global_position:x", CAR_STOP.x, 0.12)
 	await jolt.finished
+	AudioManager.stop_looping_sfx()
+	AudioManager.play_sfx("fart")
 	_set_headlights(false)
+	await get_tree().create_timer(0.2).timeout
+	AudioManager.play_ambient("tuuli", 0.0, true, 1.8)
 	await get_tree().create_timer(0.35).timeout
 
 	player.global_position = PLAYER_EXIT

@@ -37,7 +37,7 @@ scale = Vector2(1.4, 1.4)
 texture = ExtResource("4_auto")
 
 [node name="Headlights" parent="World/Auto" unique_id=678811004 instance=ExtResource("5_lights")]
-position = Vector2(22, 6)
+position = Vector2(15.00001, 9.285719)
 
 [node name="pimeys" parent="." unique_id=1397119832 instance=ExtResource("6_pimeys")]
 
