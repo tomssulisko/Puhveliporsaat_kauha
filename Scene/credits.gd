@@ -1,7 +1,7 @@
 extends Node2D
 
 ## Scrolls the road animation so lane markings drift left (frames 12 → 1).
-@export var anim_fps: float = 12.0
+@export var anim_fps: float = 48.0
 @export var bob_amplitude: float = 2.5
 @export var bob_seconds: float = 1.6
 
@@ -11,8 +11,8 @@ extends Node2D
 
 
 func _ready() -> void:
-	_setup_road_animation()
-	if _road != null:
+	if _road != null and _road.sprite_frames != null:
+		_road.sprite_frames.set_animation_speed("scroll", anim_fps)
 		_road.play("scroll")
 	_enable_headlights()
 	_unshade_ui(_ui)
@@ -23,26 +23,6 @@ func _ready() -> void:
 
 func _exit_tree() -> void:
 	AudioManager.stop_looping_sfx()
-
-
-func _setup_road_animation() -> void:
-	if _road == null:
-		return
-	var frames := SpriteFrames.new()
-	frames.add_animation("scroll")
-	frames.set_animation_loop("scroll", true)
-	frames.set_animation_speed("scroll", anim_fps)
-	# Reverse order so road lines move left.
-	for i in range(12, 0, -1):
-		var path := "res://Texture/credits/pitkatie%d.png" % i
-		if not ResourceLoader.exists(path):
-			continue
-		var tex := load(path) as Texture2D
-		if tex != null:
-			frames.add_frame("scroll", tex)
-	_road.sprite_frames = frames
-	_road.animation = &"scroll"
-	_road.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 
 
 func _enable_headlights() -> void:

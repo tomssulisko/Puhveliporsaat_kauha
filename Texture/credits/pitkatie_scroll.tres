@@ -1,0 +1,58 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://buuyn3ljy618t"]
+
+[ext_resource type="Texture2D" uid="uid://cho5r77vfeoi5" path="res://Texture/credits/pitkatie12.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://cq14xxnf3siny" path="res://Texture/credits/pitkatie11.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://cj1ntjoorx00m" path="res://Texture/credits/pitkatie10.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://1pciyi7140ai" path="res://Texture/credits/pitkatie9.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://cd2p5f0klyuu" path="res://Texture/credits/pitkatie8.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://bgtu6021eues0" path="res://Texture/credits/pitkatie7.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://cr0jocvkumyu7" path="res://Texture/credits/pitkatie6.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://ppkgure0oqu7" path="res://Texture/credits/pitkatie5.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://dm8pfcg3devhi" path="res://Texture/credits/pitkatie4.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://clxohiks7n2q4" path="res://Texture/credits/pitkatie3.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://dgeqo05nb471j" path="res://Texture/credits/pitkatie2.png" id="11"]
+[ext_resource type="Texture2D" uid="uid://d1wf128873hx1" path="res://Texture/credits/pitkatie1.png" id="12"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12")
+}],
+"loop": 1,
+"name": &"scroll",
+"speed": 48.0
+}]
