@@ -2,8 +2,9 @@ extends CharacterBody2D
 
 const WALK_SPEED := 100.0
 const SPRINT_MULTIPLIER := 2.0
-const CARRY_OFFSET := Vector2(14, -6)
-const CARRY_STACK_STEP := Vector2(10, -4)
+## Held against the torso / in the lap, not floating off to the side.
+const CARRY_OFFSET := Vector2(0, -2)
+const CARRY_STACK_STEP := Vector2(0, -5)
 const MOVE_ANIM_THRESHOLD := 1.0
 
 @export var anim_fps: float = 8.0

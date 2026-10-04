@@ -13,10 +13,11 @@
 [ext_resource type="TileSet" uid="uid://q3b6n750jwaa" path="res://Texture/Aaron/ruoste_autot_tileset.tres" id="13_ruoste"]
 [ext_resource type="PackedScene" uid="uid://c4xjsuyn8rtay" path="res://Effects/transition_gate.tscn" id="14_gate"]
 [ext_resource type="Script" uid="uid://ibbabrr1kfj5" path="res://Effects/level_outside_mask.gd" id="15_outmask"]
-[ext_resource type="Texture2D" uid="uid://8gfovonojd1c" path="res://Texture/Aaron/patsas.png" id="17_2eai6"]
+[ext_resource type="Texture2D" uid="uid://gca2q31w46pv" path="res://Texture/Aaron/patsas päätön.png" id="17_2eai6"]
 [ext_resource type="Texture2D" uid="uid://cdbslywbsiuej" path="res://Texture/Aaron/Screenshot 2026-10-03 212137.png" id="17_lj6gs"]
 [ext_resource type="PackedScene" uid="uid://boif1d6788duq" path="res://Entity/kynttila.tscn" id="19_kynttila"]
 [ext_resource type="PackedScene" uid="uid://sehbt0rfd6wi" path="res://Effects/vihrea_silmat_spawner.tscn" id="20_vihreat"]
+[ext_resource type="PackedScene" uid="uid://bvso634o5y7nk" path="res://Entity/auttaja.tscn" id="21_auttaja"]
 
 [node name="Level1" type="Node2D" unique_id=1647334681]
 script = ExtResource("1_5exfe")
@@ -36,7 +37,7 @@ tile_set = ExtResource("12_aita")
 
 [node name="RuosteAutotTileMap" type="TileMapLayer" parent="." unique_id=2062066064]
 z_index = 2
-tile_map_data = PackedByteArray("AABHABMAAAAAAAEAAABIAA0AAAACAAAAAAA=")
+tile_map_data = PackedByteArray("AABEABMAAAAAAAEAAABFAA0AAAACAAAAAABFABYAAAABAAAAAABDAAsAAAAAAAAAAAA=")
 tile_set = ExtResource("13_ruoste")
 
 [node name="Auto" parent="." unique_id=1754267726 instance=ExtResource("11_auto")]
@@ -44,10 +45,12 @@ z_index = 1
 position = Vector2(220, 587)
 
 [node name="Player" parent="." unique_id=1640559784 instance=ExtResource("1_8ko5r")]
-position = Vector2(340, 587)
+position = Vector2(249, 603)
+
+[node name="Auttaja" parent="." unique_id=802826292 instance=ExtResource("21_auttaja")]
+position = Vector2(282, 600)
 
 [node name="pimeys" parent="." unique_id=630818630 instance=ExtResource("6_pimeys")]
-visible = false
 
 [node name="DarksumuBorder" type="Node2D" parent="." unique_id=467318831]
 z_index = 100

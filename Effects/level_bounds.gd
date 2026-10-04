@@ -77,6 +77,8 @@ func _add_static_wall(center: Vector2, size: Vector2) -> void:
 
 
 func _try_play_story() -> void:
+	if story_event.is_empty():
+		return
 	var manager := get_node_or_null("/root/StorylineManager")
 	if manager == null or not manager.has_method("play_storyline_event"):
 		return

@@ -12,9 +12,6 @@ extends Node2D
 @export var random_sfx_interval_min: float = 3.0
 @export var random_sfx_interval_max: float = 7.0
 
-const STATUE_INTACT := preload("res://Texture/Aaron/patsas.png")
-const STATUE_HEADLESS := preload("res://Texture/Aaron/patsas päätön.png")
-
 @onready var player: CharacterBody2D = $Player
 
 var _random_sfx_timer: float = 0.0
@@ -22,7 +19,6 @@ var _random_sfx_timer: float = 0.0
 
 func _ready() -> void:
 	_ensure_storyline_canvas()
-	_sync_statue()
 	# Lock before gates arm themselves (they defer monitoring one frame).
 	for g in _all_gates():
 		if g.has_method("set_gate_enabled"):
@@ -101,16 +97,6 @@ func on_quest_item_found(item_id: String) -> void:
 	if item_id.is_empty() or item_id != _resolve_quest_item_id():
 		return
 	_set_exit_gate_open(true, true)
-	_sync_statue()
-
-
-func _sync_statue() -> void:
-	if _resolve_quest_item_id() != "rengas":
-		return
-	var patsas := get_node_or_null("Patsas") as Sprite2D
-	if patsas == null:
-		return
-	patsas.texture = STATUE_HEADLESS if _has_quest_item() else STATUE_INTACT
 
 
 func _sync_exit_gate(animate: bool) -> void:

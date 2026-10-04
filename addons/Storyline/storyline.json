@@ -40,7 +40,15 @@
 				"speech": {
 				"actor": "auttaja",
 				"text": [
-				  "Just kidding! There is a metal beast graveyard nearby. Perhaps there is something useful."
+				  "Just kidding!"
+				]
+				}
+			},
+			{
+				"speech": {
+				"actor": "auttaja",
+				"text": [
+				  "There is a metal beast graveyard nearby. Perhaps there is something useful."
 				]
 				}
 			},
@@ -273,6 +281,29 @@
 				"actor": "pelaaja",
 				"text": [
 				  "Yeah... I'm not walking out there."
+				]
+				}
+			}
+		  ]
+		}
+	},
+	{
+		"event": {
+		  "name": "batNearMiss",
+		  "speeches": [
+			{
+				"speech": {
+				"actor": "pelaaja",
+				"text": [
+				  "Whoa — barely dodged that bat."
+				]
+				}
+			},
+			{
+				"speech": {
+				"actor": "auttaja",
+				"text": [
+				  "Next hit like that will definitely kill me!"
 				]
 				}
 			}

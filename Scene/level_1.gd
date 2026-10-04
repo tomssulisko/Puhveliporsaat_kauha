@@ -3,14 +3,16 @@ extends Node2D
 const CAR_START := Vector2(-120, 587)
 const CAR_STOP := Vector2(220, 587)
 const CAR_EXIT := Vector2(720, 587)
-## Keep spawn clear of the car dropoff so return dialogue cannot fire on load.
-const PLAYER_EXIT := Vector2(340, 587)
+## Exit spawn beside the car (closer than Auttaja so it's clear who drove).
+const PLAYER_EXIT := Vector2(249, 603)
 const INTRO_DRIVE_SECONDS := 2.8
 const ENDING_DRIVE_SECONDS := 3.4
+const AUTTAJA_DISMISS_DELAY := 0.55
 
 @onready var player: CharacterBody2D = $Player
 @onready var auto: Node2D = $Auto
 @onready var headlights: Node2D = $Auto/Headlights
+@onready var auttaja: Node2D = $Auttaja
 
 
 func _ready() -> void:
@@ -43,6 +45,8 @@ func _ready() -> void:
 		_set_flashlight_beam(true)
 		_set_player_control(true)
 		update_portal_gates()
+		if not from_death and _player_has_carried_item(app):
+			show_auttaja()
 		if from_death and app != null and app.has_method("finish_level1_after_death"):
 			await app.finish_level1_after_death()
 	else:
@@ -88,12 +92,33 @@ func _play_car_intro() -> void:
 	_set_player_control(true)
 
 	await get_tree().process_frame
+	show_auttaja()
 	var manager := get_node_or_null("/root/StorylineManager")
 	if manager != null and manager.has_method("play_storyline_event"):
 		manager.play_storyline_event("carBroken")
 		if manager.has_signal("storyline_finished"):
 			await manager.storyline_finished
+	await dismiss_auttaja()
 	_set_flashlight_beam(true)
+
+
+func show_auttaja() -> void:
+	if auttaja != null and auttaja.has_method("appear"):
+		auttaja.appear()
+
+
+func dismiss_auttaja() -> void:
+	await get_tree().create_timer(AUTTAJA_DISMISS_DELAY).timeout
+	if auttaja != null and auttaja.has_method("disappear"):
+		await auttaja.disappear()
+
+
+func _player_has_carried_item(app: Node) -> bool:
+	if app == null:
+		return false
+	if app.has_method("get_carried_items"):
+		return not app.get_carried_items().is_empty()
+	return false
 
 
 func _set_player_control(enabled: bool) -> void:

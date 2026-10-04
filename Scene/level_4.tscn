@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bxghvffaxdp6l" path="res://Entity/player.tscn" id="1_jte5b"]
 [ext_resource type="Script" uid="uid://cqtgx4ee478jc" path="res://Scene/level_side.gd" id="1_side"]
 [ext_resource type="Texture2D" uid="uid://cmrful2qwtr7r" path="res://Texture/Aaron/ympyrä.png" id="8_1sdim"]
-[ext_resource type="Texture2D" uid="uid://8gfovonojd1c" path="res://Texture/Aaron/patsas.png" id="9_nctk5"]
+[ext_resource type="Texture2D" uid="uid://gca2q31w46pv" path="res://Texture/Aaron/patsas päätön.png" id="9_nctk5"]
 [ext_resource type="PackedScene" uid="uid://cc14ll8yy7v3y" path="res://Effects/pimeys.tscn" id="10_pimeys"]
 [ext_resource type="PackedScene" uid="uid://c4xjsuyn8rtay" path="res://Effects/transition_gate.tscn" id="11_gate"]
 [ext_resource type="TileSet" uid="uid://8yq3p5uu7kds" path="res://Texture/Aaron/laattoja_tileset.tres" id="12_tileset"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://csuju8hvbovy6" path="res://Effects/darksumu_border.gd" id="15_sumuborder"]
 [ext_resource type="PackedScene" uid="uid://b8xu8xbs4hfno" path="res://Effects/darksumu.tscn" id="16_darksumu"]
 [ext_resource type="Script" uid="uid://ibbabrr1kfj5" path="res://Effects/level_outside_mask.gd" id="17_outmask"]
+[ext_resource type="Script" uid="uid://dqoru8ytnmqo1" path="res://Effects/level_bounds.gd" id="17_bounds"]
 [ext_resource type="PackedScene" uid="uid://boif1d6788duq" path="res://Entity/kynttila.tscn" id="19_8wkkr"]
 [ext_resource type="PackedScene" uid="uid://bo2d3bjnsnvis" path="res://Entity/kynttila_kirkas.tscn" id="19_p38qx"]
 [ext_resource type="PackedScene" uid="uid://ckpdhi6m88duq" path="res://Entity/luuranko.tscn" id="20_3dv22"]
@@ -35,6 +36,7 @@ tile_set = ExtResource("13_aita")
 
 [node name="RuosteAutotTileMap" type="TileMapLayer" parent="." unique_id=1198792379]
 z_index = 2
+tile_map_data = PackedByteArray("AABFABMAAAAAAAEAAABGAA0AAAACAAAAAAA=")
 tile_set = ExtResource("14_ruoste")
 
 [node name="Player" parent="." unique_id=576689285 instance=ExtResource("1_jte5b")]
@@ -48,6 +50,11 @@ z_index = 100
 script = ExtResource("15_sumuborder")
 fog_scene = ExtResource("16_darksumu")
 tilemap_path = NodePath("../TileMapLayer")
+
+[node name="LevelBounds" type="Node2D" parent="."]
+script = ExtResource("17_bounds")
+tilemap_path = NodePath("../TileMapLayer")
+story_event = ""
 
 [node name="LevelOutsideMask" type="Node2D" parent="." unique_id=1490497356]
 z_index = 80

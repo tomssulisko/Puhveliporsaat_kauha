@@ -33,6 +33,7 @@ var _level_rect: Rect2 = Rect2()
 var _fly_origin: Vector2 = Vector2.ZERO
 var _eye_alpha: float = 0.0
 var _eye_tween: Tween
+var _hit_applied: bool = false
 
 
 func _ready() -> void:
@@ -200,7 +201,7 @@ func _on_hit_body_entered(body: Node2D) -> void:
 	if _state != State.FLYING:
 		return
 	if body.is_in_group("player"):
-		_kill_player()
+		_apply_player_hit()
 
 
 func _check_player_overlap() -> void:
@@ -208,12 +209,19 @@ func _check_player_overlap() -> void:
 	if player == null:
 		return
 	if global_position.distance_to(player.global_position) <= hit_radius + 10.0:
-		_kill_player()
+		_apply_player_hit()
 
 
-func _kill_player() -> void:
+func _apply_player_hit() -> void:
+	if _hit_applied:
+		return
 	var app := get_node_or_null("/root/App")
-	if app != null and app.has_method("trigger_player_death"):
+	if app != null and app.has_method("is_player_invulnerable") and app.is_player_invulnerable():
+		return
+	_hit_applied = true
+	if app != null and app.has_method("handle_bat_hit"):
+		app.handle_bat_hit()
+	elif app != null and app.has_method("trigger_player_death"):
 		app.trigger_player_death()
 
 

@@ -32,6 +32,10 @@ var _dying: bool = false
 var _fade: CanvasLayer
 var _pickup_busy: bool = false
 var _deliver_busy: bool = false
+## First bat graze: warning dialogue + brief invulnerability; later bats kill.
+var bat_warning_done: bool = false
+var _bat_invuln_until_msec: int = 0
+const BAT_INVULN_MSEC := 2500
 
 
 func _ready() -> void:
@@ -135,13 +139,17 @@ func _run_pickup_reaction(item_id: String) -> void:
 
 
 func _run_delivery_reaction(item_id: String) -> void:
+	var scene := get_tree().current_scene
+	if scene != null and scene.has_method("show_auttaja"):
+		scene.show_auttaja()
 	var event: String = String(RETURN_EVENTS.get(item_id, ""))
 	var manager := get_node_or_null("/root/StorylineManager")
 	if not event.is_empty() and manager != null and manager.has_method("play_storyline_event"):
 		var started: bool = bool(manager.play_storyline_event(event))
 		if started and manager.has_signal("storyline_finished"):
 			await manager.storyline_finished
-	var scene := get_tree().current_scene
+	if scene != null and scene.has_method("dismiss_auttaja"):
+		await scene.dismiss_auttaja()
 	if item_id == "rengas" and scene != null and scene.has_method("play_ending"):
 		await scene.play_ending()
 		_deliver_busy = false
@@ -180,8 +188,34 @@ func consume_level1_reentry() -> Variant:
 	return level1_reentry_position
 
 
+func is_player_invulnerable() -> bool:
+	return Time.get_ticks_msec() < _bat_invuln_until_msec
+
+
+## First bat hit: near-miss dialogue + short invuln. Later bat hits kill as usual.
+func handle_bat_hit() -> void:
+	if _dying or is_player_invulnerable():
+		return
+	if not bat_warning_done:
+		bat_warning_done = true
+		_bat_invuln_until_msec = Time.get_ticks_msec() + BAT_INVULN_MSEC
+		_run_bat_near_miss()
+		return
+	trigger_player_death()
+
+
+func _run_bat_near_miss() -> void:
+	# Let the graze land before the reaction line.
+	await get_tree().create_timer(0.5, true, false, true).timeout
+	var manager := get_node_or_null("/root/StorylineManager")
+	if manager != null and manager.has_method("play_storyline_event"):
+		var started: bool = bool(manager.play_storyline_event("batNearMiss"))
+		if started and manager.has_signal("storyline_finished"):
+			await manager.storyline_finished
+
+
 func trigger_player_death() -> void:
-	if _dying:
+	if _dying or is_player_invulnerable():
 		return
 	_dying = true
 	await _run_death_sequence()

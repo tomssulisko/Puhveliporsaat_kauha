@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://csuju8hvbovy6" path="res://Effects/darksumu_border.gd" id="15_sumuborder"]
 [ext_resource type="PackedScene" uid="uid://b8xu8xbs4hfno" path="res://Effects/darksumu.tscn" id="16_darksumu"]
 [ext_resource type="Script" uid="uid://ibbabrr1kfj5" path="res://Effects/level_outside_mask.gd" id="17_outmask"]
+[ext_resource type="Script" uid="uid://dqoru8ytnmqo1" path="res://Effects/level_bounds.gd" id="17_bounds"]
 [ext_resource type="PackedScene" uid="uid://sehbt0rfd6wi" path="res://Effects/vihrea_silmat_spawner.tscn" id="18_vihreat"]
 [ext_resource type="PackedScene" uid="uid://b3kslbrosd441" path="res://Entity/silma.tscn" id="20_jg8n8"]
 [ext_resource type="PackedScene" uid="uid://b23qtc7ffcbic" path="res://Entity/carry_item.tscn" id="21_carry"]
@@ -49,6 +50,11 @@ z_index = 100
 script = ExtResource("15_sumuborder")
 fog_scene = ExtResource("16_darksumu")
 tilemap_path = NodePath("../TileMapLayer")
+
+[node name="LevelBounds" type="Node2D" parent="."]
+script = ExtResource("17_bounds")
+tilemap_path = NodePath("../TileMapLayer")
+story_event = ""
 
 [node name="LevelOutsideMask" type="Node2D" parent="." unique_id=1857350261]
 z_index = 80

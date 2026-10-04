@@ -32,7 +32,7 @@ const SFX_LIBRARY := {
 		"res://Audio/lepakko_lentää.wav",
 	],
 	"kuolema": [
-		"res://Audio/kuolema2.mp3",
+		"res://Audio/kuolema2.wav",
 	],
 
 
