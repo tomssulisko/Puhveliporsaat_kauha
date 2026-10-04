@@ -2,10 +2,11 @@ extends Node2D
 
 ## Shared bootstrap for side maps (level 2–4).
 @export var ambient_id: String = "tuuli"
+@export var quest_item_id: String = ""
 @export var arrival_walk_distance: float = 160.0
 @export var arrival_walk_seconds: float = 0.95
 @export var arrival_start_offset: float = 45.0
-@export var arrival_gate_grace: float = 0.45
+@export var gate_fade_seconds: float = 0.8
 
 @onready var player: CharacterBody2D = $Player
 
@@ -32,9 +33,7 @@ func _ensure_storyline_canvas() -> void:
 func _play_arrival_from_gate() -> void:
 	var gate := _find_arrival_gate()
 	if gate == null or player == null:
-		for g in _all_gates():
-			if g.has_method("set_gate_enabled"):
-				g.set_gate_enabled(true)
+		_sync_exit_gate(false)
 		return
 
 	# Walk from the portal toward the level interior so we never re-trigger exit.
@@ -65,10 +64,50 @@ func _play_arrival_from_gate() -> void:
 	if player.has_method("set_control_enabled"):
 		player.set_control_enabled(true)
 
-	await get_tree().create_timer(arrival_gate_grace).timeout
+	# Close behind the player until the quest item is found (or reopen if already held).
+	_sync_exit_gate(true)
+
+
+func on_quest_item_found(item_id: String) -> void:
+	if item_id.is_empty() or item_id != _resolve_quest_item_id():
+		return
+	_set_exit_gate_open(true, true)
+
+
+func _sync_exit_gate(animate: bool) -> void:
+	_set_exit_gate_open(_has_quest_item(), animate)
+
+
+func _set_exit_gate_open(open: bool, animate: bool) -> void:
 	for g in _all_gates():
-		if g.has_method("set_gate_enabled"):
-			g.set_gate_enabled(true)
+		if g.has_method("set_gate_open"):
+			g.set_gate_open(open, animate, gate_fade_seconds)
+		elif g.has_method("set_gate_enabled"):
+			g.set_gate_enabled(open)
+
+
+func _has_quest_item() -> bool:
+	var id := _resolve_quest_item_id()
+	if id.is_empty():
+		return true
+	var app := get_node_or_null("/root/App")
+	if app == null:
+		return false
+	if app.has_method("is_item_gone_from_world"):
+		return app.is_item_gone_from_world(id)
+	return false
+
+
+func _resolve_quest_item_id() -> String:
+	if not quest_item_id.is_empty():
+		return quest_item_id
+	for child in get_children():
+		if child == null:
+			continue
+		var id: Variant = child.get("item_id")
+		if id is String and not String(id).is_empty():
+			return String(id)
+	return ""
 
 
 func _direction_into_map(gate: Node2D) -> Vector2:

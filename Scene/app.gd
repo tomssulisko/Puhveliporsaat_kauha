@@ -124,6 +124,9 @@ func _run_pickup_reaction(item_id: String) -> void:
 			var started: bool = bool(manager.play_storyline_event(event))
 			if started and manager.has_signal("storyline_finished"):
 				await manager.storyline_finished
+	var scene := get_tree().current_scene
+	if scene != null and scene.has_method("on_quest_item_found"):
+		scene.on_quest_item_found(item_id)
 	_pickup_busy = false
 
 
