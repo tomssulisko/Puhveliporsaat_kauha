@@ -6,8 +6,8 @@ var has_level1_reentry: bool = false
 
 
 func remember_level1_exit(player_global: Vector2) -> void:
-	# Nudge inward so the return spawn does not instantly re-trigger the gate.
-	level1_reentry_position = player_global + Vector2(-48.0, 0.0)
+	# Nudge further inward than the enlarged gate trigger, so reentry does not auto-walk again.
+	level1_reentry_position = player_global + Vector2(-90.0, 0.0)
 	has_level1_reentry = true
 
 

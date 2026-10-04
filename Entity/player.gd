@@ -5,9 +5,20 @@ const SPRINT_MULTIPLIER := 2.0
 
 var speed: float = WALK_SPEED
 var input_direction := Vector2.ZERO
+var control_enabled: bool = true
+
+
+func set_control_enabled(enabled: bool) -> void:
+	control_enabled = enabled
+	if not enabled:
+		velocity = Vector2.ZERO
+		input_direction = Vector2.ZERO
 
 
 func get_input() -> void:
+	if not control_enabled:
+		velocity = Vector2.ZERO
+		return
 	input_direction = Input.get_vector("left", "right", "up", "down")
 	var current_speed := WALK_SPEED
 	if Input.is_action_pressed("sprint"):

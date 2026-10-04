@@ -1,15 +1,22 @@
 extends Node2D
 
 ## Horizontal portal glow under darksumu, clipped to the level tile bounds.
+## Player auto-walks into the gate before the scene changes.
 @export_file("*.tscn") var target_scene: String = ""
 @export var pulse_alpha_min: float = 0.4
 @export var pulse_alpha_max: float = 1.0
 @export var pulse_seconds: float = 1.8
 @export var tilemap_path: NodePath
+## Local direction the player walks when entering (RIGHT for level-1 exits).
+@export var enter_direction: Vector2 = Vector2.RIGHT
+@export var walk_distance: float = 90.0
+@export var walk_seconds: float = 0.9
 
 @onready var _glow_sprite: Sprite2D = $GlowSprite
 @onready var _core_sprite: Sprite2D = $CoreSprite
 @onready var _area: Area2D = $ExitArea
+
+var _busy: bool = false
 
 
 func _ready() -> void:
@@ -18,8 +25,20 @@ func _ready() -> void:
 	_glow_sprite.light_mask = 0
 	_core_sprite.light_mask = 0
 	_apply_level_clip()
+	_offset_trigger_into_map()
 	_area.body_entered.connect(_on_body_entered)
 	_start_pulse()
+
+
+func _offset_trigger_into_map() -> void:
+	# Push the trigger zone opposite to enter_direction so it fires earlier.
+	var shape_node := _area.get_node_or_null("CollisionShape2D") as CollisionShape2D
+	if shape_node == null:
+		return
+	var dir := enter_direction.normalized()
+	if dir == Vector2.ZERO:
+		dir = Vector2.RIGHT
+	shape_node.position = -dir * 55.0
 
 
 func _apply_level_clip() -> void:
@@ -75,19 +94,47 @@ func _set_pulse(alpha: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if body.name != "Player":
+	if _busy or body.name != "Player":
 		return
 	if target_scene.is_empty():
 		push_warning("transition_gate: target_scene missing on %s" % get_path())
 		return
 
+	_busy = true
+	var player := body as CharacterBody2D
+	if player == null:
+		_busy = false
+		return
+
+	# Remember the spot in front of the gate (before auto-walk).
 	var scene := get_tree().current_scene
 	if scene != null and scene.name == "Level1":
 		var app := get_node_or_null("/root/App")
 		if app != null and app.has_method("remember_level1_exit"):
-			app.remember_level1_exit(body.global_position)
+			app.remember_level1_exit(player.global_position)
+
+	await _walk_player_into_gate(player)
 
 	var manager := get_node_or_null("/root/StorylineManager")
 	if manager != null and manager.has_method("on_scene_about_to_change"):
 		manager.on_scene_about_to_change()
 	get_tree().change_scene_to_file(target_scene)
+
+
+func _walk_player_into_gate(player: CharacterBody2D) -> void:
+	if player.has_method("set_control_enabled"):
+		player.set_control_enabled(false)
+	else:
+		player.set_physics_process(false)
+	player.velocity = Vector2.ZERO
+
+	var dir := enter_direction.normalized()
+	if dir == Vector2.ZERO:
+		dir = Vector2.RIGHT
+	# Align to gate height and walk past the glow into the dark.
+	var target := Vector2(global_position.x, player.global_position.y) + dir * walk_distance
+
+	var tween := create_tween()
+	tween.tween_property(player, "global_position", target, walk_seconds) \
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	await tween.finished

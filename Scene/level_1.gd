@@ -70,6 +70,8 @@ func _play_car_intro() -> void:
 
 
 func _set_player_control(enabled: bool) -> void:
+	if player.has_method("set_control_enabled"):
+		player.set_control_enabled(enabled)
 	player.set_physics_process(enabled)
 	player.set_process(enabled)
 	player.velocity = Vector2.ZERO

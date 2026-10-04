@@ -57,3 +57,4 @@ texture = ExtResource("9_g67xk")
 [node name="TransitionToLevel1" parent="." instance=ExtResource("11_gate")]
 position = Vector2(80, 448)
 target_scene = "res://Scene/level_1.tscn"
+enter_direction = Vector2(-1, 0)
