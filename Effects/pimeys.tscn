@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://cpimeyskauha01"]
+[gd_scene load_steps=2 format=3 uid="uid://cpimeyskauha01"]
+
+[ext_resource type="Script" path="res://Effects/pimeys.gd" id="1_script"]
 
 [node name="pimeys" type="DirectionalLight2D"]
-color = Color(0.04, 0.04, 0.06, 1)
-energy = 0.95
+color = Color(0, 0, 0, 1)
+energy = 1.0
 blend_mode = 2
+script = ExtResource("1_script")

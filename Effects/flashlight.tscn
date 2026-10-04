@@ -1,34 +1,36 @@
 [gd_scene load_steps=5 format=3 uid="uid://cflashkauha001"]
 
 [ext_resource type="Script" path="res://Effects/flashlight.gd" id="1_script"]
-[ext_resource type="Texture2D" uid="uid://cflashconetex01" path="res://Effects/flashlight_cone.png" id="2_cone"]
+[ext_resource type="Texture2D" uid="uid://en4uarwjyf8s" path="res://Effects/flashlight_cone.png" id="2_cone"]
 
 [sub_resource type="Gradient" id="Gradient_soft"]
-offsets = PackedFloat32Array(0.0, 0.4, 1.0)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.35, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0.0, 0.35, 0.75, 1.0)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.55, 1, 1, 1, 0.18, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_soft"]
 gradient = SubResource("Gradient_soft")
-width = 256
-height = 256
+width = 160
+height = 160
 fill = 1
 fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.75, 0.75)
+fill_to = Vector2(0.9, 0.9)
 
 [node name="Flashlight" type="Node2D"]
 script = ExtResource("1_script")
+beam_range = 155.0
+beam_half_angle = 0.36
 
 [node name="SoftLight" type="PointLight2D" parent="."]
 color = Color(1, 0.95, 0.85, 1)
 blend_mode = 2
-energy = 0.55
+energy = 0.42
 texture = SubResource("GradientTexture2D_soft")
-texture_scale = 0.55
+texture_scale = 0.42
 
 [node name="Beam" type="PointLight2D" parent="."]
-position = Vector2(189, 0)
+position = Vector2(110, 0)
 color = Color(1, 0.93, 0.72, 1)
 blend_mode = 2
 energy = 1.35
 texture = ExtResource("2_cone")
-texture_scale = 1.6
+texture_scale = 0.95
