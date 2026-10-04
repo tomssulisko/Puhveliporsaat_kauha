@@ -2,17 +2,22 @@
 
 [ext_resource type="PackedScene" uid="uid://bxghvffaxdp6l" path="res://Entity/player.tscn" id="1_jte5b"]
 [ext_resource type="Script" uid="uid://cqtgx4ee478jc" path="res://Scene/level_side.gd" id="1_side"]
+[ext_resource type="Texture2D" uid="uid://b6jegi6atyua2" path="res://Texture/Aaron/jako avain.png" id="4_67jix"]
+[ext_resource type="Texture2D" uid="uid://6fqweeuioghy" path="res://Texture/Aaron/patteri.png" id="5_f3pwq"]
+[ext_resource type="Texture2D" uid="uid://dk8mi0v3dbq4a" path="res://Texture/Aaron/rengas.png" id="6_ccfm3"]
+[ext_resource type="Texture2D" uid="uid://cw1443bomsn26" path="res://Texture/Aaron/ruoste auto.png" id="7_nquh6"]
 [ext_resource type="Texture2D" uid="uid://cmrful2qwtr7r" path="res://Texture/Aaron/ympyrä.png" id="8_1sdim"]
+[ext_resource type="Texture2D" uid="uid://dl8c4mtfoktcl" path="res://Texture/Aaron/silmä.png" id="8_vg3ep"]
+[ext_resource type="Texture2D" uid="uid://s0tt3th4x5bj" path="res://Texture/Aaron/taskulamppu.png" id="9_g67xk"]
 [ext_resource type="Texture2D" uid="uid://8gfovonojd1c" path="res://Texture/Aaron/patsas.png" id="9_nctk5"]
 [ext_resource type="PackedScene" uid="uid://cc14ll8yy7v3y" path="res://Effects/pimeys.tscn" id="10_pimeys"]
 [ext_resource type="PackedScene" uid="uid://c4xjsuyn8rtay" path="res://Effects/transition_gate.tscn" id="11_gate"]
-[ext_resource type="Script" uid="uid://csuju8hvbovy6" path="res://Effects/darksumu_border.gd" id="15_sumuborder"]
-[ext_resource type="PackedScene" uid="uid://b8xu8xbs4hfno" path="res://Effects/darksumu.tscn" id="16_darksumu"]
-[ext_resource type="Script" uid="uid://ibbabrr1kfj5" path="res://Effects/level_outside_mask.gd" id="17_outmask"]
-
 [ext_resource type="TileSet" uid="uid://8yq3p5uu7kds" path="res://Texture/Aaron/laattoja_tileset.tres" id="12_tileset"]
 [ext_resource type="TileSet" uid="uid://buinkpvnjivc7" path="res://Texture/Aaron/aita_tileset.tres" id="13_aita"]
 [ext_resource type="TileSet" uid="uid://q3b6n750jwaa" path="res://Texture/Aaron/ruoste_autot_tileset.tres" id="14_ruoste"]
+[ext_resource type="Script" uid="uid://csuju8hvbovy6" path="res://Effects/darksumu_border.gd" id="15_sumuborder"]
+[ext_resource type="PackedScene" uid="uid://b8xu8xbs4hfno" path="res://Effects/darksumu.tscn" id="16_darksumu"]
+[ext_resource type="Script" uid="uid://ibbabrr1kfj5" path="res://Effects/level_outside_mask.gd" id="17_outmask"]
 
 [node name="Level4" type="Node2D" unique_id=1605077329]
 script = ExtResource("1_side")
@@ -35,24 +40,16 @@ position = Vector2(447, 444)
 
 [node name="pimeys" parent="." unique_id=1720259318 instance=ExtResource("10_pimeys")]
 
-[node name="DarksumuBorder" type="Node2D" parent="."]
+[node name="DarksumuBorder" type="Node2D" parent="." unique_id=1381014566]
 z_index = 100
 script = ExtResource("15_sumuborder")
 fog_scene = ExtResource("16_darksumu")
 tilemap_path = NodePath("../TileMapLayer")
 
-[node name="LevelOutsideMask" type="Node2D" parent="."]
+[node name="LevelOutsideMask" type="Node2D" parent="." unique_id=1490497356]
 z_index = 80
 script = ExtResource("17_outmask")
 tilemap_path = NodePath("../TileMapLayer")
-
-[node name="Auto" type="Sprite2D" parent="." unique_id=1153818863]
-position = Vector2(-227, 50)
-texture = ExtResource("2_71r3i")
-
-[node name="Hauta" type="Sprite2D" parent="." unique_id=2140483231]
-position = Vector2(-200, 74)
-texture = ExtResource("3_nwjwq")
 
 [node name="JakoAvain" type="Sprite2D" parent="." unique_id=795605277]
 position = Vector2(-203, 37)

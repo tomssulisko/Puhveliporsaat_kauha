@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://boif1d6788duq"]
+
+[ext_resource type="Script" path="res://Entity/kynttila.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://cghbncp32a8y2" path="res://Texture/Aaron/kynttilä1.png" id="2_f1"]
+[ext_resource type="Texture2D" uid="uid://dy2sp6wiunote" path="res://Texture/Aaron/kynttilä2.png" id="3_f2"]
+[ext_resource type="Texture2D" uid="uid://cwrllobv2f2kn" path="res://Texture/Aaron/kynttilä3.png" id="4_f3"]
+[ext_resource type="Texture2D" uid="uid://vnb7t0r1rb3s" path="res://Texture/Aaron/kynttilä4.png" id="5_f4"]
+[ext_resource type="Texture2D" uid="uid://btro2vgirphry" path="res://Texture/Aaron/kynttilä5.png" id="6_f5"]
+[ext_resource type="Texture2D" uid="uid://bkci3fi7a8sub" path="res://Texture/Aaron/kynttilä6.png" id="7_f6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_candle"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_f1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_f2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_f3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_f4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_f5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_f6")
+}],
+"loop": true,
+"name": &"burn",
+"speed": 6.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_light"]
+offsets = PackedFloat32Array(0.0, 0.35, 0.75, 1.0)
+colors = PackedColorArray(1, 0.85, 0.45, 1, 1, 0.55, 0.2, 0.65, 0.7, 0.25, 0.05, 0.2, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_light"]
+gradient = SubResource("Gradient_light")
+width = 192
+height = 192
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.92, 0.92)
+
+[node name="Kynttila" type="Node2D"]
+script = ExtResource("1_script")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_candle")
+animation = &"burn"
+autoplay = "burn"
+
+[node name="Light" type="PointLight2D" parent="."]
+position = Vector2(0, -6)
+color = Color(1, 0.72, 0.35, 1)
+energy = 0.85
+blend_mode = 2
+texture = SubResource("GradientTexture2D_light")
+texture_scale = 0.275

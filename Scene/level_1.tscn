@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://8gfovonojd1c" path="res://Texture/Aaron/patsas.png" id="17_2eai6"]
 [ext_resource type="PackedScene" uid="uid://b3kslbrosd441" path="res://Entity/silma.tscn" id="17_silma"]
 [ext_resource type="PackedScene" uid="uid://ckpdhi6m88duq" path="res://Entity/luuranko.tscn" id="18_luuranko"]
+[ext_resource type="PackedScene" uid="uid://boif1d6788duq" path="res://Entity/kynttila.tscn" id="19_kynttila"]
 
 [node name="Level1" type="Node2D" unique_id=1647334681]
 script = ExtResource("1_5exfe")
@@ -79,6 +80,9 @@ position = Vector2(319, 121)
 
 [node name="Luuranko" parent="." unique_id=314760940 instance=ExtResource("18_luuranko")]
 position = Vector2(480, 520)
+
+[node name="Kynttila" parent="." unique_id=1726867006 instance=ExtResource("19_kynttila")]
+position = Vector2(233, 364)
 
 [node name="TransitionLevel2" parent="." unique_id=485322852 instance=ExtResource("14_gate")]
 position = Vector2(36, 248)
