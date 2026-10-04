@@ -65,6 +65,21 @@
 	},
 	{
 		"event": {
+		  "name": "beingWatched",
+		  "speeches": [
+			{
+				"speech": {
+				"actor": "pelaaja",
+				"text": [
+				  "I feel like I'm being watched."
+				]
+				}
+			}
+		  ]
+		}
+	},
+	{
+		"event": {
 		  "name": "batteryFound",
 		  "speeches": [
 			{
@@ -304,6 +319,21 @@
 				"actor": "pelaaja",
 				"text": [
 				  "Next hit like that will definitely kill me!"
+				]
+				}
+			}
+		  ]
+		}
+	},
+	{
+		"event": {
+		  "name": "sprintTip",
+		  "speeches": [
+			{
+				"speech": {
+				"actor": "auttaja",
+				"text": [
+				  "Did I forget to mention? Hold Shift to run."
 				]
 				}
 			}

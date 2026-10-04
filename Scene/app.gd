@@ -7,6 +7,8 @@ var has_level1_reentry: bool = false
 ## After death: stay black on level-1 load, then fade in + dream dialogue.
 var pending_death_dream: bool = false
 var start_faded_black: bool = false
+var death_count: int = 0
+var sprint_tip_done: bool = false
 
 ## Items currently riding with the player (persist across scenes).
 ## Each entry: { "id": String, "texture": Texture2D, "scale": Vector2 }
@@ -15,6 +17,7 @@ var carried_items: Array[Dictionary] = []
 var delivered_items: Array[String] = []
 
 const DEATH_DREAM_EVENTS := ["deathDream1", "deathDream2", "deathDream3"]
+const SPRINT_TIP_EVENT := "sprintTip"
 
 const FOUND_EVENTS := {
 	"patteri": "batteryFound",
@@ -237,6 +240,7 @@ func _run_death_sequence() -> void:
 
 	_drop_carried_items_on_death()
 	has_level1_reentry = false
+	death_count += 1
 	pending_death_dream = true
 	start_faded_black = true
 	_pickup_busy = false
@@ -311,7 +315,26 @@ func finish_level1_after_death() -> void:
 		var manager := get_node_or_null("/root/StorylineManager")
 		if manager != null and manager.has_method("play_storyline_event"):
 			var event: String = DEATH_DREAM_EVENTS[randi() % DEATH_DREAM_EVENTS.size()]
-			manager.play_storyline_event(event, true)
+			var started: bool = bool(manager.play_storyline_event(event, true))
+			if started and manager.has_signal("storyline_finished"):
+				await manager.storyline_finished
+		await _maybe_play_sprint_tip()
+
+
+func _maybe_play_sprint_tip() -> void:
+	if sprint_tip_done or death_count < 2:
+		return
+	sprint_tip_done = true
+	var scene := get_tree().current_scene
+	if scene != null and scene.has_method("show_auttaja"):
+		scene.show_auttaja()
+	var manager := get_node_or_null("/root/StorylineManager")
+	if manager != null and manager.has_method("play_storyline_event"):
+		var started: bool = bool(manager.play_storyline_event(SPRINT_TIP_EVENT))
+		if started and manager.has_signal("storyline_finished"):
+			await manager.storyline_finished
+	if scene != null and scene.has_method("dismiss_auttaja"):
+		await scene.dismiss_auttaja()
 
 
 func _unhandled_input(event: InputEvent) -> void:

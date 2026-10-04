@@ -18,6 +18,7 @@ var _state: State = State.IDLE
 var _follow_timer: float = 0.0
 var _step_accum: float = 0.0
 var _facing: StringName = &"eteen"
+static var _tire_altar_done: bool = false
 
 
 func _ready() -> void:
@@ -31,6 +32,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	_try_tire_altar_on_light()
 	match _state:
 		State.IDLE:
 			velocity = Vector2.ZERO
@@ -136,6 +138,28 @@ func _can_hear_player() -> bool:
 	if player.speed > player.WALK_SPEED * 1.25:
 		radius = hear_sprint_radius
 	return dist <= radius
+
+
+func _try_tire_altar_on_light() -> void:
+	if _tire_altar_done:
+		return
+	if not _is_lit():
+		return
+	var manager := get_node_or_null("/root/StorylineManager")
+	if manager == null or not manager.has_method("play_storyline_event"):
+		return
+	if bool(manager.play_storyline_event("tireAltar")):
+		_tire_altar_done = true
+
+
+func _is_lit() -> bool:
+	var player := _player()
+	if player == null:
+		return false
+	var flashlight := player.get_node_or_null("Flashlight")
+	if flashlight == null or not flashlight.has_method("illuminates_point"):
+		return false
+	return bool(flashlight.illuminates_point(global_position))
 
 
 func _player() -> CharacterBody2D:

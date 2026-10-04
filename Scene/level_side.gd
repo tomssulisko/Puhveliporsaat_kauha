@@ -3,6 +3,8 @@ extends Node2D
 ## Shared bootstrap for side maps (level 2–4).
 @export var ambient_id: String = "tuuli"
 @export var quest_item_id: String = ""
+## Optional one-shot dialogue after first arrival walk (Storyline event name).
+@export var enter_story_event: String = ""
 @export var arrival_walk_distance: float = 160.0
 @export var arrival_walk_seconds: float = 0.95
 @export var arrival_start_offset: float = 45.0
@@ -91,6 +93,18 @@ func _play_arrival_from_gate() -> void:
 
 	# Close behind the player until the quest item is found (or reopen if already held).
 	_sync_exit_gate(true)
+	await _play_enter_story_event()
+
+
+func _play_enter_story_event() -> void:
+	if enter_story_event.is_empty():
+		return
+	var manager := get_node_or_null("/root/StorylineManager")
+	if manager == null or not manager.has_method("play_storyline_event"):
+		return
+	var started: bool = bool(manager.play_storyline_event(enter_story_event))
+	if started and manager.has_signal("storyline_finished"):
+		await manager.storyline_finished
 
 
 func on_quest_item_found(item_id: String) -> void:
