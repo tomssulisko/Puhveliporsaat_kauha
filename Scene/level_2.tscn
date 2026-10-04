@@ -5,8 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://dah01yu1b16nb" path="res://Texture/Aaron/auto.png" id="2_71r3i"]
 [ext_resource type="Texture2D" uid="uid://c7l5e4p6hid41" path="res://Texture/Aaron/hauta.png" id="3_nwjwq"]
 [ext_resource type="Texture2D" uid="uid://b6jegi6atyua2" path="res://Texture/Aaron/jako avain.png" id="4_67jix"]
-[ext_resource type="Texture2D" uid="uid://6fqweeuioghy" path="res://Texture/Aaron/patteri.png" id="5_f3pwq"]
-[ext_resource type="Texture2D" uid="uid://dk8mi0v3dbq4a" path="res://Texture/Aaron/rengas.png" id="6_ccfm3"]
 [ext_resource type="Texture2D" uid="uid://cw1443bomsn26" path="res://Texture/Aaron/ruoste auto.png" id="7_nquh6"]
 [ext_resource type="Texture2D" uid="uid://dl8c4mtfoktcl" path="res://Texture/Aaron/silmä.png" id="8_vg3ep"]
 [ext_resource type="Texture2D" uid="uid://s0tt3th4x5bj" path="res://Texture/Aaron/taskulamppu.png" id="9_g67xk"]
@@ -20,7 +18,7 @@
 [ext_resource type="Script" uid="uid://ibbabrr1kfj5" path="res://Effects/level_outside_mask.gd" id="17_outmask"]
 [ext_resource type="PackedScene" uid="uid://sehbt0rfd6wi" path="res://Effects/vihrea_silmat_spawner.tscn" id="18_vihreat"]
 [ext_resource type="PackedScene" uid="uid://b3kslbrosd441" path="res://Entity/silma.tscn" id="20_jg8n8"]
-[ext_resource type="PackedScene" uid="uid://ccarryitemkauha1" path="res://Entity/carry_item.tscn" id="21_carry"]
+[ext_resource type="PackedScene" uid="uid://b23qtc7ffcbic" path="res://Entity/carry_item.tscn" id="21_carry"]
 
 [node name="Level2" type="Node2D" unique_id=392092015]
 script = ExtResource("1_side")
@@ -44,6 +42,7 @@ tile_set = ExtResource("14_ruoste")
 position = Vector2(882, 410)
 
 [node name="pimeys" parent="." unique_id=772425960 instance=ExtResource("10_pimeys")]
+visible = false
 
 [node name="DarksumuBorder" type="Node2D" parent="." unique_id=25649409]
 z_index = 100
@@ -64,8 +63,8 @@ texture = ExtResource("2_71r3i")
 position = Vector2(387, -26)
 texture = ExtResource("3_nwjwq")
 
-[node name="JakoAvain" parent="." instance=ExtResource("21_carry")]
-position = Vector2(389, 41)
+[node name="JakoAvain" parent="." unique_id=521412044 instance=ExtResource("21_carry")]
+position = Vector2(74, 276)
 item_id = "jakoavain"
 item_texture = ExtResource("4_67jix")
 
@@ -95,7 +94,7 @@ position = Vector2(664, 473)
 position = Vector2(188, 478)
 
 [node name="Silma3" parent="." unique_id=1169488963 instance=ExtResource("20_jg8n8")]
-position = Vector2(187, 277)
+position = Vector2(192, 276)
 
 [node name="Silma4" parent="." unique_id=845270853 instance=ExtResource("20_jg8n8")]
 position = Vector2(56, 399)
