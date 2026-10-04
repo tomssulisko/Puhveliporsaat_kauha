@@ -18,6 +18,9 @@ enum State { IDLE, CHASING, HIDING }
 @export var hide_fade_out: float = 0.5
 @export var step_distance: float = 26.0
 @export var body_flash_duration: float = 0.28
+@export var trail_spacing: float = 10.0
+@export var trail_fade: float = 0.22
+@export var trail_start_alpha: float = 0.65
 
 @onready var _eyes: Sprite2D = $Eyes
 @onready var _body: Sprite2D = $BodyFlash
@@ -29,6 +32,7 @@ var _glint_tween: Tween
 var _glint_timer: float = 0.0
 var _growl_timer: float = 0.0
 var _step_accum: float = 0.0
+var _trail_accum: float = 0.0
 var _current_speed: float = 0.0
 var _hiding_locked: bool = false
 
@@ -96,10 +100,16 @@ func _process_chase(delta: float) -> void:
 		velocity = Vector2.ZERO
 	move_and_slide()
 
-	_step_accum += velocity.length() * delta
+	var moved := velocity.length() * delta
+	_step_accum += moved
 	if _step_accum >= step_distance:
 		_step_accum = 0.0
 		AudioManager.play_sfx_at("silma_askeleet", global_position)
+
+	_trail_accum += moved
+	if _trail_accum >= trail_spacing:
+		_trail_accum = 0.0
+		_spawn_trail()
 
 	_growl_timer -= delta
 	if _growl_timer <= 0.0:
@@ -128,9 +138,34 @@ func _begin_chase() -> void:
 	_state = State.CHASING
 	_current_speed = chase_speed_start
 	_step_accum = 0.0
+	_trail_accum = 0.0
 	_growl_timer = randf_range(growl_interval_min, growl_interval_max)
 	_set_eye_alpha(1.0)
 	AudioManager.play_sfx_at("silmat", global_position)
+
+
+func _spawn_trail() -> void:
+	var ghost := Sprite2D.new()
+	ghost.texture = _eyes.texture
+	ghost.texture_filter = _eyes.texture_filter
+	ghost.scale = _eyes.scale
+	ghost.z_index = _eyes.z_index
+	ghost.light_mask = 0
+	var mat := CanvasItemMaterial.new()
+	mat.light_mode = CanvasItemMaterial.LIGHT_MODE_UNSHADED
+	ghost.material = mat
+	ghost.global_position = _eyes.global_position
+	var c := _eyes.modulate
+	c.a = trail_start_alpha * _eye_alpha
+	ghost.modulate = c
+	var parent := get_parent()
+	if parent == null:
+		ghost.queue_free()
+		return
+	parent.add_child(ghost)
+	var tw := ghost.create_tween()
+	tw.tween_property(ghost, "modulate:a", 0.0, trail_fade)
+	tw.tween_callback(ghost.queue_free)
 
 
 func _begin_hide() -> void:
@@ -142,6 +177,7 @@ func _begin_hide() -> void:
 	velocity = Vector2.ZERO
 	_current_speed = 0.0
 	_step_accum = 0.0
+	_trail_accum = 0.0
 	AudioManager.play_sfx_at("silma_katoaa", global_position)
 	_flash_body()
 
