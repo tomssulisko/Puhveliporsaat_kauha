@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://b8xu8xbs4hfno" path="res://Effects/darksumu.tscn" id="16_darksumu"]
 [ext_resource type="Script" uid="uid://ibbabrr1kfj5" path="res://Effects/level_outside_mask.gd" id="17_outmask"]
 [ext_resource type="PackedScene" uid="uid://boif1d6788duq" path="res://Entity/kynttila.tscn" id="19_8wkkr"]
+[ext_resource type="PackedScene" uid="uid://bo2d3bjnsnvis" path="res://Entity/kynttila_kirkas.tscn" id="19_p38qx"]
 [ext_resource type="PackedScene" uid="uid://ckpdhi6m88duq" path="res://Entity/luuranko.tscn" id="20_3dv22"]
 
 [node name="Level4" type="Node2D" unique_id=1605077329]
@@ -35,7 +36,6 @@ tile_set = ExtResource("14_ruoste")
 position = Vector2(447, 444)
 
 [node name="pimeys" parent="." unique_id=1720259318 instance=ExtResource("10_pimeys")]
-visible = false
 
 [node name="DarksumuBorder" type="Node2D" parent="." unique_id=1381014566]
 z_index = 100
@@ -52,7 +52,6 @@ tilemap_path = NodePath("../TileMapLayer")
 position = Vector2(451, 604)
 rotation = 1.5707964
 target_scene = "res://Scene/level_1.tscn"
-enter_direction = Vector2(-1, 0)
 metadata/_edit_lock_ = true
 
 [node name="Ympyrä" type="Sprite2D" parent="." unique_id=1260949198]
@@ -62,6 +61,12 @@ texture = ExtResource("8_1sdim")
 [node name="Patsas" type="Sprite2D" parent="." unique_id=1774146891]
 position = Vector2(442, 228)
 texture = ExtResource("9_nctk5")
+
+[node name="KynttilaKirkas2" parent="." unique_id=708855626 instance=ExtResource("19_p38qx")]
+position = Vector2(427, 248)
+
+[node name="KynttilaKirkas" parent="." unique_id=1237505992 instance=ExtResource("19_p38qx")]
+position = Vector2(455, 247)
 
 [node name="Kynttila" parent="." unique_id=1171307095 instance=ExtResource("19_8wkkr")]
 position = Vector2(367, 273)
@@ -84,9 +89,6 @@ position = Vector2(438, 259)
 [node name="Kynttila10" parent="." unique_id=165789882 instance=ExtResource("19_8wkkr")]
 position = Vector2(425, 256)
 
-[node name="Kynttila9" parent="." unique_id=734790582 instance=ExtResource("19_8wkkr")]
-position = Vector2(456, 245)
-
 [node name="Kynttila11" parent="." unique_id=901283544 instance=ExtResource("19_8wkkr")]
 position = Vector2(453, 257)
 
@@ -94,13 +96,7 @@ position = Vector2(453, 257)
 position = Vector2(431, 258)
 
 [node name="Kynttila8" parent="." unique_id=1253282500 instance=ExtResource("19_8wkkr")]
-position = Vector2(444, 259)
-
-[node name="Kynttila13" parent="." unique_id=1678702338 instance=ExtResource("19_8wkkr")]
-position = Vector2(426, 243)
-
-[node name="Kynttila14" parent="." unique_id=846374016 instance=ExtResource("19_8wkkr")]
-position = Vector2(430, 237)
+position = Vector2(448, 260)
 
 [node name="Kynttila2" parent="." unique_id=1639656542 instance=ExtResource("19_8wkkr")]
 position = Vector2(517, 277)

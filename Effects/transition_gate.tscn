@@ -1,11 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://ctransgatekau01"]
 
 [ext_resource type="Script" path="res://Effects/transition_gate.gd" id="1_script"]
-[ext_resource type="Shader" path="res://Effects/transition_gate_glow.gdshader" id="2_shader"]
 
 [sub_resource type="Gradient" id="Gradient_glow"]
-offsets = PackedFloat32Array(0, 0.18, 0.5, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0.85, 0.93, 1, 0.85, 0.55, 0.78, 1, 0.25, 0.2, 0.35, 0.6, 0)
+offsets = PackedFloat32Array(0, 0.2, 0.55, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.9, 0.96, 1, 0.9, 0.55, 0.8, 1, 0.35, 0.2, 0.4, 0.7, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_glow"]
 gradient = SubResource("Gradient_glow")
@@ -13,35 +12,33 @@ width = 256
 height = 128
 fill = 1
 fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.78, 0.92)
+fill_to = Vector2(0.8, 0.95)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_glow"]
-shader = ExtResource("2_shader")
-shader_parameter/clip_min = Vector2(-99999, -99999)
-shader_parameter/clip_max = Vector2(99999, 99999)
-shader_parameter/clip_feather = 12.0
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_unshaded"]
+blend_mode = 1
+light_mode = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_exit"]
 size = Vector2(140, 120)
 
 [node name="TransitionGate" type="Node2D"]
-z_index = 50
+z_index = 55
 script = ExtResource("1_script")
 
 [node name="GlowSprite" type="Sprite2D" parent="."]
 z_index = 1
+material = SubResource("CanvasItemMaterial_unshaded")
+modulate = Color(0.45, 0.6, 0.85, 0.18)
 light_mask = 0
-material = SubResource("ShaderMaterial_glow")
-modulate = Color(0.75, 0.9, 1, 1)
 position = Vector2(-70, 0)
 scale = Vector2(2.8, 1.15)
 texture = SubResource("GradientTexture2D_glow")
 
 [node name="CoreSprite" type="Sprite2D" parent="."]
 z_index = 2
+material = SubResource("CanvasItemMaterial_unshaded")
+modulate = Color(0.6, 0.78, 1, 0.22)
 light_mask = 0
-material = SubResource("ShaderMaterial_glow")
-modulate = Color(1, 1, 1, 1)
 position = Vector2(-50, 0)
 scale = Vector2(1.8, 0.5)
 texture = SubResource("GradientTexture2D_glow")
@@ -52,6 +49,5 @@ collision_mask = 1
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitArea"]
-# Shifted against enter_direction so the zone reaches further into the map.
 position = Vector2(-55, 0)
 shape = SubResource("RectangleShape2D_exit")

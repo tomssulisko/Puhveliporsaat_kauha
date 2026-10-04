@@ -19,9 +19,12 @@ func _ready() -> void:
 	add_child(_fade)
 
 
-func remember_level1_exit(player_global: Vector2) -> void:
-	# Nudge further inward than the enlarged gate trigger, so reentry does not auto-walk again.
-	level1_reentry_position = player_global + Vector2(-90.0, 0.0)
+func remember_level1_exit(player_global: Vector2, exit_dir: Vector2 = Vector2.RIGHT) -> void:
+	# Nudge back into the map opposite the exit walk, so reentry does not auto-walk again.
+	var dir := exit_dir.normalized()
+	if dir == Vector2.ZERO:
+		dir = Vector2.RIGHT
+	level1_reentry_position = player_global - dir * 90.0
 	has_level1_reentry = true
 
 
