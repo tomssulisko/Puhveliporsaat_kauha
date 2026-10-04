@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://ibbabrr1kfj5" path="res://Effects/level_outside_mask.gd" id="15_outmask"]
 [ext_resource type="PackedScene" uid="uid://cn28rmva4xm87" path="res://Entity/lepakko.tscn" id="16_lepakko"]
 [ext_resource type="PackedScene" uid="uid://b3kslbrosd441" path="res://Entity/silma.tscn" id="17_silma"]
+[ext_resource type="PackedScene" uid="uid://cluurankokau01" path="res://Entity/luuranko.tscn" id="18_luuranko"]
 
 [node name="Level1" type="Node2D" unique_id=1647334681]
 script = ExtResource("1_5exfe")
@@ -75,6 +76,9 @@ position = Vector2(836, 46)
 
 [node name="Silma" parent="." unique_id=345108227 instance=ExtResource("17_silma")]
 position = Vector2(319, 121)
+
+[node name="Luuranko" parent="." instance=ExtResource("18_luuranko")]
+position = Vector2(480, 520)
 
 [node name="TransitionLevel2" parent="." unique_id=485322852 instance=ExtResource("14_gate")]
 position = Vector2(27, 270)

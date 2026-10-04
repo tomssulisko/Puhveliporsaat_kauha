@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://ckpdhi6m88duq"]
+
+[ext_resource type="Script" path="res://Entity/luuranko.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://8gfovonojd1c" path="res://Texture/Aaron/patsas.png" id="2_placeholder"]
+
+[node name="Luuranko" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.92, 0.9, 0.82, 1)
+texture_filter = 0
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("2_placeholder")
