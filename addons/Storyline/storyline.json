@@ -32,7 +32,15 @@
 				"speech": {
 				"actor": "auttaja",
 				"text": [
-				  "How unfortunate! I know this forest like my right hand that I no longer have, and I know there is no one who can help you out except me! Which I won't do. Just kidding! There is a metal beast graveyard nearby. Perhaps there is something useful."
+				  "How unfortunate! I know this forest like my right hand that I no longer have, and I know there is no one who can help you out except me! Which I won't do."
+				]
+				}
+			},
+			{
+				"speech": {
+				"actor": "auttaja",
+				"text": [
+				  "Just kidding! There is a metal beast graveyard nearby. Perhaps there is something useful."
 				]
 				}
 			},
