@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://csuju8hvbovy6" path="res://Effects/darksumu_border.gd" id="15_sumuborder"]
 [ext_resource type="PackedScene" uid="uid://b8xu8xbs4hfno" path="res://Effects/darksumu.tscn" id="16_darksumu"]
 [ext_resource type="Script" uid="uid://ibbabrr1kfj5" path="res://Effects/level_outside_mask.gd" id="17_outmask"]
+[ext_resource type="PackedScene" uid="uid://cvihreasilmatsp1" path="res://Effects/vihrea_silmat_spawner.tscn" id="18_vihreat"]
 
 [ext_resource type="TileSet" uid="uid://8yq3p5uu7kds" path="res://Texture/Aaron/laattoja_tileset.tres" id="12_tileset"]
 [ext_resource type="TileSet" uid="uid://buinkpvnjivc7" path="res://Texture/Aaron/aita_tileset.tres" id="13_aita"]
@@ -49,3 +50,6 @@ position = Vector2(-66, 255)
 rotation = 3.1415927
 target_scene = "res://Scene/level_1.tscn"
 metadata/_edit_lock_ = true
+
+[node name="VihreaSilmatSpawner" parent="." instance=ExtResource("18_vihreat")]
+tilemap_path = NodePath("../TileMapLayer")

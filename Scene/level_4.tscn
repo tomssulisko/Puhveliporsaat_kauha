@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://boif1d6788duq" path="res://Entity/kynttila.tscn" id="19_8wkkr"]
 [ext_resource type="PackedScene" uid="uid://bo2d3bjnsnvis" path="res://Entity/kynttila_kirkas.tscn" id="19_p38qx"]
 [ext_resource type="PackedScene" uid="uid://ckpdhi6m88duq" path="res://Entity/luuranko.tscn" id="20_3dv22"]
+[ext_resource type="PackedScene" uid="uid://cvihreasilmatsp1" path="res://Effects/vihrea_silmat_spawner.tscn" id="21_vihreat"]
 
 [node name="Level4" type="Node2D" unique_id=1605077329]
 script = ExtResource("1_side")
@@ -148,3 +149,6 @@ position = Vector2(413, 189)
 
 [node name="Luuranko6" parent="." unique_id=995663182 instance=ExtResource("20_3dv22")]
 position = Vector2(391, 230)
+
+[node name="VihreaSilmatSpawner" parent="." instance=ExtResource("21_vihreat")]
+tilemap_path = NodePath("../TileMapLayer")

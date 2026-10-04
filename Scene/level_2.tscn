@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://csuju8hvbovy6" path="res://Effects/darksumu_border.gd" id="15_sumuborder"]
 [ext_resource type="PackedScene" uid="uid://b8xu8xbs4hfno" path="res://Effects/darksumu.tscn" id="16_darksumu"]
 [ext_resource type="Script" uid="uid://ibbabrr1kfj5" path="res://Effects/level_outside_mask.gd" id="17_outmask"]
+[ext_resource type="PackedScene" uid="uid://cvihreasilmatsp1" path="res://Effects/vihrea_silmat_spawner.tscn" id="18_vihreat"]
 
 [node name="Level2" type="Node2D" unique_id=392092015]
 script = ExtResource("1_side")
@@ -89,3 +90,6 @@ texture = ExtResource("9_g67xk")
 [node name="TransitionToLevel1" parent="." unique_id=488423747 instance=ExtResource("11_gate")]
 position = Vector2(1000, 422)
 target_scene = "res://Scene/level_1.tscn"
+
+[node name="VihreaSilmatSpawner" parent="." instance=ExtResource("18_vihreat")]
+tilemap_path = NodePath("../TileMapLayer")

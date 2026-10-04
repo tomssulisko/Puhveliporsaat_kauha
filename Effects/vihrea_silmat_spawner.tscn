@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://sehbt0rfd6wi"]
+
+[ext_resource type="Script" path="res://Effects/vihrea_silmat_spawner.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://cvihreasilma001" path="res://Entity/vihrea_silma.tscn" id="2_eye"]
+
+[node name="VihreaSilmatSpawner" type="Node2D"]
+script = ExtResource("1_script")
+eye_scene = ExtResource("2_eye")
+tilemap_path = NodePath("../TileMapLayer")
