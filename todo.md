@@ -2,22 +2,22 @@
 
 ## Progressio / portit / kartat
 
-- [ ] Dialogin jälkeen portin avautumisääni
-- [ ] Johonkin paikkaan kajahtaa valoa tai nuoli, jotta pelaaja tietää minne mennä
+- [x] Dialogin jälkeen portin avautumisääni
+- [x] Johonkin paikkaan kajahtaa valoa tai nuoli, jotta pelaaja tietää minne mennä
 - [x] Pelaaja kävelee animoidusti portista sisään automaattisesti
-- [ ] Uudessa mapissa pelaaja kävelee portista ulos
-- [ ] Uudella alueella ei pääse takaisin ennen kuin esine on haettu
+- [x] Uudessa mapissa pelaaja kävelee portista ulos
+- [x] Uudella alueella ei pääse takaisin ennen kuin esine on haettu
 - [ ] Dialogi jos yrittää palata liian aikaisin (esim. “Pitäisi ensin hakea jotain ennen kuin palaan”)
-- [ ] Kun tavara löytyy: “nonii” + dialogi
-- [ ] Viholliset stoppaa dialogin ajaksi
-- [ ] Portti aukeaa takaisin hetken päästä esineen jälkeen
+- [x] Kun tavara löytyy: “nonii” + dialogi
+- [x] Viholliset stoppaa dialogin ajaksi
+- [x] Portti aukeaa takaisin hetken päästä esineen jälkeen
 - [ ] Alkumappiin palatessa portti sulkeutuu takana
-- [ ] Auton luona auttaja (pääkallo)
-- [ ] Viimeisen dialogin jälkeen:
-  - [ ] Pelaaja katoaa
-  - [ ] Auton valot syttyvät
-  - [ ] Auto ajaa pois
-  - [ ] Creditit rullaa
+- [x] Auton luona auttaja (pääkallo)
+- [x] Viimeisen dialogin jälkeen:
+  - [x] Pelaaja katoaa
+  - [x] Auton valot syttyvät
+  - [x] Auto ajaa pois
+  - [x] Creditit rullaa
 
 ## Lepakko
 
@@ -51,5 +51,4 @@
 - [x] Kuulee kaukaa jos juoksee
 - [x] Päästää luuääniä kun huomaa pelaajan
 - [x] Päästää luuääniä kävellessään
-
 
