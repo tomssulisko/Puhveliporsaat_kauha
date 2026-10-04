@@ -33,7 +33,6 @@ tile_set = ExtResource("14_ruoste")
 position = Vector2(40, 259)
 
 [node name="pimeys" parent="." unique_id=1384955196 instance=ExtResource("10_pimeys")]
-visible = false
 
 [node name="DarksumuBorder" type="Node2D" parent="." unique_id=491750080]
 z_index = 100
@@ -57,14 +56,8 @@ metadata/_edit_lock_ = true
 [node name="Lepakko" parent="." unique_id=1621889305 instance=ExtResource("12_qh52m")]
 position = Vector2(89, 89)
 
-[node name="Lepakko2" parent="." unique_id=828873508 instance=ExtResource("12_qh52m")]
-position = Vector2(321, 26)
-
 [node name="Lepakko3" parent="." unique_id=1972989899 instance=ExtResource("12_qh52m")]
 position = Vector2(874, 323)
-
-[node name="Lepakko4" parent="." unique_id=603485591 instance=ExtResource("12_qh52m")]
-position = Vector2(533, 27)
 
 [node name="Lepakko5" parent="." unique_id=275795437 instance=ExtResource("12_qh52m")]
 position = Vector2(337, 422)
@@ -72,20 +65,11 @@ position = Vector2(337, 422)
 [node name="Lepakko6" parent="." unique_id=1568271272 instance=ExtResource("12_qh52m")]
 position = Vector2(135, 370)
 
-[node name="Lepakko7" parent="." unique_id=989534073 instance=ExtResource("12_qh52m")]
-position = Vector2(869, 28)
-
 [node name="Lepakko8" parent="." unique_id=1764649323 instance=ExtResource("12_qh52m")]
 position = Vector2(636, 433)
 
 [node name="Lepakko9" parent="." unique_id=480876027 instance=ExtResource("12_qh52m")]
 position = Vector2(682, 190)
 
-[node name="Lepakko10" parent="." unique_id=1284075583 instance=ExtResource("12_qh52m")]
-position = Vector2(900, 451)
-
 [node name="Lepakko11" parent="." unique_id=2016413338 instance=ExtResource("12_qh52m")]
 position = Vector2(423, 281)
-
-[node name="Lepakko12" parent="." unique_id=1071881852 instance=ExtResource("12_qh52m")]
-position = Vector2(634, 28)
