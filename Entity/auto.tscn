@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Entity/car_dropoff.gd" id="3_drop"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_drop"]
-size = Vector2(90, 56)
+size = Vector2(52, 36)
 
 [node name="Auto" type="Node2D" unique_id=783387436]
 
@@ -23,5 +23,5 @@ monitorable = false
 script = ExtResource("3_drop")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CarDropoff"]
-position = Vector2(8, 4)
+position = Vector2(4, 2)
 shape = SubResource("RectangleShape2D_drop")

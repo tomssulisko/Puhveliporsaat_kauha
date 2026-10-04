@@ -2,8 +2,11 @@ extends Node2D
 
 const CAR_START := Vector2(-120, 587)
 const CAR_STOP := Vector2(220, 587)
-const PLAYER_EXIT := Vector2(280, 587)
+const CAR_EXIT := Vector2(-280, 587)
+## Keep spawn clear of the car dropoff so return dialogue cannot fire on load.
+const PLAYER_EXIT := Vector2(340, 587)
 const INTRO_DRIVE_SECONDS := 2.8
+const ENDING_DRIVE_SECONDS := 3.4
 
 @onready var player: CharacterBody2D = $Player
 @onready var auto: Node2D = $Auto
@@ -134,3 +137,47 @@ func _set_portal_active(gate: Node, active: bool) -> void:
 	gate.visible = active
 	if gate.has_method("set_gate_enabled"):
 		gate.set_gate_enabled(active)
+
+
+## After the last item (tire) is returned: enter car, lights on, drive off, credits.
+func play_ending() -> void:
+	_set_player_control(false)
+	for gate in [$TransitionLevel2, $TransitionLevel3, $TransitionLevel4]:
+		_set_portal_active(gate, false)
+
+	var board_pos := auto.global_position + Vector2(18, 0)
+	if player.global_position.distance_to(board_pos) > 12.0:
+		var walk := create_tween()
+		walk.tween_property(player, "global_position", board_pos, 0.55) \
+			.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+		await walk.finished
+
+	player.visible = false
+	_set_player_ambient(false)
+	_set_flashlight_beam(false)
+	await get_tree().create_timer(0.35).timeout
+
+	_set_headlights(true)
+	await get_tree().create_timer(0.45).timeout
+
+	var sprite := auto.get_node_or_null("Sprite2D") as Sprite2D
+	if sprite != null:
+		sprite.flip_h = true
+	if headlights != null:
+		headlights.scale.x = -absf(headlights.scale.x)
+		headlights.position.x = -absf(headlights.position.x)
+
+	var drive := create_tween()
+	drive.tween_property(auto, "global_position", CAR_EXIT, ENDING_DRIVE_SECONDS) \
+		.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
+
+	await get_tree().create_timer(ENDING_DRIVE_SECONDS * 0.4).timeout
+	var app := get_node_or_null("/root/App")
+	if app != null and app.has_method("fade_to_black"):
+		await app.fade_to_black(1.2)
+	if drive.is_running():
+		await drive.finished
+
+	await get_tree().create_timer(0.35).timeout
+	if app != null and app.has_method("go_to_credits"):
+		await app.go_to_credits()
