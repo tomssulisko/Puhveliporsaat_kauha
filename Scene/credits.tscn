@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://d1djdcdkahfeo" path="res://Texture/new-behind-the-scenes-look-at-robert-bobroczkyi-as-captain-v0-qrpc7g6bpfdh1.webp" id="1_7whrh"]
 [ext_resource type="Texture2D" uid="uid://c1yrxyhkglio1" path="res://Texture/pfp/a953a4898b62c70bacc7e3e39ef32d45.webp" id="2_3hbp5"]
 [ext_resource type="Texture2D" uid="uid://b0jgqbxl602qd" path="res://icon.svg" id="3_3rv14"]
+[ext_resource type="Texture2D" uid="uid://bin3phim0jj0h" path="res://Texture/pfp/IMG_0169.jpg" id="3_wofek"]
 
 [node name="Credits" type="Node2D" unique_id=1269418400]
 
@@ -53,9 +54,9 @@ offset_right = 240.0
 offset_bottom = 40.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Move/top/2" unique_id=1981009172]
-position = Vector2(43, 41.500004)
-scale = Vector2(0.640625, 0.6328125)
-texture = ExtResource("3_3rv14")
+position = Vector2(37.200104, 39)
+scale = Vector2(0.11529492, 0.11388889)
+texture = ExtResource("3_wofek")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Move/top/2" unique_id=881244790]
 layout_mode = 0
@@ -65,7 +66,8 @@ offset_right = 220.0
 offset_bottom = 82.0
 bbcode_enabled = true
 text = "[center][b]Johannes[/b][/center]
-sample text"
+koodaus
+runescape"
 
 [node name="3" type="Control" parent="Move/top" unique_id=1264781490]
 anchors_preset = 0
