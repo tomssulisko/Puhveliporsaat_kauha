@@ -12,7 +12,8 @@ var _beam_enabled: bool = true
 
 
 func _ready() -> void:
-	_soften_beam_edges()
+	# Defer so the light's texture RID is fully registered before we replace it.
+	call_deferred("_soften_beam_edges")
 	set_beam_enabled(_beam_enabled)
 
 
@@ -58,11 +59,19 @@ func _soften_beam_edges() -> void:
 	if beam == null or beam.texture == null or cone_edge_softness <= 0:
 		return
 	var src := beam.texture.get_image()
-	if src == null:
+	if src == null or src.is_empty():
 		return
 	src.convert(Image.FORMAT_RGBA8)
 	var blurred := _box_blur_alpha(src, cone_edge_softness)
-	beam.texture = ImageTexture.create_from_image(blurred)
+	if blurred == null or blurred.is_empty():
+		return
+	var tex := ImageTexture.new()
+	tex.set_image(blurred)
+	# Swap with light disabled so atlas teardown never sees a null RID.
+	var was_enabled := beam.enabled
+	beam.enabled = false
+	beam.texture = tex
+	beam.enabled = was_enabled
 
 
 func _box_blur_alpha(src: Image, radius: int) -> Image:
