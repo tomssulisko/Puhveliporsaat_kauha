@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://biyp415b7nyy2"
-path="res://.godot/imported/map 1.png-fec16b32d961445ee851a4d05f7c0b42.ctex"
+uid="uid://cg54vve7b102f"
+path="res://.godot/imported/kulma aita.png-05ac1f26045cf093a2557afb096afc72.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scene/map 1.png"
-dest_files=["res://.godot/imported/map 1.png-fec16b32d961445ee851a4d05f7c0b42.ctex"]
+source_file="res://Texture/Aaron/kulma aita.png"
+dest_files=["res://.godot/imported/kulma aita.png-05ac1f26045cf093a2557afb096afc72.ctex"]
 
 [params]
 

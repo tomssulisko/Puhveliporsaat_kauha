@@ -41,6 +41,17 @@ const SFX_LIBRARY := {
 		"res://Audio/silmät2.wav",
 		"res://Audio/silmät3.wav",
 	],
+	"silma_katoaa": [
+		"res://Audio/silmä_katoaa.wav",
+	],
+	"silma_askeleet": [
+		"res://Audio/silmä_kävelee1.wav",
+		"res://Audio/silmä_kävelee2.wav",
+		"res://Audio/silmä_kävelee3.wav",
+		"res://Audio/silmä_kävelee4.wav",
+		"res://Audio/silmä_kävelee5.wav",
+		"res://Audio/silmä_kävelee6.wav",
+	],
 	"nonii": [
 		"res://Audio/pelaaja_no_niin.wav",
 	],
