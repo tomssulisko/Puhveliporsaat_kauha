@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bonecfftbyaxs"
-path="res://.godot/imported/pitkatie.png-f77bfe8d548860ae0160f20e9d28c00f.ctex"
+uid="uid://cd2p5f0klyuu"
+path="res://.godot/imported/pitkatie8.png-15da309c5406f5d33447646bccdeba56.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Texture/credits/pitkatie.png"
-dest_files=["res://.godot/imported/pitkatie.png-f77bfe8d548860ae0160f20e9d28c00f.ctex"]
+source_file="res://Texture/credits/pitkatie8.png"
+dest_files=["res://.godot/imported/pitkatie8.png-15da309c5406f5d33447646bccdeba56.ctex"]
 
 [params]
 

@@ -82,11 +82,13 @@ var musicDB: float = 0.0
 var fxDB: float = 0.0
 
 var _ambient_player: AudioStreamPlayer
+var _loop_sfx_player: AudioStreamPlayer
 var _sfx_players: Array[AudioStreamPlayer] = []
 var _sfx2d_players: Array[AudioStreamPlayer2D] = []
 var _sfx_index: int = 0
 var _sfx2d_index: int = 0
 var _current_ambient: String = ""
+var _current_loop_sfx: String = ""
 var _stream_cache: Dictionary = {}
 var _ambient_gain: float = 1.0
 var _ambient_modulating: bool = false
@@ -109,6 +111,12 @@ func _build_players() -> void:
 	add_child(_ambient_player)
 
 	var sfx_bus := _bus_or_master("SFX")
+	_loop_sfx_player = AudioStreamPlayer.new()
+	_loop_sfx_player.bus = sfx_bus
+	_loop_sfx_player.process_mode = Node.PROCESS_MODE_ALWAYS
+	_loop_sfx_player.finished.connect(_on_loop_sfx_finished)
+	add_child(_loop_sfx_player)
+
 	for i in SFX_POOL_SIZE:
 		var p := AudioStreamPlayer.new()
 		p.bus = sfx_bus
@@ -161,12 +169,36 @@ func volume_change(master, music, fx) -> void:
 	fxDB = -60.0 + (60.0 * fx_m * master_m)
 
 	_apply_ambient_volume()
+	if _loop_sfx_player != null:
+		_loop_sfx_player.volume_db = fxDB
 	for p in _sfx_players:
 		p.volume_db = fxDB
 	for p in _sfx2d_players:
 		p.volume_db = fxDB
 
 	volume_changed.emit()
+
+
+func play_looping_sfx(id: String) -> void:
+	var stream := _pick_sfx_stream(id)
+	if stream == null:
+		return
+	_current_loop_sfx = id
+	_loop_sfx_player.stream = stream
+	_loop_sfx_player.volume_db = fxDB
+	_loop_sfx_player.play()
+
+
+func stop_looping_sfx() -> void:
+	_current_loop_sfx = ""
+	if _loop_sfx_player != null:
+		_loop_sfx_player.stop()
+
+
+func _on_loop_sfx_finished() -> void:
+	if _current_loop_sfx.is_empty() or _loop_sfx_player.stream == null:
+		return
+	_loop_sfx_player.play()
 
 
 func play_sfx(id: String) -> void:
