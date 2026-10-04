@@ -28,6 +28,10 @@ const SFX_LIBRARY := {
 		"res://Audio/lepakko2.wav",
 		"res://Audio/lepakko3.wav",
 	],
+	"lepakko_lento": [
+		"res://Audio/lepakko_lentää.wav",
+	],
+
 	"silmat": [
 		"res://Audio/silmät1.wav",
 		"res://Audio/silmät2.wav",

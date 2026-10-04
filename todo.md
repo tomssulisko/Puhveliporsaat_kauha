@@ -21,9 +21,9 @@
 
 ## Lepakko
 
-- [ ] Sanoo “skviik” ja avaa siivet kun valo osuu
-- [ ] Lähtee pelaajaa kohti hetken päästä
-- [ ] Lentää sen jälkeen aina samaan suuntaan (ei käänny perässä)
+- [x] Sanoo “skviik” ja avaa siivet kun valo osuu
+- [x] Lähtee pelaajaa kohti hetken päästä
+- [x] Lentää sen jälkeen aina samaan suuntaan (ei käänny perässä)
 
 ## Silmät
 

@@ -8,6 +8,10 @@ var input_direction := Vector2.ZERO
 var control_enabled: bool = true
 
 
+func _ready() -> void:
+	add_to_group("player")
+
+
 func set_control_enabled(enabled: bool) -> void:
 	control_enabled = enabled
 	if not enabled:

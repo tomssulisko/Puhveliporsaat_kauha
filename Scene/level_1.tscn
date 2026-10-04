@@ -14,6 +14,7 @@
 [ext_resource type="TileSet" uid="uid://q3b6n750jwaa" path="res://Texture/Aaron/ruoste_autot_tileset.tres" id="13_ruoste"]
 [ext_resource type="PackedScene" uid="uid://ctransgatekau01" path="res://Effects/transition_gate.tscn" id="14_gate"]
 [ext_resource type="Script" path="res://Effects/level_outside_mask.gd" id="15_outmask"]
+[ext_resource type="PackedScene" uid="uid://cn28rmva4xm87" path="res://Entity/lepakko.tscn" id="16_lepakko"]
 
 
 [node name="Level1" type="Node2D" unique_id=1647334681]
@@ -64,6 +65,9 @@ cover_depth = 240.0
 cover_z_index = 80
 
 [node name="StorylineCanvas" parent="." unique_id=2108214649 instance=ExtResource("10_storycanvas")]
+
+[node name="Lepakko" parent="." instance=ExtResource("16_lepakko")]
+position = Vector2(620, 360)
 
 [node name="TransitionLevel2" parent="." instance=ExtResource("14_gate")]
 position = Vector2(1136, 270)

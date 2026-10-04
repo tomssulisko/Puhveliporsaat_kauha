@@ -1,6 +1,8 @@
 extends Node2D
 
 @export var follow_speed: float = 10.0
+@export var beam_range: float = 260.0
+@export var beam_half_angle: float = 0.42
 
 @onready var soft_light: PointLight2D = $SoftLight
 @onready var beam: PointLight2D = $Beam
@@ -32,3 +34,19 @@ func set_ambient_enabled(enabled: bool) -> void:
 	visible = enabled
 	if soft_light != null:
 		soft_light.enabled = enabled
+
+
+func is_beam_enabled() -> bool:
+	return _beam_enabled and visible
+
+
+## True if world point lies inside the flashlight cone.
+func illuminates_point(world_pos: Vector2) -> bool:
+	if not is_beam_enabled():
+		return false
+	var to_point := world_pos - global_position
+	var dist := to_point.length()
+	if dist < 8.0 or dist > beam_range:
+		return false
+	var angle_diff := absf(angle_difference(global_rotation, to_point.angle()))
+	return angle_diff <= beam_half_angle
