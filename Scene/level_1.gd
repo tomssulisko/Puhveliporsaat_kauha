@@ -11,19 +11,27 @@ const INTRO_DRIVE_SECONDS := 2.8
 
 
 func _ready() -> void:
+	var app := get_node_or_null("/root/App")
+	var from_death: bool = app != null and bool(app.get("pending_death_dream"))
+	if from_death and app.has_method("prepare_level1_after_death"):
+		app.prepare_level1_after_death()
+
 	AudioManager.play_ambient("tuuli", 0.0, true)
 
 	var manager := get_node_or_null("/root/StorylineManager")
 	var intro_done: bool = manager != null and manager.events_played.has("carBroken")
-	if intro_done:
+	if intro_done or from_death:
 		auto.global_position = CAR_STOP
-		var app := get_node_or_null("/root/App")
-		var reentry = app.consume_level1_reentry() if app != null and app.has_method("consume_level1_reentry") else null
+		var reentry: Variant = null
+		if not from_death and app != null and app.has_method("consume_level1_reentry"):
+			reentry = app.consume_level1_reentry()
 		player.global_position = reentry if reentry is Vector2 else PLAYER_EXIT
 		_set_headlights(false)
 		_set_player_ambient(true)
 		_set_flashlight_beam(true)
 		_set_player_control(true)
+		if from_death and app != null and app.has_method("finish_level1_after_death"):
+			await app.finish_level1_after_death()
 	else:
 		await _play_car_intro()
 
@@ -70,6 +78,8 @@ func _play_car_intro() -> void:
 
 
 func _set_player_control(enabled: bool) -> void:
+	if player.has_method("set_control_enabled"):
+		player.set_control_enabled(enabled)
 	player.set_physics_process(enabled)
 	player.set_process(enabled)
 	player.velocity = Vector2.ZERO

@@ -110,14 +110,6 @@
 				"speech": {
 				"actor": "auttaja",
 				"text": [
-				  "You need some tools my lovely friend! "
-				]
-				}
-			},
-						{
-				"speech": {
-				"actor": "auttaja",
-				"text": [
 				  "You need some tools my lovely friend! You may find some in the place where dead people rest.."
 				]
 				}
@@ -180,7 +172,15 @@
 				"speech": {
 				"actor": "auttaja",
 				"text": [
-				  "Wonderful! Though I have to tell you, your tire looks a bit flat. Get a new one, it hurts my eyes to see it like that! Follow that path and look for it."
+				  "Wonderful! Though I have to tell you, your tire looks a bit flat. Get a new one, it hurts my eyes to see it like that!"
+				]
+				}
+			},
+			{
+				"speech": {
+				"actor": "auttaja",
+				"text": [
+				  " Follow that path and look for it."
 				]
 				}
 			},
@@ -273,6 +273,51 @@
 				"actor": "pelaaja",
 				"text": [
 				  "Yeah... I'm not walking out there."
+				]
+				}
+			}
+		  ]
+		}
+	},
+	{
+		"event": {
+		  "name": "deathDream1",
+		  "speeches": [
+			{
+				"speech": {
+				"actor": "pelaaja",
+				"text": [
+				  "Ugh... what a horrible dream..."
+				]
+				}
+			}
+		  ]
+		}
+	},
+	{
+		"event": {
+		  "name": "deathDream2",
+		  "speeches": [
+			{
+				"speech": {
+				"actor": "pelaaja",
+				"text": [
+				  "That felt way too real for a nightmare..."
+				]
+				}
+			}
+		  ]
+		}
+	},
+	{
+		"event": {
+		  "name": "deathDream3",
+		  "speeches": [
+			{
+				"speech": {
+				"actor": "pelaaja",
+				"text": [
+				  "I'm awake... right? Please let me be awake."
 				]
 				}
 			}

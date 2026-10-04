@@ -22,7 +22,7 @@ shader_parameter/clip_max = Vector2(99999, 99999)
 shader_parameter/clip_feather = 12.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_exit"]
-size = Vector2(48, 96)
+size = Vector2(140, 120)
 
 [node name="TransitionGate" type="Node2D"]
 z_index = 50
@@ -52,4 +52,6 @@ collision_mask = 1
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitArea"]
+# Shifted against enter_direction so the zone reaches further into the map.
+position = Vector2(-55, 0)
 shape = SubResource("RectangleShape2D_exit")

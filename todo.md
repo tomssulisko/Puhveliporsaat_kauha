@@ -4,7 +4,7 @@
 
 - [ ] Dialogin jälkeen portin avautumisääni
 - [ ] Johonkin paikkaan kajahtaa valoa tai nuoli, jotta pelaaja tietää minne mennä
-- [ ] Pelaaja kävelee animoidusti portista sisään automaattisesti
+- [x] Pelaaja kävelee animoidusti portista sisään automaattisesti
 - [ ] Uudessa mapissa pelaaja kävelee portista ulos
 - [ ] Uudella alueella ei pääse takaisin ennen kuin esine on haettu
 - [ ] Dialogi jos yrittää palata liian aikaisin (esim. “Pitäisi ensin hakea jotain ennen kuin palaan”)
@@ -21,9 +21,9 @@
 
 ## Lepakko
 
-- [ ] Sanoo “skviik” ja avaa siivet kun valo osuu
-- [ ] Lähtee pelaajaa kohti hetken päästä
-- [ ] Lentää sen jälkeen aina samaan suuntaan (ei käänny perässä)
+- [x] Sanoo “skviik” ja avaa siivet kun valo osuu
+- [x] Lähtee pelaajaa kohti hetken päästä
+- [x] Lentää sen jälkeen aina samaan suuntaan (ei käänny perässä)
 
 ## Silmät
 
