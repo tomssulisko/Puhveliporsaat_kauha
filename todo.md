@@ -27,17 +27,17 @@
 
 ## Silmät
 
-- [ ] Kiiluu randomisti harvakseen
-- [ ] Kun pelaaja on riittävän lähellä: silmät syttyy pysyvästi ja lähtee pelaajaa kohti
-- [ ] Örisee kun seuraa pelaajaa
-- [ ] Askeleet kun liikkuu
-- [ ] Askeleet ja vauhti kiihtyy kun lähtee pelaajan perään
-- [ ] Kun pelaaja osuu lampulla:
-  - [ ] Hatoamisääni
-  - [ ] Silmät haihtuu
-  - [ ] Epämääräinen musta keho vilahtaa haihtuessa
-  - [ ] Pysyy piilossa samassa paikassa
-  - [ ] Jos valo on poissa, silmät syttyy taas hetken päästä
+- [x] Kiiluu randomisti harvakseen
+- [x] Kun pelaaja on riittävän lähellä: silmät syttyy pysyvästi ja lähtee pelaajaa kohti
+- [x] Örisee kun seuraa pelaajaa
+- [x] Askeleet kun liikkuu
+- [x] Askeleet ja vauhti kiihtyy kun lähtee pelaajan perään
+- [x] Kun pelaaja osuu lampulla:
+  - [x] Hatoamisääni
+  - [x] Silmät haihtuu
+  - [x] Epämääräinen musta keho vilahtaa haihtuessa
+  - [x] Pysyy piilossa samassa paikassa
+  - [x] Jos valo on poissa ja pelaaja kaukana, silmät aktivoituvat uudelleen
 
 Myös passiivisia silmiä joka kenttään, ilmestyvät ja katoavat random paikkoihin harvakseen.
 
