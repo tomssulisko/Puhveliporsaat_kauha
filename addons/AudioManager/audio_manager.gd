@@ -55,6 +55,14 @@ const SFX_LIBRARY := {
 	"nonii": [
 		"res://Audio/pelaaja_no_niin.wav",
 	],
+	"pelaaja_askeleet": [
+		"res://Audio/pelaajan_askeleet1.wav",
+		"res://Audio/pelaajan_askeleet2.wav",
+		"res://Audio/pelaajan_askeleet3.wav",
+		"res://Audio/pelaajan_askeleet4.wav",
+		"res://Audio/pelaajan_askeleet5.wav",
+		"res://Audio/pelaajan_askeleet6.wav",
+	],
 	"reitin_avaus": [
 		"res://Audio/reitin_avaus.wav",
 	],
@@ -204,18 +212,18 @@ func _on_loop_sfx_finished() -> void:
 	_loop_sfx_player.play()
 
 
-func play_sfx(id: String) -> void:
+func play_sfx(id: String, volume_offset_db: float = 0.0) -> void:
 	var stream := _pick_sfx_stream(id)
 	if stream == null:
 		return
 	var player := _sfx_players[_sfx_index]
 	_sfx_index = (_sfx_index + 1) % _sfx_players.size()
 	player.stream = stream
-	player.volume_db = fxDB
+	player.volume_db = fxDB + volume_offset_db
 	player.play()
 
 
-func play_sfx_at(id: String, global_pos: Vector2) -> void:
+func play_sfx_at(id: String, global_pos: Vector2, volume_offset_db: float = 0.0) -> void:
 	var stream := _pick_sfx_stream(id)
 	if stream == null:
 		return
@@ -223,7 +231,7 @@ func play_sfx_at(id: String, global_pos: Vector2) -> void:
 	_sfx2d_index = (_sfx2d_index + 1) % _sfx2d_players.size()
 	player.stream = stream
 	player.global_position = global_pos
-	player.volume_db = fxDB
+	player.volume_db = fxDB + volume_offset_db
 	player.play()
 
 

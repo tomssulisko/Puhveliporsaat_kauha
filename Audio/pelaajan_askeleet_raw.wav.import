@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://ctf3y4yqht73s"
-path="res://.godot/imported/pelaajan_askeleet.wav-222354c7dcccc5bf83df290990df29f4.sample"
+path="res://.godot/imported/pelaajan_askeleet_raw.wav-8432bb079833e6f740dfc1e6f5ecb167.sample"
 
 [deps]
 
-source_file="res://Audio/pelaajan_askeleet.wav"
-dest_files=["res://.godot/imported/pelaajan_askeleet.wav-222354c7dcccc5bf83df290990df29f4.sample"]
+source_file="res://Audio/pelaajan_askeleet_raw.wav"
+dest_files=["res://.godot/imported/pelaajan_askeleet_raw.wav-8432bb079833e6f740dfc1e6f5ecb167.sample"]
 
 [params]
 

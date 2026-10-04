@@ -7,6 +7,7 @@ const CARRY_STACK_STEP := Vector2(10, -4)
 const MOVE_ANIM_THRESHOLD := 1.0
 
 @export var anim_fps: float = 8.0
+@export var step_distance: float = 22.0
 
 var speed: float = WALK_SPEED
 var input_direction := Vector2.ZERO
@@ -14,6 +15,7 @@ var control_enabled: bool = true
 
 var _carry_root: Node2D
 var _facing: StringName = &"eteen"
+var _step_accum: float = 0.0
 
 @onready var _anim: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -33,6 +35,7 @@ func set_control_enabled(enabled: bool) -> void:
 	if not enabled:
 		velocity = Vector2.ZERO
 		input_direction = Vector2.ZERO
+		_step_accum = 0.0
 		_set_idle_pose()
 
 
@@ -48,10 +51,22 @@ func get_input() -> void:
 	velocity = input_direction * current_speed
 
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	get_input()
 	move_and_slide()
 	_update_walk_animation()
+	_update_footsteps(delta)
+
+
+func _update_footsteps(delta: float) -> void:
+	var moved := get_real_velocity().length() * delta
+	if moved < 0.01:
+		_step_accum = 0.0
+		return
+	_step_accum += moved
+	if _step_accum >= step_distance:
+		_step_accum = 0.0
+		AudioManager.play_sfx("pelaaja_askeleet", -25.0)
 
 
 func _update_walk_animation() -> void:
