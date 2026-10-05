@@ -38,6 +38,9 @@ const RETURN_EVENTS := {
 
 var _dying: bool = false
 var _fade: CanvasLayer
+var _quit_menu: CanvasLayer
+var _quit_menu_open: bool = false
+var _paused_for_quit: bool = false
 var _pickup_busy: bool = false
 var _deliver_busy: bool = false
 ## First bat graze: warning dialogue + brief invulnerability; later bats kill.
@@ -50,6 +53,12 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	_fade = preload("res://Effects/screen_fade.tscn").instantiate()
 	add_child(_fade)
+	_quit_menu = preload("res://Scene/quit_menu.tscn").instantiate()
+	add_child(_quit_menu)
+	if _quit_menu.has_signal("continue_pressed"):
+		_quit_menu.continue_pressed.connect(_on_quit_menu_continue)
+	if _quit_menu.has_signal("quit_pressed"):
+		_quit_menu.quit_pressed.connect(_on_quit_menu_quit)
 
 
 func has_carried_item(item_id: String) -> bool:
@@ -409,5 +418,82 @@ func _maybe_play_sprint_tip() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("quit"):
+	if not event.is_action_pressed("quit"):
+		return
+	get_viewport().set_input_as_handled()
+	if _quit_menu_open:
+		_close_quit_menu()
+	else:
+		_open_quit_menu()
+
+
+func _is_on_main_menu() -> bool:
+	var scene := get_tree().current_scene
+	return scene != null and String(scene.name) == "Start"
+
+
+func _open_quit_menu() -> void:
+	if _quit_menu_open or _quit_menu == null:
+		return
+	_quit_menu_open = true
+	if not get_tree().paused:
+		get_tree().paused = true
+		_paused_for_quit = true
+	else:
+		_paused_for_quit = false
+	if _quit_menu.has_method("open_menu"):
+		_quit_menu.open_menu(_is_on_main_menu())
+
+
+func _close_quit_menu() -> void:
+	if not _quit_menu_open:
+		return
+	_quit_menu_open = false
+	if _quit_menu != null and _quit_menu.has_method("close_menu"):
+		_quit_menu.close_menu()
+	if _paused_for_quit:
+		get_tree().paused = false
+		_paused_for_quit = false
+
+
+func _on_quit_menu_continue() -> void:
+	_close_quit_menu()
+
+
+func _on_quit_menu_quit() -> void:
+	if _is_on_main_menu():
 		get_tree().quit()
+		return
+	_return_to_main_menu()
+
+
+func _return_to_main_menu() -> void:
+	_close_quit_menu()
+	get_tree().paused = false
+	_paused_for_quit = false
+	_reset_run_state()
+	var manager := get_node_or_null("/root/StorylineManager")
+	if manager != null and manager.has_method("on_scene_about_to_change"):
+		manager.on_scene_about_to_change()
+	if manager != null and ("events_played" in manager):
+		manager.events_played.clear()
+	get_tree().change_scene_to_file("res://Scene/start.tscn")
+
+
+func _reset_run_state() -> void:
+	level1_reentry_position = Vector2.ZERO
+	has_level1_reentry = false
+	pending_death_dream = false
+	start_faded_black = false
+	death_count = 0
+	sprint_tip_done = false
+	carried_items.clear()
+	delivered_items.clear()
+	level1_death_drops.clear()
+	_dying = false
+	_pickup_busy = false
+	_deliver_busy = false
+	bat_warning_done = false
+	_bat_invuln_until_msec = 0
+	var luuranko_script: GDScript = preload("res://Entity/luuranko.gd")
+	luuranko_script._tire_altar_done = false
