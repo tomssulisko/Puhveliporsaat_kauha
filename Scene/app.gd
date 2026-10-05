@@ -15,6 +15,11 @@ var sprint_tip_done: bool = false
 var carried_items: Array[Dictionary] = []
 ## Items already returned to the car.
 var delivered_items: Array[String] = []
+## Quest items dropped on level 1 after death (suppresses original map spawn).
+## Each entry: { "id": String, "texture": Texture2D, "scale": Vector2, "position": Vector2 }
+var level1_death_drops: Array[Dictionary] = []
+
+const CARRY_ITEM_SCENE := preload("res://Entity/carry_item.tscn")
 
 const DEATH_DREAM_EVENTS := ["deathDream1", "deathDream2", "deathDream3"]
 const SPRINT_TIP_EVENT := "sprintTip"
@@ -59,12 +64,20 @@ func has_delivered_item(item_id: String) -> bool:
 
 
 func is_item_gone_from_world(item_id: String) -> bool:
-	return has_carried_item(item_id) or has_delivered_item(item_id)
+	return has_carried_item(item_id) or has_delivered_item(item_id) or has_level1_death_drop(item_id)
+
+
+func has_level1_death_drop(item_id: String) -> bool:
+	for entry in level1_death_drops:
+		if String(entry.get("id", "")) == item_id:
+			return true
+	return false
 
 
 func pickup_item(item_id: String, texture: Texture2D, carry_scale: Vector2 = Vector2.ONE) -> void:
-	if item_id.is_empty() or is_item_gone_from_world(item_id):
+	if item_id.is_empty() or has_carried_item(item_id) or has_delivered_item(item_id):
 		return
+	_remove_level1_death_drop(item_id)
 	carried_items.append({
 		"id": item_id,
 		"texture": texture,
@@ -259,11 +272,33 @@ func _run_death_sequence() -> void:
 func _drop_carried_items_on_death() -> void:
 	if carried_items.is_empty():
 		return
+	var scene := get_tree().current_scene
+	var on_level1 := scene != null and String(scene.name) == "Level1"
+	var player := get_tree().get_first_node_in_group("player") as Node2D
+
+	# Level 1: leave the item on the ground at the death spot.
+	if on_level1 and player != null:
+		for entry in carried_items:
+			var id := String(entry.get("id", ""))
+			if id.is_empty():
+				continue
+			_upsert_level1_death_drop({
+				"id": id,
+				"texture": entry.get("texture"),
+				"scale": entry.get("scale", Vector2.ONE),
+				"position": player.global_position,
+			})
+		carried_items.clear()
+		_sync_player_carry_visuals()
+		return
+
+	# Other levels: send items home (clear found-events so originals respawn).
 	var dropped: Array[String] = []
 	for entry in carried_items:
 		var id := String(entry.get("id", ""))
 		if not id.is_empty():
 			dropped.append(id)
+			_remove_level1_death_drop(id)
 	carried_items.clear()
 	_sync_player_carry_visuals()
 	var manager := get_node_or_null("/root/StorylineManager")
@@ -275,6 +310,42 @@ func _drop_carried_items_on_death() -> void:
 			continue
 		if manager.events_played.has(found_event):
 			manager.events_played.erase(found_event)
+
+
+func spawn_level1_death_drops(parent: Node) -> void:
+	if parent == null or level1_death_drops.is_empty():
+		return
+	for entry in level1_death_drops:
+		var id := String(entry.get("id", ""))
+		if id.is_empty() or _scene_has_item(parent, id):
+			continue
+		var item := CARRY_ITEM_SCENE.instantiate()
+		item.set("item_id", id)
+		item.set("item_texture", entry.get("texture"))
+		item.set("carry_scale", entry.get("scale", Vector2.ONE))
+		item.set("is_death_drop", true)
+		parent.add_child(item)
+		if item is Node2D:
+			(item as Node2D).global_position = entry.get("position", Vector2.ZERO)
+
+
+func _scene_has_item(parent: Node, item_id: String) -> bool:
+	for child in parent.get_children():
+		if String(child.get("item_id")) == item_id:
+			return true
+	return false
+
+
+func _upsert_level1_death_drop(entry: Dictionary) -> void:
+	var id := String(entry.get("id", ""))
+	_remove_level1_death_drop(id)
+	level1_death_drops.append(entry)
+
+
+func _remove_level1_death_drop(item_id: String) -> void:
+	for i in range(level1_death_drops.size() - 1, -1, -1):
+		if String(level1_death_drops[i].get("id", "")) == item_id:
+			level1_death_drops.remove_at(i)
 
 
 func fade_to_black(duration: float = 0.8) -> void:

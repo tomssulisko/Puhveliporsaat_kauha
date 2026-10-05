@@ -7,6 +7,8 @@ extends Area2D
 @export var outline_color: Color = Color(1.0, 0.95, 0.15, 1.0)
 ## Thin 1px rim.
 @export var outline_px: float = 1.0
+## Spawned at a level-1 death spot; stays present even while original map spawn is suppressed.
+@export var is_death_drop: bool = false
 
 ## Cardinal-only offsets = thin 1px rim without chunky diagonal corners.
 const OUTLINE_DIRS := [
@@ -32,7 +34,7 @@ func _ready() -> void:
 	_build_outline_sprites()
 
 	var app := get_node_or_null("/root/App")
-	if app != null and app.has_method("is_item_gone_from_world") and app.is_item_gone_from_world(item_id):
+	if not is_death_drop and app != null and app.has_method("is_item_gone_from_world") and app.is_item_gone_from_world(item_id):
 		queue_free()
 		return
 
@@ -122,7 +124,10 @@ func _on_body_entered(body: Node2D) -> void:
 	var app := get_node_or_null("/root/App")
 	if app == null or not app.has_method("pickup_item"):
 		return
-	if app.has_method("is_item_gone_from_world") and app.is_item_gone_from_world(item_id):
+	if not is_death_drop and app.has_method("is_item_gone_from_world") and app.is_item_gone_from_world(item_id):
+		queue_free()
+		return
+	if is_death_drop and (app.has_carried_item(item_id) or app.has_delivered_item(item_id)):
 		queue_free()
 		return
 	set_deferred("monitoring", false)

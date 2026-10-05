@@ -11,7 +11,7 @@
 - [x] Kun tavara löytyy: “nonii” + dialogi
 - [x] Viholliset stoppaa dialogin ajaksi
 - [x] Portti aukeaa takaisin hetken päästä esineen jälkeen
-- [ ] Alkumappiin palatessa portti sulkeutuu takana
+- [x] Alkumappiin palatessa portti sulkeutuu takana
 - [x] Auton luona auttaja (pääkallo)
 - [x] Viimeisen dialogin jälkeen:
   - [x] Pelaaja katoaa

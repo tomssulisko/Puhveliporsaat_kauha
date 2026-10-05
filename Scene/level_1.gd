@@ -44,9 +44,14 @@ func _ready() -> void:
 		_set_player_ambient(true)
 		_set_flashlight_beam(true)
 		_set_player_control(true)
-		update_portal_gates()
-		if not from_death and _player_has_carried_item(app):
+		if app != null and app.has_method("spawn_level1_death_drops"):
+			app.spawn_level1_death_drops(self)
+		var returning_with_item := reentry is Vector2 and _player_has_carried_item(app)
+		if returning_with_item:
+			await _seal_return_portal()
 			show_auttaja()
+		else:
+			update_portal_gates()
 		if from_death and app != null and app.has_method("finish_level1_after_death"):
 			await app.finish_level1_after_death()
 	else:
@@ -160,6 +165,32 @@ func update_portal_gates() -> void:
 	_set_portal_active($TransitionLevel3, stage == 0)
 	_set_portal_active($TransitionLevel2, stage == 1)
 	_set_portal_active($TransitionLevel4, stage == 2)
+
+
+## Close the portal the player just came through (with reitin_avaus SFX).
+func _seal_return_portal() -> void:
+	var app := get_node_or_null("/root/App")
+	var stage := 0
+	if app != null and app.has_method("get_portal_stage"):
+		stage = int(app.get_portal_stage())
+	var gates: Array[Node] = [$TransitionLevel3, $TransitionLevel2, $TransitionLevel4]
+	for i in range(gates.size()):
+		var gate := gates[i]
+		if gate == null:
+			continue
+		if i == stage and stage < 3:
+			gate.visible = true
+			if gate.has_method("set_gate_open"):
+				# Force open silently, then close with fade + sound.
+				gate.set_gate_open(true, false, 0.75, false)
+				await get_tree().create_timer(0.35).timeout
+				gate.set_gate_open(false, true, 0.85, true)
+		else:
+			gate.visible = false
+			if gate.has_method("set_gate_open"):
+				gate.set_gate_open(false, false, 0.75, false)
+			elif gate.has_method("set_gate_enabled"):
+				gate.set_gate_enabled(false)
 
 
 func _set_portal_active(gate: Node, active: bool) -> void:
